@@ -42,18 +42,18 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Próximos passos
 
-1. Dono responde as perguntas em aberto de `plano-inicial.md` (principalmente conceito, nome e repo).
-2. Protótipos de layout (home + página de ferramenta) para escolher.
-3. Esqueleto do app a partir do Vibecoin, sem banco (passos 3 a 7 do plano).
-4. As 10 ferramentas do MVP, uma por vez, cada uma com texto próprio.
-5. Guias de lançamento e checklist; depois deploy (só após a decisão sobre o repo antigo).
+1. Atualizar o plano com o planejador: notícias automáticas e ferramentas recorrentes mudam a arquitetura do
+   `plano-inicial.md` (que previa site sem banco). Agora precisa de MySQL + robô de notícias como no Vibecoin.
+2. Esqueleto do app a partir do Vibecoin, já com o layout "Busca + Central" (`docs/prototipo-layout.html`).
+3. Primeiras ferramentas de uso diário (comprimir imagem, QR code, link do WhatsApp, meta tags), cada uma com texto próprio.
+4. Robô de notícias, trilha de 7 etapas com guias e checklist.
+5. Deploy em criasite.com.br, Search Console e pedido do AdSense.
 
 ## Pendências suas
 
-- Escolher o conceito (recomendação em `plano-inicial.md`: ferramentas + guias; analisador leve só na fase 3).
-- Nome e marca: confirmar a grafia (você usou "Equipe CriaSites"; o plano usa "CriaSite") e decidir se registra criasite.com.br também.
-- Apagar o repo antigo na organização `criasite-app` (privado, nome `criasite`): só você confirma, na hora do deploy. O conteúdo dele NÃO será aproveitado.
-- Decidir sobre links de afiliado (hospedagem/domínio) além do AdSense.
+- Rodar `gh auth refresh -h github.com -s delete_repo` e avisar, para apagar o repo antigo `criasite-app/criasite`
+  (se a conta não for dona da organização, a exclusão tem que ser feita pelo dono dela).
+- Confirmar o conceito final (ferramentas + notícias + trilha/guias), para o planejador atualizar o plano.
 
 ## Decisões já tomadas (2026-11-14)
 
@@ -61,4 +61,6 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Repo novo criado em `evssousa/criasite` (público, conta pessoal, como respawnou/vibecoin/animeprofile).
 - Política de privacidade (e termos) em todos os sites: entra no escopo, sem gerador, só as páginas do próprio site.
 - Guias assinados por "Equipe CriaSite" por ora.
+- Marca CriaSite, domínio principal criasite.com.br; afiliado Hostinger aprovado.
+- Layout "Busca + Central" escolhido (ver `decisoes.md` e `prototipo-layout.html`).
 - Plano da Hostinger foi atualizado (não é mais Business): conferir limites de apps Node.js na hora do deploy.
