@@ -29,4 +29,5 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 - **Novos requisitos:** o site terá **notícias automáticas** (como Respawnou/Vibecoin) e **ferramentas de uso
   recorrente** para o visitante voltar (comprimir imagem, QR code, link do WhatsApp, está fora do ar?, orçamento de site,
   favoritas e "meu site" salvos no navegador).
-- **Rodada 2:** Central, Caderno, Painel e Hoje (variações de Busca + Trilha), aguardando escolha.
+- **Rodada 2:** Central, Caderno, Painel e Hoje (variações de Busca + Trilha); escolhido o **Central**.
+- **Rodada 3:** variações do Central (Claro, Noturno, Lateral, Revista), aguardando escolha.
