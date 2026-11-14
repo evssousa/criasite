@@ -30,4 +30,8 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
   recorrente** para o visitante voltar (comprimir imagem, QR code, link do WhatsApp, está fora do ar?, orçamento de site,
   favoritas e "meu site" salvos no navegador).
 - **Rodada 2:** Central, Caderno, Painel e Hoje (variações de Busca + Trilha); escolhido o **Central**.
-- **Rodada 3:** variações do Central (Claro, Noturno, Lateral, Revista), aguardando escolha.
+- **Rodada 3:** variações do Central (Claro, Noturno, Lateral, Revista).
+- **Layout escolhido: "Busca + Central"** — topo marinho com busca centralizada e chips "Mais usadas", faixa da trilha
+  (7 etapas, clicável) no fim do topo; corpo com "Suas ferramentas" (favoritas pela estrela, salvas no navegador) e
+  diretório por categoria; lateral com notícias automáticas, anúncio 300×250 e guias novos. Marinho `#0c1a4b` + laranja
+  `#ff7a1a`, fundo `#eef1fb`, fonte Schibsted Grotesk. Referência: `docs/prototipo-layout.html`.

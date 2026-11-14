@@ -1,0 +1,153 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Layout CriaSite Busca</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap">
+<style>
+/* Layout final: estrutura da Busca (busca centralizada + diretório por categoria + barra lateral)
+   com elementos do Central (trilha em faixa de progresso, favoritas fixadas, coluna de notícias).
+   Visual único e fechado: marinho + laranja, Schibsted Grotesk. */
+:root{--navy:#0c1a4b;--navy2:#14245e;--navy3:#1d2c66;--orange:#ff7a1a;--paper:#eef1fb;--line:#dde3f6;--mut:#5a6798;--soft:#b9c3ea;--white:#fff;color-scheme:light}
+body{background:var(--paper);color:var(--navy);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:15px;margin:0}
+*{box-sizing:border-box}
+*{min-width:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1180px;margin:0 auto}
+
+.top{background:var(--navy);color:#fff}
+.nav{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:16px;flex-wrap:wrap}
+.lg{font-weight:800;font-size:22px;letter-spacing:-.03em}.lg span{color:var(--orange)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--soft);flex-wrap:wrap}
+.nav ul a:hover{color:#fff}
+.hero{max-width:760px;margin:0 auto;text-align:center;padding-block:40px 30px}
+.hero h1{font-size:clamp(30px,4.6vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin:0 0 22px;text-wrap:balance}
+.q{display:flex;background:#fff;border-radius:14px;padding:6px;box-shadow:0 0 0 4px #ff7a1a55}
+.q input{flex:1;border:0;font:500 18px "Schibsted Grotesk",sans-serif;padding:12px 14px;color:var(--navy);background:transparent;outline:0;min-width:0}
+.q button{border:0;background:var(--orange);color:#fff;font:700 15px "Schibsted Grotesk",sans-serif;border-radius:10px;padding:0 20px;cursor:pointer}
+.pop{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;font-size:14px;color:var(--soft);align-items:center}
+.pop button{background:var(--navy3);color:#fff;border:0;border-radius:999px;padding:6px 12px;font:500 13px "Schibsted Grotesk",sans-serif;cursor:pointer}
+.pop button:hover{background:#2a3c80}
+
+.trail-wrap{border-top:1px solid var(--navy3);padding-block:14px 20px}
+.tl{display:flex;justify-content:space-between;font-size:13px;color:var(--soft);gap:10px;flex-wrap:wrap;margin-bottom:10px}.tl b{color:#fff}
+.trail{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.trail button{all:unset;cursor:pointer;display:grid;gap:6px;font-size:12.5px;color:var(--soft);text-align:left}
+.trail button i{height:6px;border-radius:3px;background:#24336f}
+.trail button.done i{background:var(--orange)}.trail button.done{color:#fff}
+.trail button:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+
+.wrap{display:grid;grid-template-columns:1fr 330px;gap:30px;padding-block:30px 48px}
+.h2{font-size:18px;font-weight:800;margin:0 0 12px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.h2 small{font-size:13px;font-weight:500;color:var(--mut)}
+.favs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:30px}
+.favs a{background:var(--navy);color:#fff;border-radius:12px;padding:14px;font-weight:700;display:grid;gap:4px}
+.favs a small{font-weight:400;color:var(--soft);font-size:12.5px}
+.favs a:hover{background:var(--navy2)}
+.empty{grid-column:1/-1;background:#fff;border:1px dashed #9aa6d6;border-radius:12px;padding:14px;color:var(--mut);font-size:14px}
+.dir{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}
+.cat h3{font-size:15px;font-weight:800;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.cat h3 i{width:10px;height:10px;border-radius:3px;background:var(--dot)}
+.cat ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.cat li{display:flex;background:#fff;border:1px solid var(--line);border-radius:8px}
+.cat li:hover{border-color:var(--navy)}
+.cat li a{flex:1;padding:7px 10px}
+.cat li a small{display:block;color:var(--mut);font-size:12.5px;margin-top:1px}
+.star{all:unset;cursor:pointer;padding:0 10px;font-size:17px;color:#b4bddf;display:grid;place-items:center}
+.star[aria-pressed="true"]{color:var(--orange)}
+.star:focus-visible{outline:2px solid var(--orange)}
+
+.side{display:grid;gap:18px;align-content:start}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 16px 10px}
+.box h3{font-size:15px;font-weight:800;margin:12px 0 4px;display:flex;justify-content:space-between;align-items:center}
+.box h3 small{font-weight:500;font-size:12px;color:var(--mut)}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:7px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.news a{display:grid;grid-template-columns:60px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--paper)}
+.news a:first-child{border-top:0}
+.thumb{height:60px;border-radius:10px;background:#3b4b8f;position:relative;overflow:hidden}
+.thumb::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 12px,#ffffff22 12px 24px)}
+.news b{font-size:14.5px;line-height:1.3;display:block}
+.news small{color:var(--mut);font-size:12.5px}.news .tg{color:#e2600a;font-weight:700}
+.more{display:block;font-weight:700;font-size:13px;color:#e2600a;padding:8px 0 4px}
+.ad{height:250px;border:1px dashed #9aa6d6;border-radius:12px;display:grid;place-items:center;color:var(--mut);font-size:12px}
+.guides a{display:block;padding:10px 0;border-top:1px solid var(--paper);font-weight:500;line-height:1.35}
+.guides a:first-child{border-top:0}
+.guides a small{display:block;color:var(--mut);font-weight:400;font-size:12.5px}
+
+.foot{background:var(--navy);color:var(--soft)}
+.fg{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:24px;padding-block:32px 18px}
+.fg h4{margin:0 0 10px;font-size:13px;color:#fff}
+.fg ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:14px}
+.fg p{font-size:14px;line-height:1.55;margin:10px 0 0;max-width:34ch}
+.copy{border-top:1px solid var(--navy3);padding-block:16px 22px;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:1000px){.wrap{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.side .ad{grid-column:1/-1;height:120px}.dir{grid-template-columns:1fr 1fr}.favs{grid-template-columns:1fr 1fr}.trail{grid-template-columns:repeat(4,1fr)}.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.dir,.side{grid-template-columns:1fr}.q button{padding:0 14px}.trail{grid-template-columns:repeat(2,1fr)}.nav ul{gap:14px}}
+@media (prefers-reduced-motion:reduce){.live{animation:none}}
+</style>
+
+<div class="top gut"><div class="in">
+ <div class="nav"><a class="lg" href="#">cria<span>site</span></a><ul><li><a href="#">Ferramentas</a></li><li><a href="#">Notícias</a></li><li><a href="#">Trilha</a></li><li><a href="#">Guias</a></li><li><a href="#">Sobre</a></li></ul></div>
+ <div class="hero"><h1>O que você quer fazer no seu site hoje?</h1>
+  <form class="q" id="form"><input id="q" type="search" placeholder="Ex.: comprimir imagem, QR code, favicon" aria-label="Buscar ferramenta"><button type="submit">Buscar</button></form>
+  <div class="pop"><span>Mais usadas:</span><button type="button">imagem</button><button type="button">QR code</button><button type="button">WhatsApp</button><button type="button">meta tags</button><button type="button">404</button></div>
+ </div>
+ <div class="trail-wrap"><div class="tl"><span>Sua trilha até o site no ar: <b id="tn">2 de 7</b></span><span>Clique numa etapa para marcar</span></div><div class="trail" id="trail"></div></div>
+</div></div>
+
+<div class="gut"><div class="in wrap">
+ <main>
+  <h2 class="h2">Suas ferramentas <small>marque a estrela para fixar aqui</small></h2>
+  <div class="favs" id="favs"></div>
+  <h2 class="h2">Todas as ferramentas <small id="n"></small></h2>
+  <div class="dir" id="dir"></div>
+ </main>
+ <aside class="side">
+  <div class="box"><h3><span><span class="live"></span>Notícias da web</span><small>automáticas</small></h3><div class="news" id="news"></div><a class="more" href="#">Ver todas as notícias</a></div>
+  <div class="ad">Anúncio 300×250</div>
+  <div class="box"><h3>Guias novos</h3><div class="guides"><a href="#">Como escolher a fonte do seu site<small>6 min de leitura</small></a><a href="#">O que é um redirecionamento 301<small>4 min de leitura</small></a><a href="#">Imagem WebP: vale a pena?<small>5 min de leitura</small></a></div></div>
+ </aside>
+</div></div>
+
+<footer class="foot gut"><div class="in">
+ <div class="fg">
+  <div><a class="lg" href="#">cria<span>site</span></a><p>Ferramentas gratuitas, notícias e guias em português para criar e cuidar do seu site.</p></div>
+  <div><h4>Ferramentas</h4><ul><li>Comprimir imagem</li><li>QR code</li><li>Link do WhatsApp</li><li>Meta tags</li></ul></div>
+  <div><h4>Conteúdo</h4><ul><li>Notícias</li><li>Trilha do site no ar</li><li>Guias</li></ul></div>
+  <div><h4>CriaSite</h4><ul><li>Sobre</li><li>Contato</li><li>Privacidade</li><li>Termos</li></ul></div>
+ </div>
+ <div class="copy"><span>© 2026 Equipe CriaSite · criasite.com.br</span><span>Notícias e números desta página são exemplos.</span></div>
+</div></footer>
+
+<script>
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function store(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+var CAT=[["Dia a dia","#ff7a1a",[["Comprimir imagem","JPG, PNG e WebP menores"],["QR code","cardápio, cartão, panfleto"],["Link do WhatsApp","wa.me com mensagem"],["Está fora do ar?","o site ou a sua internet"],["Contador de caracteres","com limites do Google"]]],
+["Google e redes","#7c5cff",[["Meta tags","Google e WhatsApp"],["Sitemap","sitemap.xml pronto"],["robots.txt","o que o Google pode ler"],["Dados estruturados","schema para empresa local"],["Prévia do WhatsApp","como seu link aparece"]]],
+["Visual","#16b37a",[["Paleta com contraste","cores acessíveis"],["Favicon","ícone em todos os tamanhos"],["Tamanhos de imagem","medidas para site e redes"],["Converter para WebP","imagens mais leves"]]],
+["Freelancer","#e8467c",[["Orçamento de site","preço por página e recurso"],["Contrato simples","modelo para editar"],["Política de privacidade","modelo para o seu site"]]],
+["Técnico","#2a8bd8",[["Status HTTP","200, 301, 404, 503"],["Redirecionamentos","gerador de .htaccess"],["DNS explicado","A, CNAME, MX"]]],
+["Domínio","#c79200",[["Ideias de domínio","combinações curtas"],["Aviso de renovação","lembrete antes de vencer"]]]];
+var NEWS=[["Google","há 2 h","Atualização de novembro mexe com sites de receitas e lojas"],["WordPress","há 5 h","Nova versão traz edição em tempo real"],["IA","há 6 h","Criar site com IA: o que já funciona de verdade"],["Segurança","há 9 h","Falha em plugin popular: atualize hoje"],["Domínios","ontem","Registro.br muda regra de renovação"]];
+var TR=["Domínio","Hospedagem","Cores e favicon","Páginas","Google","Velocidade","Lançamento"];
+var favs=store('cs-favs-final')||["Comprimir imagem","QR code","Meta tags"];
+var trn=store('cs-trail-final');if(typeof trn!=='number')trn=2;
+
+function renderFav(){var f=[];CAT.forEach(function(c){c[2].forEach(function(t){if(favs.indexOf(t[0])>-1)f.push(t)})});
+ $('#favs').innerHTML=f.length?f.map(function(t){return '<a href="#">'+esc(t[0])+'<small>'+esc(t[1])+'</small></a>'}).join(''):'<div class="empty">Toque na estrela ao lado de uma ferramenta para ela aparecer aqui sempre que você voltar.</div>'}
+function renderDir(q){q=(q||'').toLowerCase().trim();var html='',n=0;
+ CAT.forEach(function(c){var it=c[2].filter(function(t){return !q||(t[0]+' '+t[1]+' '+c[0]).toLowerCase().indexOf(q)>-1});if(!it.length)return;n+=it.length;
+  html+='<section class="cat" style="--dot:'+c[1]+'"><h3><i></i>'+c[0]+'</h3><ul>'+it.map(function(t){var on=favs.indexOf(t[0])>-1;return '<li><a href="#">'+esc(t[0])+'<small>'+esc(t[1])+'</small></a><button class="star" type="button" data-f="'+esc(t[0])+'" aria-pressed="'+on+'" aria-label="'+(on?'Desafixar ':'Fixar ')+esc(t[0])+'">'+(on?'★':'☆')+'</button></li>'}).join('')+'</ul></section>'});
+ $('#dir').innerHTML=html||'<div class="empty">Nenhuma ferramenta com "'+esc(q)+'". Tente outra palavra, como imagem ou Google.</div>';
+ $('#n').textContent=n+' ferramentas'}
+function renderTrail(){$('#trail').innerHTML=TR.map(function(s,i){return '<button type="button" class="'+(i<trn?'done':'')+'" data-i="'+i+'"><i></i>'+(i+1)+'. '+s+'</button>'}).join('');$('#tn').textContent=trn+' de 7'}
+$('#news').innerHTML=NEWS.map(function(n){return '<a href="#"><div class="thumb"></div><span><small><span class="tg">'+n[0]+'</span> · '+n[1]+'</small><b>'+n[2]+'</b></span></a>'}).join('');
+
+$('#dir').onclick=function(e){var b=e.target.closest('.star');if(!b)return;var k=b.dataset.f,i=favs.indexOf(k);if(i>-1)favs.splice(i,1);else favs.push(k);store('cs-favs-final',favs);renderFav();renderDir($('#q').value)};
+$('#trail').onclick=function(e){var b=e.target.closest('button');if(!b)return;var i=+b.dataset.i;trn=(i+1===trn)?i:i+1;store('cs-trail-final',trn);renderTrail()};
+$('#q').oninput=function(){renderDir(this.value)};
+$('#form').onsubmit=function(e){e.preventDefault();renderDir($('#q').value)};
+document.querySelectorAll('.pop button').forEach(function(b){b.onclick=function(){$('#q').value=b.textContent;renderDir(b.textContent)}});
+renderFav();renderDir('');renderTrail();
+</script>
