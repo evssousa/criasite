@@ -19,3 +19,14 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 - **Por quê:** ferramentas trazem volume de busca com concorrência brasileira fraca e custo zero de
   servidor; guias trazem RPM melhor e o "conteúdo original e útil" que o AdSense exige; o analisador
   tem concorrência forte e custo/risco de servidor alto.
+
+## 2026-11-14 — Rodadas de layout e novos requisitos
+
+- **Marca:** CriaSite, domínio principal criasite.com.br. Guias assinados por "Equipe CriaSite".
+- **Afiliado:** usar o programa de afiliados da Hostinger (com aviso de link de afiliado), depois que houver conteúdo.
+- **Layout, rodada 1:** de 4 estruturas (Oficina, Trilha, Busca, Planta), o dono gostou de **Busca** (busca no topo +
+  diretório por categoria, marinho/laranja) e **Trilha** (jornada em 7 etapas + checklist, serifada verde/rosa).
+- **Novos requisitos:** o site terá **notícias automáticas** (como Respawnou/Vibecoin) e **ferramentas de uso
+  recorrente** para o visitante voltar (comprimir imagem, QR code, link do WhatsApp, está fora do ar?, orçamento de site,
+  favoritas e "meu site" salvos no navegador).
+- **Rodada 2:** Central, Caderno, Painel e Hoje (variações de Busca + Trilha), aguardando escolha.
