@@ -41,7 +41,7 @@ docs/                    este plano
 |---|---|
 | `/` | Home: busca grande, atalhos, faixa da trilha, Suas ferramentas, diretório, notícias e guias novos |
 | `/ferramentas` | Diretório completo com filtro |
-| `/ferramentas/{comprimir-imagem,qr-code,link-whatsapp,contador-de-caracteres,meta-tags}` | Ferramentas |
+| `/ferramentas/{comprimir-imagem,converter-imagem,qr-code,link-whatsapp,contador-de-caracteres,meta-tags,contraste-cores,gerador-favicon,sitemap-robots,status-http,tamanhos-de-imagem}` | Ferramentas |
 | `/trilha` | As 7 etapas com checklist salvo no navegador |
 | `/noticias` (tudo, menos guias), `/google`, `/plataformas`, `/ia`, `/seguranca`, `/guias` | Editorias |
 | `/:editoria/:slug` | Notícia ou guia |

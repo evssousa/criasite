@@ -31,10 +31,11 @@ que muda para o site de quem lê.
 
 ### Destaques
 
-- **Ferramentas 100% no navegador** — compressor de imagem (WebP/JPG, redimensiona, lote de até 20),
-  gerador de QR code (link, Wi-Fi, WhatsApp, texto; PNG e SVG, sem validade), link do WhatsApp com
-  mensagem, gerador de meta tags com prévia no Google e no WhatsApp e contador de caracteres com os
-  limites do Google e das redes. Nenhum arquivo sai do computador de quem usa.
+- **11 ferramentas 100% no navegador** — compressor e conversor de imagem (WebP/PNG/JPG, lote de até
+  20), gerador de QR code (link, Wi-Fi, WhatsApp, texto; PNG e SVG, sem validade), link do WhatsApp,
+  meta tags com prévia no Google e no WhatsApp, contador de caracteres, verificador de contraste
+  (WCAG), gerador de favicon (ICO montado à mão), sitemap e robots.txt, guia de status HTTP e tabela de
+  tamanhos de imagem. Nenhum arquivo sai do computador de quem usa.
 - **Feito para voltar** — o visitante fixa as ferramentas que mais usa com uma estrela e marca as
   etapas da trilha; tudo fica salvo no próprio navegador (`localStorage`), sem conta e sem servidor.
 - **Busca que leva direto à ferramenta** — filtra o diretório enquanto a pessoa digita, entende

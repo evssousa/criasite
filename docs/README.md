@@ -34,7 +34,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 0 | Layout "Busca + Central" (4 rodadas de protótipos) | ✅ |
 | 1 | Esqueleto a partir do Vibecoin, sem cotações; tema, cabeçalho, rodapé, ícones e imagem de compartilhamento | ✅ |
 | 1 | Home: busca que filtra, atalhos, faixa da trilha, Suas ferramentas (estrela), diretório, notícias, guias | ✅ |
-| 1 | 5 ferramentas com texto explicativo: comprimir imagem, QR code, link do WhatsApp, contador, meta tags | ✅ |
+| 1 | 11 ferramentas com texto explicativo: comprimir e converter imagem, QR code, link do WhatsApp, contador, meta tags, contraste de cores, favicon, sitemap e robots.txt, status HTTP, tamanhos de imagem | ✅ |
 | 1 | Página da trilha com checklist salvo no navegador | ✅ |
 | 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (no ar: coleta ok, Gemini ok, teste de escrita aprovado em 2026-11-15) |
 | 1 | Institucionais e legais reescritas (sobre, FAQ, contato, termos, privacidade, cookies, editorial, anuncie) | ✅ |
@@ -44,7 +44,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Caixa contato@criasite.app, CNAMEs antigos apagados | ✅ |
 | 2 | Search Console e Bing | ⏳ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
-| 2 | Mais ferramentas (converter imagem, está fora do ar?, orçamento de site, paleta, favicon) | 💤 |
+| 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
@@ -53,7 +53,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    no teste, o Gemini pôs link no lide (o guia proíbe), usou 3 links externos (o alvo é 1 a 2), não pôs link interno e
    deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
-3. Novas ferramentas na ordem de `ferramentas.md` (converter imagem primeiro).
+3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
 4. Search Console e Bing; depois de ~20 notícias e os guias, pedir o AdSense.
 
 ## Pendências suas

@@ -87,7 +87,18 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
 ];
 
 /** Mantenha em sincronia com as rotas de ferramentas em app/routes.ts. */
-export type ToolSlug = "comprimir-imagem" | "qr-code" | "link-whatsapp" | "meta-tags" | "contador-de-caracteres";
+export type ToolSlug =
+  | "comprimir-imagem"
+  | "converter-imagem"
+  | "qr-code"
+  | "link-whatsapp"
+  | "meta-tags"
+  | "contador-de-caracteres"
+  | "contraste-cores"
+  | "gerador-favicon"
+  | "sitemap-robots"
+  | "status-http"
+  | "tamanhos-de-imagem";
 
 export interface Tool {
   slug: ToolSlug;
@@ -149,6 +160,60 @@ export const TOOLS: Tool[] = [
     category: "google",
     keywords: "seo title description open graph og prévia google",
   },
+  {
+    slug: "converter-imagem",
+    title: "Converter imagem para WebP, PNG ou JPG",
+    short: "Converter imagem",
+    hint: "WebP, PNG e JPG, sem enviar nada",
+    description: "Converta imagens entre WebP, PNG e JPG no navegador, com a qualidade que você escolher. Nada é enviado para servidor.",
+    category: "dia-a-dia",
+    keywords: "webp png jpg jpeg converter formato transformar avif",
+  },
+  {
+    slug: "contraste-cores",
+    title: "Verificador de contraste de cores (WCAG)",
+    short: "Contraste de cores",
+    hint: "o texto passa no teste de leitura?",
+    description: "Veja se a cor do texto e a do fundo têm contraste suficiente (WCAG AA e AAA) e como o texto fica na tela.",
+    category: "visual",
+    keywords: "acessibilidade wcag cores paleta legibilidade texto fundo",
+  },
+  {
+    slug: "gerador-favicon",
+    title: "Gerador de favicon a partir de uma imagem",
+    short: "Gerador de favicon",
+    hint: "ícone da aba em todos os tamanhos",
+    description: "Envie o seu logo e baixe o favicon.ico e os PNGs nos tamanhos certos, com o código HTML pronto para colar.",
+    category: "visual",
+    keywords: "icone ícone aba navegador logo apple touch ico",
+  },
+  {
+    slug: "sitemap-robots",
+    title: "Gerador de sitemap.xml e robots.txt",
+    short: "Sitemap e robots.txt",
+    hint: "os dois arquivos que o Google lê",
+    description: "Cole a lista de páginas do seu site e gere o sitemap.xml e o robots.txt prontos para publicar.",
+    category: "google",
+    keywords: "mapa do site seo indexar google search console xml",
+  },
+  {
+    slug: "status-http",
+    title: "Códigos de status HTTP: o que cada um significa",
+    short: "Status HTTP",
+    hint: "200, 301, 404, 503 explicados",
+    description: "Guia rápido dos códigos de status HTTP (200, 301, 404, 500, 503 e outros) e o que fazer no seu site em cada caso.",
+    category: "tecnico",
+    keywords: "erro 404 301 500 503 redirecionamento código http",
+  },
+  {
+    slug: "tamanhos-de-imagem",
+    title: "Tamanhos de imagem para site e redes sociais",
+    short: "Tamanhos de imagem",
+    hint: "medidas para site, Instagram e WhatsApp",
+    description: "Tabela com as medidas de imagem para o site, o Instagram, o WhatsApp, o YouTube e as redes, com a proporção de cada uma.",
+    category: "visual",
+    keywords: "dimensões medidas pixels instagram youtube capa banner og facebook linkedin",
+  },
 ];
 
 export const toolBySlug = (slug: string) => TOOLS.find((t) => t.slug === slug);
@@ -187,7 +252,7 @@ export const TRAIL: TrailStep[] = [
     title: "Defina cores, fonte e logo",
     short: "Visual",
     text: "Duas cores, uma fonte para títulos e um favicon já deixam o site com cara de marca. Prefira contraste alto: o texto precisa ser lido no sol, no celular.",
-    tools: [],
+    tools: ["contraste-cores", "gerador-favicon"],
   },
   {
     id: "paginas",
@@ -201,21 +266,21 @@ export const TRAIL: TrailStep[] = [
     title: "Prepare para o Google",
     short: "Google",
     text: "Cada página precisa de título e descrição próprios. Eles decidem como o seu link aparece na busca e quando alguém compartilha no WhatsApp.",
-    tools: ["meta-tags", "contador-de-caracteres"],
+    tools: ["meta-tags", "sitemap-robots", "contador-de-caracteres"],
   },
   {
     id: "velocidade",
     title: "Deixe rápido no celular",
     short: "Velocidade",
     text: "Imagens pesadas são a causa número um de site lento. Comprima todas antes de subir e use a largura certa para cada lugar.",
-    tools: ["comprimir-imagem"],
+    tools: ["comprimir-imagem", "converter-imagem", "tamanhos-de-imagem"],
   },
   {
     id: "lancamento",
     title: "Publique e avise o Google",
     short: "Lançamento",
     text: "Confira se tudo abre com HTTPS, cadastre o site no Google Search Console e envie o sitemap. Imprima um QR code para levar clientes da loja física ao site.",
-    tools: ["qr-code"],
+    tools: ["qr-code", "status-http"],
   },
 ];
 
