@@ -45,7 +45,7 @@ export function Footer({ adsOn }: { adsOn: boolean }) {
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             {adsOn && <CookiePrefsButton className="text-left hover:text-moon" />}
             <span>
-              © {new Date().getFullYear()} {SITE.team} · criasite.com.br
+              © {new Date().getFullYear()} {SITE.team} · criasite.app
             </span>
           </div>
         </div>

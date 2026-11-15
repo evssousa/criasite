@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 import { emptyMedia, mediaFromHtml, mediaFromRssItem, type SourceMedia } from "./media.ts";
 import { decodeEntities, extractArticleText, stripTags } from "./text.ts";
 
-export const USER_AGENT = "Mozilla/5.0 (compatible; CriaSiteBot/1.0; +https://criasite.com.br/sobre)";
+export const USER_AGENT = "Mozilla/5.0 (compatible; CriaSiteBot/1.0; +https://criasite.app/sobre)";
 
 export interface FeedItem {
   guid: string;

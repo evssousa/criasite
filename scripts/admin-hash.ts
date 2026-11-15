@@ -41,8 +41,8 @@ if (confirm !== password) {
   process.exit(1);
 }
 
-console.log("\nCadastre no hPanel (Sites → criasite.com.br → Node.js → Variáveis de ambiente):\n");
+console.log("\nCadastre no hPanel (Sites → criasite.app → Node.js → Variáveis de ambiente):\n");
 console.log("ADMIN_EMAIL=<seu e-mail de login>");
 console.log(`ADMIN_PASSWORD_HASH=${await hashPassword(password)}`);
 console.log(`SESSION_SECRET=${randomBytes(32).toString("base64url")}`);
-console.log("\nNão mande esses valores no chat. Depois de salvar, acesse https://criasite.com.br/admin");
+console.log("\nNão mande esses valores no chat. Depois de salvar, acesse https://criasite.app/admin");

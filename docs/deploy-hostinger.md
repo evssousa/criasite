@@ -18,7 +18,7 @@ O criasite.app usava os nameservers da Cloudflare (`sue`/`zahir.ns.cloudflare.co
 a zona da Hostinger era ignorada e não havia MX, por isso o hPanel dizia "A configuração do seu domínio
 não está completa". Trocados para `ns1/ns2.dns-parking.com` (como os outros sites). A zona da Hostinger
 já tinha site (ALIAS para a CDN), MX, SPF, DKIM (3 CNAMEs) e DMARC; conferido nos servidores da
-Hostinger depois da troca. Os CNAMEs `send`/`rsend` (rmta.net) são do projeto antigo: o dono autorizou apagar, mas a exclusão pela API falhou (o MCP não repassa o filtro); apagar pelo hPanel.
+Hostinger depois da troca. Os CNAMEs `send`/`rsend` (rmta.net), do projeto antigo, foram apagados pelo dono no hPanel (a exclusão pela API falhou: o MCP não repassa o filtro).
 
 ## Primeira coleta (2026-11-15)
 
@@ -27,14 +27,13 @@ pelo painel `/admin/fontes` se continuar.
 
 ## Domínio
 
-O plano é ter o **criasite.com.br** como principal, mas ele ainda não está na conta. Quando estiver:
-adicionar como site (ou domínio do mesmo app), trocar `VITE_SITE_URL` para `https://criasite.com.br`
-(é usada no build: fazer um novo deploy depois), redirecionar o criasite.app para o .com.br e
-cadastrar o .com.br no Search Console.
+**criasite.app é o domínio definitivo** (decisão do dono em 2026-11-15: o .com.br não será registrado).
+O `.app` só abre por HTTPS (HSTS pré-carregado): o SSL da Hostinger está ativo, vitalício, com
+redirecionamento para HTTPS. E-mail: `contato@criasite.app` (caixa criada pelo dono).
 
 ## Falta
 
 1. ~~`GEMINI_API_KEY`~~ cadastrada pelo dono (2026-11-15); diag ok (gemini-3.5-flash e flash-lite), teste dry ok.
 2. ~~Variáveis do painel~~ cadastradas pelo dono (2026-11-15).
-3. Criar a caixa `contato@criasite.app` (ou `.com.br` quando existir), Search Console e Bing.
+3. ~~Caixa `contato@criasite.app`~~ criada pelo dono (2026-11-15). Falta Search Console e Bing.
 4. Guias da trilha no painel antes de pedir o AdSense.

@@ -5,9 +5,9 @@ export const SITE = {
   tagline: "Ferramentas, notícias e guias para criar e cuidar do seu site",
   description:
     "Ferramentas gratuitas que rodam no navegador (comprimir imagem, QR code, link do WhatsApp, meta tags), notícias da web e guias em português para criar e cuidar do seu site.",
-  url: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ?? "https://criasite.com.br",
+  url: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ?? "https://criasite.app",
   locale: "pt_BR",
-  email: "contato@criasite.com.br",
+  email: "contato@criasite.app",
   team: "Equipe CriaSite",
 } as const;
 

@@ -22,7 +22,7 @@ const OG = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" vi
   <text x="96" y="452" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700" fill="#ffffff">para criar e cuidar do seu site</text>
   <rect x="96" y="512" width="1008" height="6" rx="3" fill="#1d2c66"/>
   <rect x="96" y="512" width="430" height="6" rx="3" fill="#ff7a1a"/>
-  <text x="96" y="570" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#b9c3ea">criasite.com.br · grátis e sem cadastro</text>
+  <text x="96" y="570" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#b9c3ea">criasite.app · grátis e sem cadastro</text>
 </svg>`;
 
 /** ICO com uma imagem PNG dentro (formato aceito por todos os navegadores atuais). */

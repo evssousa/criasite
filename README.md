@@ -9,7 +9,7 @@
 Ferramentas gratuitas que rodam no navegador (comprimir imagem, QR code, link do WhatsApp, meta tags),
 notícias da web escritas automaticamente e uma trilha passo a passo do domínio ao primeiro visitante.
 
-[**criasite.com.br**](https://criasite.com.br)
+[**criasite.app**](https://criasite.app)
 
 </div>
 

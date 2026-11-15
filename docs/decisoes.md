@@ -54,3 +54,10 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
   (fora do feed de notícias). Robô com guia editorial próprio (foco no dono de site pequeno, sem
   promessa de resultado) e link automático para a ferramenta citada no texto.
 - **Bancos antigos do criasite na Hostinger:** o dono autorizou apagar e recriar no deploy.
+
+## 2026-11-15 — Domínio definitivo: criasite.app
+
+- **O quê:** o .com.br não será registrado; criasite.app é o domínio do site, do e-mail
+  (`contato@criasite.app`) e de todos os textos. Nameservers na Hostinger (antes estavam na Cloudflare,
+  da instalação antiga, e o e-mail não funcionava).
+- **Por quê:** decisão do dono. O .app já estava na conta, com SSL vitalício.

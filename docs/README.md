@@ -6,7 +6,7 @@ e o que vem a seguir.
 
 **Regra:** toda tarefa concluída atualiza o status abaixo e o documento da área.
 
-O CriaSite (criasite.com.br) é o 4º site da família (Respawnou, Vibecoin, Anime Profile): ferramentas
+O CriaSite (criasite.app) é o 4º site da família (Respawnou, Vibecoin, Anime Profile): ferramentas
 gratuitas que rodam no navegador, notícias automáticas sobre a web e guias em pt-BR para quem cria e
 cuida de sites. Mesma estratégia dos irmãos: repositório público como portfólio e renda com AdSense
 (e afiliado da Hostinger depois). A base de código veio do Vibecoin.
@@ -30,7 +30,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | Fase | Item | Status |
 |---|---|---|
 | 0 | Conceito: ferramentas + notícias automáticas + trilha/guias | ✅ |
-| 0 | Marca CriaSite, domínio criasite.com.br, repo `evssousa/criasite` (antigo da organização apagado pelo dono) | ✅ |
+| 0 | Marca CriaSite, domínio criasite.app (definitivo; sem .com.br), repo `evssousa/criasite` (antigo da organização apagado pelo dono) | ✅ |
 | 0 | Layout "Busca + Central" (4 rodadas de protótipos) | ✅ |
 | 1 | Esqueleto a partir do Vibecoin, sem cotações; tema, cabeçalho, rodapé, ícones e imagem de compartilhamento | ✅ |
 | 1 | Home: busca que filtra, atalhos, faixa da trilha, Suas ferramentas (estrela), diretório, notícias, guias | ✅ |
@@ -41,7 +41,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 1 | README de portfólio + LICENSE + telas | ✅ |
 | 2 | Deploy na Hostinger (criasite.app), repo religado, banco novo, variáveis, Cron Jobs; 1ª coleta ok (19 pautas) | ✅ |
 | 2 | Chave do Gemini, senha do painel, DNS do e-mail (nameservers na Hostinger) | ✅ |
-| 2 | Caixa de e-mail, Search Console, domínio .com.br | ❓ |
+| 2 | Caixa contato@criasite.app, CNAMEs antigos apagados | ✅ |
+| 2 | Search Console e Bing | ⏳ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
 | 2 | Mais ferramentas (converter imagem, está fora do ar?, orçamento de site, paleta, favicon) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
@@ -53,13 +54,12 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
 3. Novas ferramentas na ordem de `ferramentas.md` (converter imagem primeiro).
-4. Domínio .com.br, Search Console e Bing; depois de ~20 notícias e os guias, pedir o AdSense.
+4. Search Console e Bing; depois de ~20 notícias e os guias, pedir o AdSense.
 
 ## Pendências suas
 
-- Apagar no hPanel (DNS do criasite.app) os CNAMEs `send` e `rsend`, do projeto antigo: a API não aceitou a exclusão.
-- Criar a caixa `contato@criasite.app` no hPanel (o aviso de e-mail pode levar algumas horas para sumir).
-- Registrar o criasite.com.br (ainda não está na conta). Até lá o site fica em criasite.app.
+- Cadastrar o criasite.app no Google Search Console (propriedade de domínio; eu adiciono o registro TXT de
+  verificação no DNS se você me passar o código) e enviar `https://criasite.app/sitemap.xml`.
 
 ## Regra de atualização
 
