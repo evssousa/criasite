@@ -44,7 +44,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Caixa contato@criasite.app, CNAMEs antigos apagados | ✅ |
 | 2 | Search Console (propriedade de domínio, conta centralizada, TXT no DNS) | ✅ |
 | 2 | Sitemap enviado no Search Console | ✅ |
-| 2 | Cadastrar no Bing Webmaster | ⏳ |
+| 2 | Cadastrar no Bing Webmaster | ✅ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
@@ -56,7 +56,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
-4. Bing Webmaster; depois de ~20 notícias e os guias, pedir o AdSense.
+4. ~~Bing Webmaster~~ cadastrado pelo dono (2026-11-15); depois de ~20 notícias e os guias, pedir o AdSense.
 5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
    (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
@@ -64,7 +64,6 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Pendências suas
 
-- Cadastrar o site no Bing Webmaster (o sitemap já foi enviado ao Google).
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
 ## Regra de atualização
