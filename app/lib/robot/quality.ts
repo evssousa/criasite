@@ -39,10 +39,22 @@ const normUrl = (u: string) => u.replace(/[?#].*$/, "").replace(/\/+$/, "").toLo
  * Mantém só links da lista permitida (links inventados viram texto: dariam 404 ou levariam a
  * site desconhecido). No máximo 1 link por endereço no texto todo.
  */
-export function sanitizeLinks(body: DraftBlock[], allowed: string[]): { body: DraftBlock[]; removed: string[] } {
+export function sanitizeLinks(input: DraftBlock[], allowed: string[]): { body: DraftBlock[]; removed: string[] } {
   const ok = new Map(allowed.map((u) => [normUrl(u), u]));
   const used = new Set<string>();
   const removed: string[] = [];
+  const unlink = (s: string, keep: (url: string) => boolean) => s.replace(LINK, (m, text: string, url: string) => (keep(url) ? m : text));
+
+  // Regra do guia editorial, aplicada aqui sem gastar nova chamada ao Gemini: sem link no lide (1º parágrafo).
+  // Feito antes de contar os links usados, para o lide não "gastar" o endereço de uma fonte.
+  const lead = input.findIndex((b) => b.type === "p");
+  const body = input.map((b, i) => {
+    if (i !== lead) return b;
+    const text = unlink(b.text ?? "", () => false);
+    if (text !== (b.text ?? "")) removed.push("link do lide");
+    return { ...b, text };
+  });
+
   const fix = (s: string) =>
     s.replace(LINK, (_m, text: string, url: string) => {
       const key = normUrl(url);
@@ -55,11 +67,24 @@ export function sanitizeLinks(body: DraftBlock[], allowed: string[]): { body: Dr
       used.add(key);
       return `[${text}](${real})`;
     });
-  return {
-    body: body.map((b) => (b.type === "ul" ? { ...b, items: (b.items ?? []).map(fix) } : { ...b, text: fix(b.text ?? "") })),
-    removed,
-  };
+  const fixed = body.map((b) => (b.type === "ul" ? { ...b, items: (b.items ?? []).map(fix) } : { ...b, text: fix(b.text ?? "") }));
+
+  // No máximo MAX_EXTERNAL links externos (os primeiros ficam).
+  let external = 0;
+  const capExternal = (s: string) =>
+    unlink(s, (url) => {
+      if (url.startsWith("/")) return true;
+      external++;
+      if (external <= MAX_EXTERNAL) return true;
+      removed.push(url);
+      return false;
+    });
+  const capped = fixed.map((b) => (b.type === "ul" ? { ...b, items: (b.items ?? []).map(capExternal) } : { ...b, text: capExternal(b.text ?? "") }));
+  return { body: capped, removed };
 }
+
+/** Máximo de links externos por notícia (o guia editorial pede 1 a 2). */
+const MAX_EXTERNAL = 2;
 
 // ───────────── Expressões de texto de IA ─────────────
 

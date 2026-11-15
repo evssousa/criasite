@@ -251,7 +251,7 @@ ${sourcesBlock(sources)}`;
 
     const { draft, fixes } = autoFix({ ...raw, body: raw.body ?? [] });
     const { body: linked, removed } = sanitizeLinks(draft.body as DraftBlock[], allowed);
-    if (removed.length) fixes.push(`links fora da lista removidos: ${removed.length}`);
+    if (removed.length) fixes.push(`links removidos (lide, excesso de externos ou fora da lista): ${removed.length}`);
     const issues = checkDraft({ ...draft, body: linked }, { sourceText, minWords: ctx.minWords, allowedSections: ctx.sections, section: raw.section });
     if (issues.length) {
       lastIssues = issues;
