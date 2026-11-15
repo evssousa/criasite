@@ -36,29 +36,29 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 1 | Home: busca que filtra, atalhos, faixa da trilha, Suas ferramentas (estrela), diretório, notícias, guias | ✅ |
 | 1 | 5 ferramentas com texto explicativo: comprimir imagem, QR code, link do WhatsApp, contador, meta tags | ✅ |
 | 1 | Página da trilha com checklist salvo no navegador | ✅ |
-| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (coleta testada no ar; escrita espera a chave do Gemini) |
+| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (no ar: coleta ok, Gemini ok, teste de escrita aprovado em 2026-11-15) |
 | 1 | Institucionais e legais reescritas (sobre, FAQ, contato, termos, privacidade, cookies, editorial, anuncie) | ✅ |
 | 1 | README de portfólio + LICENSE + telas | ✅ |
 | 2 | Deploy na Hostinger (criasite.app), repo religado, banco novo, variáveis, Cron Jobs; 1ª coleta ok (19 pautas) | ✅ |
-| 2 | Chave do Gemini, senha do painel, e-mail, Search Console, domínio .com.br | ❓ |
+| 2 | Chave do Gemini, senha do painel, DNS do e-mail (nameservers na Hostinger) | ✅ |
+| 2 | Caixa de e-mail, Search Console, domínio .com.br | ❓ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
 | 2 | Mais ferramentas (converter imagem, está fora do ar?, orçamento de site, paleta, favicon) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
 
-1. Assim que a `GEMINI_API_KEY` estiver no hPanel: testar com `/api/cron/diag` e `/api/cron/publicar?dry=1`, revisar a
-   primeira notícia e ajustar as fontes (Search Engine Land deu 403 na 1ª coleta).
+1. Acompanhar as primeiras notícias automáticas (publicação aos :50, das 8h às 22h, até 4 por dia) e ajustar o robô:
+   no teste, o Gemini pôs link no lide (o guia proíbe), usou 3 links externos (o alvo é 1 a 2), não pôs link interno e
+   deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
 3. Novas ferramentas na ordem de `ferramentas.md` (converter imagem primeiro).
 4. Domínio .com.br, Search Console e Bing; depois de ~20 notícias e os guias, pedir o AdSense.
 
 ## Pendências suas
 
-- Criar a chave do Gemini (Google AI Studio, plano gratuito) e cadastrar `GEMINI_API_KEY` no hPanel
-  (Sites → criasite.app → Node.js → Variáveis de ambiente). Sem ela o robô coleta, mas não escreve.
-- Rodar `npm run admin:hash` na pasta do criasite e cadastrar `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH` e `SESSION_SECRET`
-  no hPanel (não mandar no chat).
+- Apagar no hPanel (DNS do criasite.app) os CNAMEs `send` e `rsend`, do projeto antigo: a API não aceitou a exclusão.
+- Criar a caixa `contato@criasite.app` no hPanel (o aviso de e-mail pode levar algumas horas para sumir).
 - Registrar o criasite.com.br (ainda não está na conta). Até lá o site fica em criasite.app.
 
 ## Regra de atualização
