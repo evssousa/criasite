@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+/* CriaSite — layout "Busca + Central": topo e rodapé marinho com laranja,
+   corpo claro azulado. Os nomes dos tokens vêm do Vibecoin (night = marinho, violet = laranja
+   escuro para texto, lime = laranja de destaque), para reaproveitar os componentes. */
+@theme {
+  /* Marinho (topo, rodapé, painéis das ferramentas) */
+  --color-night: #0c1a4b;
+  --color-night-2: #14245e;
+  --color-night-3: #1d2c66;
+  --color-night-line: #1d2c66;
+  --color-night-line-2: #2a3c80;
+  --color-moon: #ffffff;
+  --color-moon-muted: #b9c3ea;
+  /* Laranja no fundo escuro (links, rótulos, foco). */
+  --color-glow: #ff9a4d;
+  --color-brand: #ff7a1a;
+  /* Bloco de destaque laranja (texto escuro por cima). */
+  --color-lime: #ff7a1a;
+  --color-up-night: #3ee0b0;
+  --color-down-night: #ff9b9b;
+
+  /* Corpo claro */
+  --color-day: #eef1fb;
+  --color-card: #ffffff;
+  --color-line: #dde3f6;
+  --color-line-2: #cdd5ef;
+  --color-ink: #0c1a4b;
+  --color-muted: #5a6798;
+  /* Laranja escuro: texto e botões sobre fundo claro (contraste AA com branco). */
+  --color-violet: #c24e06;
+  --color-violet-deep: #9a3d04;
+  --color-violet-soft: #fff0e5;
+  --color-up: #0b7a44;
+  --color-down: #c2410c;
+
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background: var(--color-day);
+  /* Compensa o cabeçalho ao pular para âncoras. */
+  scroll-padding-top: 24px;
+}
+
+body {
+  background: var(--color-day);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 3px;
+}
+.night :focus-visible {
+  outline-color: var(--color-glow);
+}
+
+/* Rótulo de seção: um quadradinho (o marcador das categorias) na cor do texto + letras espaçadas. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 3px;
+  background: currentColor;
+}
+
+/* Números: largura fixa para não "pular" quando o valor muda. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Capa provisória (enquanto o post não tem imagem): listras sobre o marinho. */
+.art {
+  background-color: #3b4b8f;
+  background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.13) 14px 28px);
+}
+.art-night {
+  background-color: var(--color-night-3);
+  background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.07) 14px 28px);
+}
+
+/* Faixas com rolagem horizontal sem barra visível. */
+.ticker {
+  scrollbar-width: none;
+}
+.ticker::-webkit-scrollbar {
+  display: none;
+}
+
+/* Corpo do artigo e das páginas institucionais (fundo claro). */
+/* Pulsar do "ao vivo" das notícias. */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-brand);
+  animation: live-pulse 1.6s infinite;
+}
+@keyframes live-pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.article-body p {
+  margin: 0 0 1.25em;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #26325f;
+}
+.article-body h2 {
+  margin: 1.8em 0 0.6em;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+.article-body h3 {
+  margin: 1.5em 0 0.5em;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.25em;
+  padding-left: 1.4em;
+  color: #26325f;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.article-body ul {
+  list-style: disc;
+}
+.article-body ol {
+  list-style: decimal;
+}
+.article-body li::marker {
+  color: var(--color-violet);
+}
+.article-body li + li {
+  margin-top: 0.35em;
+}
+.article-body strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.article-body blockquote {
+  margin: 1.5em 0;
+  padding: 0.5em 0 0.5em 1.25em;
+  border-left: 4px solid var(--color-violet);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+.article-body a {
+  color: var(--color-violet);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body a:hover {
+  color: var(--color-violet-deep);
+}
+.article-body figure {
+  margin: 1.75em 0;
+}
+.article-body figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: var(--color-violet-soft);
+}
+.article-body figcaption {
+  margin-top: 0.5em;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+.article-body .video {
+  position: relative;
+  margin: 1.75em 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-night);
+}
+.article-body .video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.article-body .read-also {
+  padding: 0.9em 1.1em;
+  border-radius: 14px;
+  background: var(--color-violet-soft);
+  font-size: 1rem;
+}
+.article-body .read-also span {
+  display: block;
+  margin-bottom: 0.2em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-violet);
+}
+
+.table-wrap {
+  margin: 0 0 1.5em;
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: var(--color-card);
+}
+.table-wrap table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.table-wrap th {
+  padding: 0.75em 1em;
+  background: #f4f6fd;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--color-muted);
+}
+.table-wrap td {
+  padding: 0.8em 1em;
+  border-top: 1px solid var(--color-line);
+  vertical-align: top;
+  color: #26325f;
+}
+.table-wrap td:first-child {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

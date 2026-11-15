@@ -35,3 +35,22 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
   (7 etapas, clicável) no fim do topo; corpo com "Suas ferramentas" (favoritas pela estrela, salvas no navegador) e
   diretório por categoria; lateral com notícias automáticas, anúncio 300×250 e guias novos. Marinho `#0c1a4b` + laranja
   `#ff7a1a`, fundo `#eef1fb`, fonte Schibsted Grotesk. Referência: `docs/prototipo-layout.html`.
+
+## 2026-11-14 — Fase 1: o site
+
+- **Base:** cópia do Vibecoin (servidor, robô, painel, páginas legais, SEO), sem cotações, moedas e
+  corretoras. Os nomes dos tokens de cor foram mantidos com os valores do CriaSite, para reaproveitar
+  componentes sem renomear tudo.
+- **Ferramentas só no navegador** (comprimir imagem, QR code, link do WhatsApp, contador, meta tags):
+  privacidade, custo zero de servidor e argumento de confiança ("nada sai do seu computador").
+- **Favoritas e trilha no `localStorage`**, sem conta. Favoritas começam com comprimir imagem, QR code
+  e link do WhatsApp, para a área não nascer vazia.
+- **Sem caixas de anúncio no layout**: como no Vibecoin, AdSense em anúncios automáticos ligados por
+  `ADSENSE_CLIENT`. Caixas vazias "Anúncio" pioram a avaliação do site.
+- **Busca da home**: filtra o diretório na hora (nome, descrição, categoria e sinônimos, sem acento);
+  Enter com uma só ferramenta encontrada abre a ferramenta, senão vai para `/busca` (ferramentas +
+  notícias + guias).
+- **Notícias:** editorias `noticias` (web), `google`, `plataformas`, `ia`, `seguranca`; guias à parte
+  (fora do feed de notícias). Robô com guia editorial próprio (foco no dono de site pequeno, sem
+  promessa de resultado) e link automático para a ferramenta citada no texto.
+- **Bancos antigos do criasite na Hostinger:** o dono autorizou apagar e recriar no deploy.
