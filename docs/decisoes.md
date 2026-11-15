@@ -2,6 +2,19 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-15 — Guias da trilha: 1ª leva por migration
+
+- **O quê:** os 6 primeiros guias (domínio, hospedagem, visual, SEO básico, velocidade, checklist de lançamento) entram pela
+  migration `003_guias_iniciais.sql` (INSERT IGNORE, origem `manual`, Equipe CriaSite, publicados com datas escalonadas
+  de 1 a 6 dias antes do deploy, `featured=0`, `updated_at` vazio), e não pelo painel. A etapa "Páginas" fica para a 2ª leva.
+  Plano em `guias.md`.
+- **Por quê:** mesmo esquema do Vibecoin; o dono não precisa rodar nada e o texto fica versionado. `featured=0` porque o
+  destaque da home não filtra seção; `updated_at` vazio para não mostrar "Atualizado em" igual nos seis.
+- **Trilha:** cada etapa com guia ganha um botão "Ler o guia" (campo `guide` em `TRAIL`), só quando a seção guias tem conteúdo.
+- **Afiliado:** nada de link de afiliado nesta leva; ponto reservado no guia de hospedagem, aviso junto ao link e
+  `rel="sponsored"` quando o link existir (tarefa própria).
+- **Conteúdo:** sem preços exatos (só faixas, com aviso de que mudam), sem promessa de resultado, sem marca recomendada.
+
 ## 2026-11-14 — Ponto de partida do CriaSite
 
 - **O quê:** criasite.app vira o 4º site da família, com a mesma estratégia dos irmãos (repositório

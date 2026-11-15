@@ -18,6 +18,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [arquitetura.md](arquitetura.md) | Stack, pastas, rotas, dados, estado no navegador, tema, variáveis |
 | [ferramentas.md](ferramentas.md) | Ferramentas no ar, como adicionar uma, próximas |
 | [automacao.md](automacao.md) | Robô de notícias: fluxo, fontes, guia editorial |
+| [guias.md](guias.md) | Guias da trilha: modelo de guia, 1ª leva de 6 (migration 003), link na trilha, afiliado reservado |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
@@ -45,25 +46,27 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Search Console (propriedade de domínio, conta centralizada, TXT no DNS) | ✅ |
 | 2 | Sitemap enviado no Search Console | ✅ |
 | 2 | Cadastrar no Bing Webmaster | ✅ |
-| 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
+| 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
+| 2 | Guias da trilha, 2ª leva (etapa Páginas e apoio, até chegar a 8 a 12) | 💤 |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
 
-1. Acompanhar as primeiras notícias automáticas (publicação aos :50, das 8h às 22h, até 4 por dia) e ajustar o robô:
-   no teste, o Gemini pôs link no lide (o guia proíbe), usou 3 links externos (o alvo é 1 a 2), não pôs link interno e
-   deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
-2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
+1. Conferir os 6 guias no ar depois do deploy (`/guias`, `/trilha`, `/admin/materias`; roteiro em [guias.md](guias.md), seção E).
+2. 2ª leva de guias (começando pela etapa Páginas); depois ~20 notícias e os guias para pedir o AdSense.
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
-4. ~~Bing Webmaster~~ cadastrado pelo dono (2026-11-15); depois de ~20 notícias e os guias, pedir o AdSense.
-5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
+4. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
    (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
    pode ser o piloto.
 
 ## Pendências suas
 
+- Guias (ver [guias.md](guias.md), Perguntas em aberto): confirmar o tema da 2ª leva (sugestão: "Páginas" primeiro) e se
+  quer capas próprias ou a arte padrão. Depois do deploy da 1ª leva, conferir os 6 guias no `/admin` (2 a 3 minutos,
+  roteiro na seção E). Não precisa rodar SQL: o servidor aplica a migration.
+- Afiliado da Hostinger: quando tiver o link, mandar no chat; o ponto já está reservado no guia de hospedagem.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
 ## Regra de atualização

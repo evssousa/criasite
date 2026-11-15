@@ -45,6 +45,14 @@ export default function Trail() {
                   <h2 className="text-[22px] leading-tight font-extrabold tracking-[-0.02em]">{s.title}</h2>
                   <p className="max-w-[62ch] text-[16px] leading-relaxed text-[#26325f]">{s.text}</p>
                   <div className="flex flex-wrap items-center gap-2">
+                    {s.guide && available.sections.includes("guias") && (
+                      <Link
+                        to={`/guias/${s.guide}`}
+                        className="inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 border-ink bg-card px-4 text-sm font-bold text-ink hover:bg-ink hover:text-white"
+                      >
+                        Ler o guia <span aria-hidden>→</span>
+                      </Link>
+                    )}
                     {tools.map((t) => (
                       <Link key={t.slug} to={toolUrl(t.slug)} className="inline-flex min-h-10 items-center rounded-full bg-ink px-4 text-sm font-bold text-white hover:bg-night-2">
                         {t.short}

@@ -230,6 +230,8 @@ export interface TrailStep {
   text: string;
   /** Ferramentas que ajudam nesta etapa. */
   tools: ToolSlug[];
+  /** Slug do guia desta etapa (seção guias). Sem guia: omitir. */
+  guide?: string;
 }
 
 export const TRAIL: TrailStep[] = [
@@ -239,6 +241,7 @@ export const TRAIL: TrailStep[] = [
     short: "Domínio",
     text: "Nome curto, fácil de falar ao telefone e com .com.br se o seu público está no Brasil. Registre no seu nome (CPF ou CNPJ), nunca no nome de quem faz o site.",
     tools: [],
+    guide: "como-escolher-o-dominio-do-site",
   },
   {
     id: "hospedagem",
@@ -246,6 +249,7 @@ export const TRAIL: TrailStep[] = [
     short: "Hospedagem",
     text: "Para um site institucional ou um blog, uma hospedagem compartilhada resolve. Confira se inclui certificado SSL (o cadeado) e e-mail com o seu domínio.",
     tools: [],
+    guide: "como-escolher-a-hospedagem-do-site",
   },
   {
     id: "visual",
@@ -253,6 +257,7 @@ export const TRAIL: TrailStep[] = [
     short: "Visual",
     text: "Duas cores, uma fonte para títulos e um favicon já deixam o site com cara de marca. Prefira contraste alto: o texto precisa ser lido no sol, no celular.",
     tools: ["contraste-cores", "gerador-favicon"],
+    guide: "cores-fonte-e-favicon-do-site",
   },
   {
     id: "paginas",
@@ -267,6 +272,7 @@ export const TRAIL: TrailStep[] = [
     short: "Google",
     text: "Cada página precisa de título e descrição próprios. Eles decidem como o seu link aparece na busca e quando alguém compartilha no WhatsApp.",
     tools: ["meta-tags", "sitemap-robots", "contador-de-caracteres"],
+    guide: "seo-basico-para-aparecer-no-google",
   },
   {
     id: "velocidade",
@@ -274,6 +280,7 @@ export const TRAIL: TrailStep[] = [
     short: "Velocidade",
     text: "Imagens pesadas são a causa número um de site lento. Comprima todas antes de subir e use a largura certa para cada lugar.",
     tools: ["comprimir-imagem", "converter-imagem", "tamanhos-de-imagem"],
+    guide: "site-lento-causas-e-como-otimizar-imagens",
   },
   {
     id: "lancamento",
@@ -281,6 +288,7 @@ export const TRAIL: TrailStep[] = [
     short: "Lançamento",
     text: "Confira se tudo abre com HTTPS, cadastre o site no Google Search Console e envie o sitemap. Imprima um QR code para levar clientes da loja física ao site.",
     tools: ["qr-code", "status-http"],
+    guide: "checklist-de-lancamento-do-site",
   },
 ];
 
