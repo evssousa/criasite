@@ -12,6 +12,14 @@ Status: ✅ no ar desde 2026-11-15 em https://criasite.app (banco vazio; robô c
 | Variáveis | `VITE_SITE_URL` (`https://criasite.app` por enquanto), `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `CRON_TOKEN` (cadastradas pelo Claude via MCP em 2026-11-15). **Depois que o dono cadastrar `GEMINI_API_KEY` e as do painel no hPanel, não usar mais a operação de substituir variáveis pelo MCP** (ela apaga tudo que não estiver na lista) |
 | Cron Jobs | `10,40 * * * *` → `/api/cron/coletar`; `50 * * * *` → `/api/cron/publicar` (desencontrados do Respawnou e do Vibecoin) |
 
+## DNS e e-mail (2026-11-15)
+
+O criasite.app usava os nameservers da Cloudflare (`sue`/`zahir.ns.cloudflare.com`), da instalação antiga:
+a zona da Hostinger era ignorada e não havia MX, por isso o hPanel dizia "A configuração do seu domínio
+não está completa". Trocados para `ns1/ns2.dns-parking.com` (como os outros sites). A zona da Hostinger
+já tinha site (ALIAS para a CDN), MX, SPF, DKIM (3 CNAMEs) e DMARC; conferido nos servidores da
+Hostinger depois da troca. Os CNAMEs `send`/`rsend` (rmta.net) são do projeto antigo e podem ser apagados.
+
 ## Primeira coleta (2026-11-15)
 
 19 pautas novas de 11 fontes. Search Engine Land responde **403** ao servidor: desativar ou tirar peso
@@ -28,5 +36,5 @@ cadastrar o .com.br no Search Console.
 
 1. `GEMINI_API_KEY` (dono, no hPanel) → testar com `/api/cron/diag` e `/api/cron/publicar?dry=1`.
 2. `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `SESSION_SECRET` (`npm run admin:hash`, dono, no hPanel).
-3. E-mail `contato@criasite.com.br` (ou `.app` enquanto o .com.br não existir), Search Console e Bing.
+3. Criar a caixa `contato@criasite.app` (ou `.com.br` quando existir), Search Console e Bing.
 4. Guias da trilha no painel antes de pedir o AdSense.
