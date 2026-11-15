@@ -57,6 +57,10 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
 4. Bing Webmaster; depois de ~20 notícias e os guias, pedir o AdSense.
+5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
+   conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
+   (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
+   pode ser o piloto.
 
 ## Pendências suas
 
