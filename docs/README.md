@@ -42,7 +42,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Deploy na Hostinger (criasite.app), repo religado, banco novo, variáveis, Cron Jobs; 1ª coleta ok (19 pautas) | ✅ |
 | 2 | Chave do Gemini, senha do painel, DNS do e-mail (nameservers na Hostinger) | ✅ |
 | 2 | Caixa contato@criasite.app, CNAMEs antigos apagados | ✅ |
-| 2 | Search Console e Bing | ⏳ |
+| 2 | Search Console (propriedade de domínio, conta centralizada, TXT no DNS) | ✅ |
+| 2 | Enviar o sitemap no Search Console e cadastrar no Bing | ⏳ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
@@ -54,12 +55,12 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    deixou um erro de digitação ("após validador"). Reforçar a checagem em `quality.ts` se repetir.
 2. Escrever os guias da trilha no painel (um por etapa, mais alguns de apoio).
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
-4. Search Console e Bing; depois de ~20 notícias e os guias, pedir o AdSense.
+4. Bing Webmaster; depois de ~20 notícias e os guias, pedir o AdSense.
 
 ## Pendências suas
 
-- Cadastrar o criasite.app no Google Search Console (propriedade de domínio; eu adiciono o registro TXT de
-  verificação no DNS se você me passar o código) e enviar `https://criasite.app/sitemap.xml`.
+- Enviar `https://criasite.app/sitemap.xml` em Sitemaps no Search Console (se ainda não enviou) e cadastrar o site no Bing.
+- O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
 ## Regra de atualização
 
