@@ -42,6 +42,9 @@ export function meta({ loaderData }: Route.MetaArgs) {
       description: post.metaDescription ?? post.excerpt,
       path: post.url,
       image: post.image?.src,
+      imageAlt: post.image?.alt,
+      // Só as capas próprias (public/capas) têm tamanho conhecido; as do robô variam.
+      imageSize: post.image?.src.startsWith("/capas/") ? [1200, 675] : undefined,
       type: "article",
       publishedAt: post.publishedAt,
       updatedAt: post.updatedAt,
@@ -113,7 +116,7 @@ export default function PostPage({ loaderData }: Route.ComponentProps) {
         </header>
 
         <figure className="flex flex-col gap-2">
-          <Cover image={post.image} eager className="aspect-[16/9] w-full rounded-[24px] sm:aspect-[21/9]" />
+          <Cover image={post.image} section={post.section} eager className="aspect-[16/9] w-full rounded-[24px] sm:aspect-[21/9]" />
           {post.image?.credit && <figcaption className="text-xs text-muted">{post.image.credit}</figcaption>}
         </figure>
 

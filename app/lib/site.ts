@@ -265,6 +265,7 @@ export const TRAIL: TrailStep[] = [
     short: "Páginas",
     text: "Início, sobre, serviços e contato. Escreva o texto antes de pensar no design: ele decide o tamanho de cada bloco. Coloque o botão do WhatsApp em todas.",
     tools: ["link-whatsapp", "contador-de-caracteres"],
+    guide: "como-escrever-as-paginas-do-site",
   },
   {
     id: "google",

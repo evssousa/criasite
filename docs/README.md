@@ -19,6 +19,8 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [ferramentas.md](ferramentas.md) | Ferramentas no ar, como adicionar uma, próximas |
 | [automacao.md](automacao.md) | Robô de notícias: fluxo, fontes, guia editorial |
 | [guias.md](guias.md) | Guias da trilha: modelo de guia, 1ª leva de 6 (migration 003), link na trilha, afiliado reservado |
+| [capas.md](capas.md) | Capas próprias dos guias (script `make-capas.mjs`, SVG → WebP, migration 005) e capa padrão por editoria |
+| [guias-leva2.md](guias-leva2.md) | 2ª leva de 6 guias (Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa), migration 006 |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
@@ -47,26 +49,30 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Sitemap enviado no Search Console | ✅ |
 | 2 | Cadastrar no Bing Webmaster | ✅ |
 | 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
-| 2 | Guias da trilha, 2ª leva (etapa Páginas e apoio, até chegar a 8 a 12) | 💤 |
+| 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
+| 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
 
-1. Conferir os 6 guias no ar depois do deploy (`/guias`, `/trilha`, `/admin/materias`; roteiro em [guias.md](guias.md), seção E).
-2. 2ª leva de guias (começando pela etapa Páginas); depois ~20 notícias e os guias para pedir o AdSense.
+1. Conferir no ar os 12 guias com capa (`/guias`, `/trilha` com 7 botões, `/admin/materias`) e a prévia de um guia no WhatsApp
+   (se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar também `.jpg`).
+2. 3ª leva de guias: privacidade e cookies para site pequeno (LGPD, com "consulte um profissional"; ajuda no AdSense),
+   mais as ideias que sobraram. Depois, links dos guias antigos para os novos (pelo painel ou migration de UPDATE).
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
 4. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
    (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
    pode ser o piloto.
+5. Com ~20 notícias e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
 
-- Guias (ver [guias.md](guias.md), Perguntas em aberto): confirmar o tema da 2ª leva (sugestão: "Páginas" primeiro) e se
-  quer capas próprias ou a arte padrão. Depois do deploy da 1ª leva, conferir os 6 guias no `/admin` (2 a 3 minutos,
-  roteiro na seção E). Não precisa rodar SQL: o servidor aplica a migration.
-- Afiliado da Hostinger: quando tiver o link, mandar no chat; o ponto já está reservado no guia de hospedagem.
+- Depois do deploy, conferir no `/admin` os 12 guias (2 a 3 minutos, roteiro em [guias.md](guias.md), seção E) e colar o link
+  de um guia no WhatsApp para ver se a prévia mostra a capa. Não precisa rodar SQL: o servidor aplica as migrations.
+- Dizer se quer o guia de privacidade e cookies (LGPD) na 3ª leva.
+- Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
 ## Regra de atualização

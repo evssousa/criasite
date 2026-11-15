@@ -34,6 +34,7 @@ interface Seed {
   read?: number;
   views?: number;
   featured?: boolean;
+  image?: { src: string; alt: string };
 }
 
 const SEEDS: Seed[] = [
@@ -105,6 +106,10 @@ const SEEDS: Seed[] = [
   },
   {
     slug: "como-escolher-um-dominio",
+    image: {
+      src: "/capas/como-escolher-o-dominio-do-site.webp",
+      alt: "Ilustração de uma janela de navegador com uma barra de endereço grande: o nome do site em azul-marinho e a extensão em laranja, com o cursor por cima.",
+    },
     title: "Como escolher um domínio para o seu site",
     excerpt: "Curto, fácil de falar e com a terminação certa. O que pesar antes de registrar.",
     section: "guias",
@@ -148,6 +153,7 @@ export const MOCK_POSTS: Post[] = SEEDS.map((s) => ({
   tags: s.tags,
   body: body(s.title.toLowerCase()),
   featured: s.featured,
+  image: s.image,
   views: s.views ?? 500,
   source: s.section === "guias" ? undefined : { name: "Fonte de exemplo", url: "https://example.com" },
 }));

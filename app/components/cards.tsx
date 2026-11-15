@@ -8,7 +8,7 @@ export function PostCard({ post }: { post: PostView }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-[16px] border border-line bg-card">
       <Link to={post.url} tabIndex={-1} aria-hidden>
-        <Cover image={post.image} className="h-40" />
+        <Cover image={post.image} section={post.section} zoom className="h-40" />
       </Link>
       <div className="flex flex-col gap-2 p-[18px]">
         <Kicker>
@@ -29,7 +29,7 @@ export function PostRow({ post, excerpt = false }: { post: PostView; excerpt?: b
   return (
     <article className="flex items-center gap-4 border-b border-line py-4">
       <Link to={post.url} tabIndex={-1} aria-hidden className="shrink-0">
-        <Cover image={post.image} className="h-[64px] w-[84px] rounded-xl sm:h-[76px] sm:w-[112px]" />
+        <Cover image={post.image} section={post.section} className="h-[64px] w-[84px] rounded-xl sm:h-[76px] sm:w-[112px]" />
       </Link>
       <div className="flex min-w-0 flex-col gap-1.5">
         <Kicker>
@@ -75,7 +75,7 @@ export function NewsList({ posts }: { posts: PostView[] }) {
       {posts.map((p) => (
         <li key={p.url} className="border-t border-day first:border-0">
           <Link to={p.url} className="group grid grid-cols-[60px_1fr] gap-3 py-3">
-            <Cover image={p.image} className="h-[60px] rounded-[10px]" />
+            <Cover image={p.image} section={p.section} className="h-[60px] rounded-[10px]" />
             <span className="flex min-w-0 flex-col gap-1">
               <span className="text-[12.5px] text-muted">
                 <span className="font-bold text-violet">{p.kicker}</span> · {p.ago}
@@ -107,10 +107,16 @@ export function ToolCard({ tool }: { tool: Tool }) {
 /** Card de guia com o nível. */
 export function GuideCard({ post }: { post: PostView }) {
   return (
-    <Link to={post.url} className="flex min-h-36 flex-col gap-2.5 rounded-[16px] border border-line bg-card p-5 hover:border-ink">
-      {post.level && <span className="w-fit rounded-full bg-violet-soft px-2.5 py-1 text-xs font-bold text-violet">Nível {post.level} · {LEVEL_LABEL[post.level]}</span>}
-      <span className="text-lg font-extrabold leading-snug">{post.title}</span>
-      <span className="mt-auto text-sm text-muted">{post.readMinutes} min de leitura</span>
+    <Link to={post.url} className="group flex flex-col overflow-hidden rounded-[16px] border border-line bg-card hover:border-ink">
+      {/* O título já descreve o guia: a capa fica fora do que o leitor de tela lê. */}
+      <span aria-hidden className="block">
+        <Cover image={post.image} section="guias" zoom className="aspect-[16/9] w-full" />
+      </span>
+      <span className="flex flex-1 flex-col gap-2.5 p-5">
+        {post.level && <span className="w-fit rounded-full bg-violet-soft px-2.5 py-1 text-xs font-bold text-violet">Nível {post.level} · {LEVEL_LABEL[post.level]}</span>}
+        <span className="text-lg font-extrabold leading-snug group-hover:text-violet">{post.title}</span>
+        <span className="mt-auto text-sm text-muted">{post.readMinutes} min de leitura</span>
+      </span>
     </Link>
   );
 }

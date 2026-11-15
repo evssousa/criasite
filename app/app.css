@@ -91,11 +91,19 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Capa provisória (enquanto o post não tem imagem): listras sobre o marinho. */
-.art {
-  background-color: #3b4b8f;
-  background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.13) 14px 28px);
+/* Capa padrão (post sem imagem): marinho pontilhado + círculo da editoria + ícone. Ver docs/capas.md. */
+.cover-fb {
+  background-color: #14245e;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.8px);
+  background-size: 22px 22px;
 }
+.cover-fb > svg {
+  position: relative;
+  height: min(40%, 112px);
+  width: auto;
+  color: #fff;
+}
+/* Capa provisória no fundo escuro (mode="night"). */
 .art-night {
   background-color: var(--color-night-3);
   background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.07) 14px 28px);

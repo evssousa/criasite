@@ -2,6 +2,25 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-15 — Capas próprias dos guias e 2ª leva (planos)
+
+- **Capas (plano em `capas.md`):** arte vetorial desenhada em SVG num script Node (`scripts/make-capas.mjs`, `sharp`
+  → WebP 1200×675, < 60 KB), versionada em `public/capas/`. Nada de gerador de imagem pago ou com créditos (o conector
+  OpenArt não é usado). Linguagem: janela de navegador branca com sombra sólida laranja sobre marinho pontilhado, um
+  desenho por assunto e a régua das 7 etapas da trilha com a etapa acesa. **Sem texto na imagem**: o título já aparece ao
+  lado, os cortes variam (21:9 a 1:1) e o librsvg depende das fontes da máquina (quebraria a reprodução).
+  A mesma imagem serve de `og:image` (recorte central para 1,91:1 só perde pontilhado).
+- **Ligação ao banco:** migration `004_capas_guias.sql` com `UPDATE` só onde `image_url` está vazio (não sobrescreve capa
+  posta pelo dono; não exige `updated_at` vazio porque só mexe nos campos da imagem; não altera `updated_at`).
+- **Post sem imagem:** a arte listrada sai; entra uma capa padrão por editoria (marinho pontilhado, círculo na cor da
+  editoria, ícone branco), só CSS e SVG inline. `GuideCard` da `/guias` passa a ter capa.
+- **2ª leva (plano em `guias-leva2.md`):** 6 guias: Páginas (vira o `guide` da etapa 4), e-mail com o domínio,
+  WordPress ou construtor (neutro), HTTPS e SSL, Search Console passo a passo, Perfil da Empresa no Google. Migration
+  `005`, datas nas últimas ~48 h (todos visíveis ao mesmo tempo, sem link quebrado), alvo de 800 a 950 palavras, no
+  máximo 1 link externo, lista branca de externos ampliada com `letsencrypt.org` e `support.google.com/business`.
+  Privacidade e cookies (LGPD) fica para a 3ª leva.
+- **Por quê:** pedido do dono (capa listrada sem graça; 2ª leva começando por Páginas); custo zero e reprodução com um comando.
+
 ## 2026-11-15 — Guias da trilha: 1ª leva por migration
 
 - **O quê:** os 6 primeiros guias (domínio, hospedagem, visual, SEO básico, velocidade, checklist de lançamento) entram pela
@@ -74,3 +93,11 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
   (`contato@criasite.app`) e de todos os textos. Nameservers na Hostinger (antes estavam na Cloudflare,
   da instalação antiga, e o e-mail não funcionava).
 - **Por quê:** decisão do dono. O .app já estava na conta, com SSL vitalício.
+
+## 2026-11-15 — Capas, 2ª leva e afiliado
+
+- **Capas próprias:** linguagem "janela de navegador com sombra laranja + régua da trilha", sem texto na imagem, geradas por
+  `scripts/make-capas.mjs` (SVG → WebP, grátis e reproduzível); aprovada pelo dono. 12 artes. Capa padrão por editoria no
+  lugar das listras. Migrations: 004 afiliado, 005 capas dos 6 primeiros guias, 006 a 2ª leva (6 guias já com capa).
+- **2ª leva publicada de uma vez** (datas nas últimas ~48 h) para os links entre guias não darem 404.
+- **Afiliado da Hostinger** (código do dono) no guia de hospedagem, com aviso na mesma frase e `rel="sponsored noopener"`.

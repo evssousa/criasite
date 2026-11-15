@@ -6,6 +6,10 @@ interface SeoInput {
   description?: string;
   path: string;
   image?: string;
+  /** Texto alternativo da imagem de compartilhamento. */
+  imageAlt?: string;
+  /** Largura e altura, quando conhecidas (capas próprias). */
+  imageSize?: [number, number];
   type?: "website" | "article";
   noindex?: boolean;
   publishedAt?: string;
@@ -16,7 +20,7 @@ interface SeoInput {
 export const DEFAULT_OG_IMAGE = "/og-default.png";
 
 /** Monta title, description, canonical, Open Graph e Twitter Card de uma página. */
-export function seo({ title, description = SITE.description, path, image, type = "website", noindex, publishedAt, updatedAt }: SeoInput): MetaDescriptor[] {
+export function seo({ title, description = SITE.description, path, image, imageAlt, imageSize, type = "website", noindex, publishedAt, updatedAt }: SeoInput): MetaDescriptor[] {
   const ogImage = image || DEFAULT_OG_IMAGE;
   const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
   const url = absoluteUrl(path);
@@ -36,6 +40,10 @@ export function seo({ title, description = SITE.description, path, image, type =
   ];
   const img = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
   tags.push({ property: "og:image", content: img }, { name: "twitter:image", content: img });
+  if (image) {
+    if (imageAlt) tags.push({ property: "og:image:alt", content: imageAlt }, { name: "twitter:image:alt", content: imageAlt });
+    if (imageSize) tags.push({ property: "og:image:width", content: String(imageSize[0]) }, { property: "og:image:height", content: String(imageSize[1]) });
+  }
   if (!image) tags.push({ property: "og:image:width", content: "1200" }, { property: "og:image:height", content: "630" }, { property: "og:image:alt", content: SITE.name });
   if (publishedAt) tags.push({ property: "article:published_time", content: publishedAt });
   if (updatedAt) tags.push({ property: "article:modified_time", content: updatedAt });
