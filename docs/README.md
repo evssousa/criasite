@@ -36,7 +36,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 1 | Home: busca que filtra, atalhos, faixa da trilha, Suas ferramentas (estrela), diretório, notícias, guias | ✅ |
 | 1 | 5 ferramentas com texto explicativo: comprimir imagem, QR code, link do WhatsApp, contador, meta tags | ✅ |
 | 1 | Página da trilha com checklist salvo no navegador | ✅ |
-| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (não testado: falta deploy) |
+| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (coleta testada no ar; escrita espera a chave do Gemini) |
 | 1 | Institucionais e legais reescritas (sobre, FAQ, contato, termos, privacidade, cookies, editorial, anuncie) | ✅ |
 | 1 | README de portfólio + LICENSE + telas | ✅ |
 | 2 | Deploy na Hostinger (criasite.app), repo religado, banco novo, variáveis, Cron Jobs; 1ª coleta ok (19 pautas) | ✅ |
