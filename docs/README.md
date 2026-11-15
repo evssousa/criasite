@@ -58,8 +58,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 1. Conferir no ar os 12 guias com capa (`/guias`, `/trilha` com 7 botões, `/admin/materias`) e a prévia de um guia no WhatsApp
    (se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar também `.jpg`).
-2. 3ª leva de guias: privacidade e cookies para site pequeno (LGPD, com "consulte um profissional"; ajuda no AdSense),
-   mais as ideias que sobraram. Depois, links dos guias antigos para os novos (pelo painel ou migration de UPDATE).
+2. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
+   "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
+   (pelo painel ou migration de UPDATE).
 3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
 4. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
@@ -71,7 +72,6 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 - Depois do deploy, conferir no `/admin` os 12 guias (2 a 3 minutos, roteiro em [guias.md](guias.md), seção E) e colar o link
   de um guia no WhatsApp para ver se a prévia mostra a capa. Não precisa rodar SQL: o servidor aplica as migrations.
-- Dizer se quer o guia de privacidade e cookies (LGPD) na 3ª leva.
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
