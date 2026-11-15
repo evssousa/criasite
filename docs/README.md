@@ -43,7 +43,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Chave do Gemini, senha do painel, DNS do e-mail (nameservers na Hostinger) | ✅ |
 | 2 | Caixa contato@criasite.app, CNAMEs antigos apagados | ✅ |
 | 2 | Search Console (propriedade de domínio, conta centralizada, TXT no DNS) | ✅ |
-| 2 | Enviar o sitemap no Search Console e cadastrar no Bing | ⏳ |
+| 2 | Sitemap enviado no Search Console | ✅ |
+| 2 | Cadastrar no Bing Webmaster | ⏳ |
 | 2 | Guias da trilha (8 a 12) escritos no painel | ⏳ |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
@@ -59,7 +60,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Pendências suas
 
-- Enviar `https://criasite.app/sitemap.xml` em Sitemaps no Search Console (se ainda não enviou) e cadastrar o site no Bing.
+- Cadastrar o site no Bing Webmaster (o sitemap já foi enviado ao Google).
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
 ## Regra de atualização
