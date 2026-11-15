@@ -321,5 +321,12 @@ export const DOC_PAGES: DocPage[] = [
 
 export const docPage = (to: string) => DOC_PAGES.find((d) => d.to === to);
 
+/**
+ * Links de afiliado: ganham rel="sponsored" (regra do Google para links pagos) onde o texto é renderizado.
+ * O aviso de afiliado fica no próprio texto, na mesma frase ou logo antes do link (ver docs/guias.md, seção F).
+ */
+const AFFILIATE_LINKS = [/^https:\/\/(www\.)?hostinger\.com\/br\?REFERRALCODE=/i];
+export const isAffiliateLink = (href: string) => AFFILIATE_LINKS.some((re) => re.test(href));
+
 /** Link "mailto" com assunto preenchido, para separar os pedidos na caixa de entrada. */
 export const mailto = (subject: string) => `mailto:${SITE.email}?subject=${encodeURIComponent(`[${subject}] `)}`;

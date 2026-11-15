@@ -70,7 +70,7 @@ const sections: DocSection[] = [
     title: "Patrocínio e afiliados",
     body: (
       <p>
-        Conteúdo pago, se existir, é marcado como <strong>patrocinado</strong> no topo da página. Links de afiliados (por exemplo, de hospedagem) são sinalizados e
+        Conteúdo pago, se existir, é marcado como <strong>patrocinado</strong> no topo da página. Links de afiliados (por exemplo, de hospedagem) são sinalizados no texto, levam o atributo <code>sponsored</code> e
         nunca mudam o conteúdo das notícias e dos guias. Mais detalhes em <TextLink to="/anuncie">anuncie</TextLink>.
       </p>
     ),

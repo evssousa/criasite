@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router";
+import { isAffiliateLink } from "~/lib/site";
 import type { Block } from "~/lib/types";
 
 const LINK = /\[([^\]\n]+)\]\(([^)\s]+)\)/g;
@@ -19,7 +20,7 @@ export function RichText({ text }: { text: string }) {
       );
     else if (/^https:\/\//.test(href))
       parts.push(
-        <a key={m.index} href={href} target="_blank" rel="noopener">
+        <a key={m.index} href={href} target="_blank" rel={isAffiliateLink(href) ? "sponsored noopener" : "noopener"}>
           {label}
         </a>,
       );
