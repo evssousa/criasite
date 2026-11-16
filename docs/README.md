@@ -39,7 +39,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 1 | Home: busca que filtra, atalhos, faixa da trilha, Suas ferramentas (estrela), diretório, notícias, guias | ✅ |
 | 1 | 11 ferramentas com texto explicativo: comprimir e converter imagem, QR code, link do WhatsApp, contador, meta tags, contraste de cores, favicon, sitemap e robots.txt, status HTTP, tamanhos de imagem | ✅ |
 | 1 | Página da trilha com checklist salvo no navegador | ✅ |
-| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (no ar: coleta ok, Gemini ok, teste de escrita aprovado em 2026-11-15) |
+| 1 | Robô de notícias adaptado (editorias, fontes, guia editorial, links para ferramentas) | ✅ (no ar: coleta ok, Gemini ok, teste de escrita aprovado em 2026-11-14) |
 | 1 | Institucionais e legais reescritas (sobre, FAQ, contato, termos, privacidade, cookies, editorial, anuncie) | ✅ |
 | 1 | README de portfólio + LICENSE + telas | ✅ |
 | 2 | Deploy na Hostinger (criasite.app), repo religado, banco novo, variáveis, Cron Jobs; 1ª coleta ok (19 pautas) | ✅ |
@@ -56,22 +56,26 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Próximos passos
 
-1. Conferir no ar os 12 guias com capa (`/guias`, `/trilha` com 7 botões, `/admin/materias`) e a prévia de um guia no WhatsApp
-   (se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar também `.jpg`).
-2. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
+1. **Robô: notícia fora do assunto.** Em 2026-11-16 a coleta publicou "Nvidia enfrenta instabilidade após renúncia do CEO Jensen
+   Huang" (fonte The Verge IA, peso 5): não interessa a quem cria sites. Decidir com o dono: tirar a fonte The Verge IA (ou
+   baixar o peso) em `/admin/fontes` e arquivar essa notícia em `/admin/materias`; opcionalmente acrescentar ao robô uma lista de
+   assuntos a descartar (empresas de chips, bolsa, política) em `SKIP_PATTERNS` (`app/lib/robot/robot.server.ts`).
+2. Prévia de um guia no WhatsApp (só o dono testa; se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar `.jpg`).
+3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
    (pelo painel ou migration de UPDATE).
-3. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
-4. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
+4. Novas ferramentas na ordem de `ferramentas.md` (está fora do ar? e orçamento de site primeiro).
+5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
    (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
    pode ser o piloto.
-5. Com ~20 notícias e os 12 guias, pedir o AdSense.
+6. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
 
-- Depois do deploy, conferir no `/admin` os 12 guias (2 a 3 minutos, roteiro em [guias.md](guias.md), seção E) e colar o link
-  de um guia no WhatsApp para ver se a prévia mostra a capa. Não precisa rodar SQL: o servidor aplica as migrations.
+- Colar o link de um guia no WhatsApp para ver se a prévia mostra a capa, e dar uma olhada nos 12 guias em `/admin/materias`
+  (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
+- Decidir o que fazer com a fonte The Verge IA e a notícia da Nvidia (ver Próximos passos, item 1).
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
