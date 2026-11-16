@@ -16,7 +16,7 @@ Cron Jobs da Hostinger (depois do deploy; horários desencontrados dos outros si
    (patrocinado, listas de "melhores", cupom, podcast/webinar, opinião, newsletter) e **assunto** (chips e hardware, aparelhos,
    bolsa, criptomoedas, política e guerra, esporte e entretenimento, troca de CEO). Fonte genérica (`GENERIC_FEEDS`, hoje só
    The Verge IA) só entra se o título ou o início do resumo tiver assunto de sites. A fila que já existia também é revista
-   a cada coleta (`reviewQueue`). Testado em 2026-11-16 com 18 títulos reais e inventados e dá pontos (`BOOST`: lançamento,
+   a cada coleta (`reviewQueue`). Testado em 2026-11-16 com 18 títulos reais e inventados. A coleta também dá pontos (`BOOST`: lançamento,
    atualização do Google/Search Console/Core Web Vitals, falha de segurança, WordPress/Shopify/Wix,
    Chrome/HTTPS/WebP, Brasil/LGPD).
 2. **Publicação**: pega a pauta melhor colocada, junta outras fontes do mesmo assunto, busca o texto e a
