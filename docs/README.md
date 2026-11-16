@@ -56,8 +56,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Próximos passos
 
-1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). Falta só o dono, no painel: arquivar a notícia
-   da Nvidia em `/admin/materias` e decidir se mantém a fonte The Verge IA em `/admin/fontes` (agora ela só passa com assunto
+1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). Falta só o dono, no painel: arquivar as notícias fora
+   do assunto que saíram antes do filtro (a da Nvidia e "Harvard revela alto impacto ambiental de data centers para IA") em `/admin/materias` e decidir se mantém a fonte The Verge IA em `/admin/fontes` (agora ela só passa com assunto
    de sites). Se aparecer outro assunto fora do tema, acrescentar o termo em `OFF_TOPIC_PATTERNS`.
 2. Prévia de um guia no WhatsApp (só o dono testa; se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar `.jpg`).
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
