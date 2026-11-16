@@ -8,6 +8,7 @@ import { runJob, type JobResult } from "../runs.server.ts";
 import { diagnose, GeminiError } from "./gemini.server.ts";
 import { fetchFeed, fetchText } from "./rss.server.ts";
 import { extractArticleText } from "./text.ts";
+import { skipReason } from "./topic.ts";
 import { countWords, keywords, similarity, slugify } from "./text.ts";
 import { localizeImages, ROBOT_SECTIONS, writeArticle, type BuiltArticle, type SourceItem } from "./writer.server.ts";
 
@@ -68,15 +69,6 @@ export function diag(): Promise<JobResult> {
 
 // ───────────── Coleta ─────────────
 
-// Assuntos que não viram matéria automática.
-const SKIP_PATTERNS: [RegExp, string][] = [
-  [/\bsponsored\b|\bpress release\b|\bpartner content\b|\bpromoted\b|\badvertorial\b/i, "conteúdo patrocinado"],
-  [/\bbest .{0,40} (plugins?|themes?|tools?|hosting|builders?|apps?)\b|\btop \d+\b|\b\d+ best\b|\bdeals?\b|\bblack friday\b|\bcoupon\b|\bdiscount\b/i, "lista de 'melhores', promoção ou cupom"],
-  [/\bpodcast\b|\bquiz\b|\bgiveaway\b|\bsweepstakes\b|\bwebinar\b|\bhiring\b|\bjob(s)? (opening|board)\b/i, "podcast, quiz, sorteio, webinar ou vaga"],
-  [/\bopinion\b|\bop-ed\b|\bcolumn:\b|\bi (think|believe)\b|\bwhy i\b/i, "texto de opinião"],
-  [/\b(daily|weekly) (recap|roundup|newsletter|digest)\b|\bthis week in\b|\bweekly wordpress news\b/i, "resumo/newsletter de outro veículo"],
-];
-
 const BOOST: [RegExp, number][] = [
   [/\b(launch(es|ed)?|announce[sd]?|confirm(s|ed)?|releas(e|es|ed)|roll(s|ing)? out|introduc(es|ed)|deprecat\w+|end of support)\b/i, 15],
   [/\b(core update|spam update|algorithm|ranking|search console|ai overviews?|ai mode|core web vitals|inp|lcp)\b/i, 14],
@@ -98,8 +90,24 @@ const GEMINI_DOWN = "Gemini indisponível";
 
 export async function collect(): Promise<JobResult> {
   const result = await collectFeeds();
+  await reviewQueue();
   await retryAfterGeminiOutage();
   return result;
+}
+
+/**
+ * Passa o filtro de assunto (topic.ts) pelas pautas que já estavam na fila antes de o filtro existir ou de ele
+ * mudar: o que não combina vira "descartada" com o motivo, e nunca chega ao Gemini.
+ */
+async function reviewQueue() {
+  const rows = await query<{ id: number; title: string; summary: string | null; feed: string }>(
+    `SELECT fi.id, fi.title, fi.summary, f.name AS feed FROM feed_items fi JOIN feeds f ON f.id = fi.feed_id
+     WHERE fi.status = 'new' AND fi.published_at > UTC_TIMESTAMP() - INTERVAL 48 HOUR`,
+  );
+  for (const r of rows) {
+    const reason = skipReason(r.title, r.feed, r.summary ?? "");
+    if (reason) await db().query("UPDATE feed_items SET status = 'skipped', reason = ? WHERE id = ? AND status = 'new'", [reason, r.id]);
+  }
 }
 
 /**
@@ -128,7 +136,8 @@ function collectFeeds(): Promise<JobResult> {
         const items = await fetchFeed(feed.url);
         for (const it of items) {
           if (!it.publishedAt || it.publishedAt.getTime() < cutoff || it.publishedAt.getTime() > Date.now() + 3600_000) continue;
-          const skip = SKIP_PATTERNS.find(([re]) => re.test(it.title));
+          // Tipo de texto e ASSUNTO (ver topic.ts): pauta fora do tema de sites já entra como descartada.
+          const skip = skipReason(it.title, feed.name, it.summary);
           const [res] = await db().query<ResultSetHeader>(
             `INSERT IGNORE INTO feed_items (feed_id, guid_hash, title, url, summary, media, published_at, status, score, reason)
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -142,7 +151,7 @@ function collectFeeds(): Promise<JobResult> {
               sqlNow(it.publishedAt),
               skip ? "skipped" : "new",
               scoreItem(it.title, feed.weight),
-              skip ? skip[1] : null,
+              skip,
             ],
           );
           if (res.affectedRows) skip ? skipped++ : added++;

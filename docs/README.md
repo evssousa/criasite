@@ -56,10 +56,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Próximos passos
 
-1. **Robô: notícia fora do assunto.** Em 2026-11-16 a coleta publicou "Nvidia enfrenta instabilidade após renúncia do CEO Jensen
-   Huang" (fonte The Verge IA, peso 5): não interessa a quem cria sites. Decidir com o dono: tirar a fonte The Verge IA (ou
-   baixar o peso) em `/admin/fontes` e arquivar essa notícia em `/admin/materias`; opcionalmente acrescentar ao robô uma lista de
-   assuntos a descartar (empresas de chips, bolsa, política) em `SKIP_PATTERNS` (`app/lib/robot/robot.server.ts`).
+1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). Falta só o dono, no painel: arquivar a notícia
+   da Nvidia em `/admin/materias` e decidir se mantém a fonte The Verge IA em `/admin/fontes` (agora ela só passa com assunto
+   de sites). Se aparecer outro assunto fora do tema, acrescentar o termo em `OFF_TOPIC_PATTERNS`.
 2. Prévia de um guia no WhatsApp (só o dono testa; se a capa em WebP não aparecer, plano B em [capas.md](capas.md): gerar `.jpg`).
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
