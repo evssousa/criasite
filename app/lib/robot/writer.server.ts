@@ -216,7 +216,7 @@ export async function writeArticle(group: SourceItem[], ctx: WriteContext): Prom
     }
   }
 
-  const internal = [...ctx.related.map((r) => [r.url, r.title] as const), ...TOOL_PAGES, ["/trilha", "trilha do site no ar: as 7 etapas para criar um site"] as const];
+  const internal = [...ctx.related.map((r) => [r.url, r.title] as const), ...TOOL_PAGES, ["/trilha", "trilha do site no ar: as 7 etapas para criar um site"] as const, ["/criar-site-com-ia", "roteiro para criar site com IA do jeito certo"] as const];
   const external = [...sources.map((s) => [s.url, `texto original (${s.name})`] as const), ...media.links.slice(0, 6).map((u) => [u, "link oficial"] as const)];
   const allowed = [...internal.map(([u]) => u), ...external.map(([u]) => u)];
 

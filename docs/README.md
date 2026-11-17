@@ -52,7 +52,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
 | 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
 | 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
-| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F2 capas feita em 2026-11-17**: 8 capas de IA aprovadas e geradas, entram no ar junto com os guias na F3+F4) |
+| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F1, F2, F3 e F4 feitas em 2026-11-17**: hub `/criar-site-com-ia`, menu "Site com IA", 8 guias "Com IA" (migration 008) e capas; F5 e F6 (ferramentas) pendentes) |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -65,8 +65,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 2. **Novo eixo: criar site com IA** (pedido do dono, 2026-11-17). **Plano pronto** em [ia-desenvolvimento.md](ia-desenvolvimento.md),
    em fatias: **F1** robô ✅ **feita em 2026-11-17** (5 fontes de IA conferidas com curl na migration 007, `AI_DEV_TOPIC`,
    `AI_INTEREST_TOPIC` e `GENERIC_AI_OFF` em `topic.ts`, BOOST, guia do redator; 41 casos de teste certos, com a notícia de Harvard passando); **F2** capas ✅ **feita em 2026-11-17** (8 webp de 8 a 12 KB em `public/capas/`, régua com 6 losangos e faísca; o dono aprovou a amostra e a folha);
-   **F3+F4** hub `/criar-site-com-ia` + 8 guias "Com IA" + menu "Site com IA" + aviso editorial — G, ter 24 e qua 25/11
-   (push único); **F5** gerador de prompt — M, dom 29/11; **F6** gerador de arquivo de instruções — M, depois.
+   **F3+F4** ✅ **feitas em 2026-11-17** (hub `/criar-site-com-ia` com 6 etapas e progresso no navegador, card na home, box na `/trilha`, menu "Site com IA", pílula "Com IA" nos cards, "Leia também" por família, aviso na política editorial, migration `008_guias_ia.sql` com 8 guias); **F5** gerador de prompt — M, dom 29/11; **F6** gerador de arquivo de instruções — M, depois.
    As 9 perguntas do plano foram aprovadas com as recomendações (2026-11-17).
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
@@ -83,6 +82,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
 - Excluir a notícia da Nvidia em `/admin/materias` (a de Harvard fica).
+- **Depois do deploy (F4):** abrir `/criar-site-com-ia` e os 8 guias em `/guias`; enviar `/criar-site-com-ia` ao Search Console (inspeção de URL); conferir que o menu mostra "Site com IA".
 - Plano de IA: as 9 recomendações foram aprovadas (2026-11-17). Compromisso: **ler os 8 guias de IA em até 3 dias após a publicação**
   (pelo painel), porque a política editorial dirá "revisão humana".
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.

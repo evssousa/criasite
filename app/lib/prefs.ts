@@ -1,14 +1,15 @@
-// Preferências do visitante guardadas no navegador (localStorage): ferramentas favoritas e a
-// trilha do site no ar. Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
+// Preferências do visitante guardadas no navegador (localStorage): ferramentas favoritas, a
+// trilha do site no ar e o roteiro de criar site com IA. Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
 // site funciona igual, só não lembra na próxima visita.
 //
 // O servidor sempre renderiza o valor padrão; o navegador lê o salvo depois de hidratar
 // (useSyncExternalStore com getServerSnapshot), então não há diferença de hidratação.
 import { useCallback, useSyncExternalStore } from "react";
-import { TOOLS, TRAIL, type ToolSlug } from "./site";
+import { AI_TRACK, TOOLS, TRAIL, type ToolSlug } from "./site";
 
 const FAV_KEY = "criasite_favs";
 const TRAIL_KEY = "criasite_trail";
+const AI_TRACK_KEY = "criasite_trilha_ia";
 const EVENT = "criasite:prefs";
 
 /** Favoritas de quem nunca escolheu: as ferramentas mais usadas, para a área não começar vazia. */
@@ -56,6 +57,7 @@ function parseFavs(raw: string | null): ToolSlug[] {
 
 const favSnapshot = snapshot(FAV_KEY);
 const trailSnapshot = snapshot(TRAIL_KEY);
+const aiTrackSnapshot = snapshot(AI_TRACK_KEY);
 
 /** Ferramentas favoritas, na ordem em que foram fixadas. */
 export function useFavorites() {
@@ -72,23 +74,32 @@ export function useFavorites() {
   return { favs, toggle, isFav: (slug: ToolSlug) => favs.includes(slug) };
 }
 
-/** Etapas da trilha concluídas (ids de TRAIL). */
-export function useTrail() {
-  const raw = useSyncExternalStore(subscribe, trailSnapshot, () => null);
+/** Checklist de etapas guardado no navegador: só os ids válidos são considerados. */
+function useChecklist(key: string, snap: () => string | null, validIds: string[]) {
+  const raw = useSyncExternalStore(subscribe, snap, () => null);
   let done: string[] = [];
   try {
     const list = raw ? JSON.parse(raw) : [];
-    done = Array.isArray(list) ? list.filter((id) => TRAIL.some((s) => s.id === id)) : [];
+    done = Array.isArray(list) ? list.filter((id) => validIds.includes(id)) : [];
   } catch {
     done = [];
   }
   const toggle = useCallback(
     (id: string) => {
       const next = done.includes(id) ? done.filter((x) => x !== id) : [...done, id];
-      memory[TRAIL_KEY] = JSON.stringify(next);
-      write(TRAIL_KEY, memory[TRAIL_KEY]);
+      memory[key] = JSON.stringify(next);
+      write(key, memory[key]);
     },
-    [done],
+    [done, key],
   );
   return { done, toggle, isDone: (id: string) => done.includes(id) };
 }
+
+const TRAIL_IDS = TRAIL.map((s) => s.id);
+const AI_TRACK_IDS = AI_TRACK.map((s) => s.id);
+
+/** Etapas da trilha concluídas (ids de TRAIL). */
+export const useTrail = () => useChecklist(TRAIL_KEY, trailSnapshot, TRAIL_IDS);
+
+/** Etapas do roteiro "Criar site com IA" concluídas (ids de AI_TRACK). */
+export const useAiTrack = () => useChecklist(AI_TRACK_KEY, aiTrackSnapshot, AI_TRACK_IDS);

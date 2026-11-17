@@ -2,6 +2,14 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-17 — Roteiro "Criar site com IA" no ar (F3+F4)
+
+- **Feito:** hub `/criar-site-com-ia` (6 etapas, regras de ouro, progresso em `localStorage`), menu "Site com IA", card na home e box na
+  `/trilha`, filtros `slugs` e `tag` no repositório, "Leia também" por família (guia de IA sugere guia de IA; clássico sugere
+  clássico, via `tag IS NULL`), pílula "Com IA" no card, aviso na política editorial e migration `008_guias_ia.sql` com 8 guias.
+- **Sem desvios do plano**, exceto: guias entre 703 e 854 palavras (7 abaixo do alvo de 800, todos acima do mínimo de 700) e
+  o guia de SEO/acessibilidade aponta para o guia de velocidade só no "Leia também" (limite de 6 links internos).
+
 ## 2026-11-17 — Novo eixo "criar site com IA" (plano; 9 recomendações aprovadas pelo dono)
 
 - **Aprovado ("aprovo as recomendações", 2026-11-17):** as 9 recomendações do planejador valem como estão: hub + tag "Com IA" (sem

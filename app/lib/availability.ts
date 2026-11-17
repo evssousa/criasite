@@ -21,11 +21,12 @@ export function useAvailability(): Availability {
   return data?.available ?? ALL_AVAILABLE;
 }
 
-/** Menu principal: ferramentas, notícias, trilha e guias (editorias com conteúdo). */
+/** Menu principal: ferramentas, notícias, trilha, roteiro de IA e guias (editorias com conteúdo). */
 export const navFor = (a: Availability) => [
   ...(a.tools.length ? [{ to: "/ferramentas", label: "Ferramentas" }] : []),
   { to: "/noticias", label: "Notícias" },
   { to: "/trilha", label: "Trilha" },
+  ...(a.sections.includes("guias") ? [{ to: "/criar-site-com-ia", label: "Site com IA" }] : []),
   ...(a.sections.includes("guias") ? [{ to: "/guias", label: "Guias" }] : []),
 ];
 

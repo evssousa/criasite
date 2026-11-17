@@ -72,6 +72,16 @@ function where(f: PostFilter) {
     sql.push(`p.slug NOT IN (${f.exclude.map(() => "?").join(",")})`);
     params.push(...f.exclude);
   }
+  if (f.slugs) {
+    if (f.slugs.length) {
+      sql.push(`p.slug IN (${f.slugs.map(() => "?").join(",")})`);
+      params.push(...f.slugs);
+    } else sql.push("1 = 0");
+  }
+  if (typeof f.tag === "string") {
+    sql.push("p.tag = ?");
+    params.push(f.tag);
+  } else if (f.tag === null) sql.push("p.tag IS NULL");
   return { sql: sql.join(" AND "), params };
 }
 

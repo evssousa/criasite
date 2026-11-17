@@ -34,7 +34,8 @@ const POPULAR = ["imagem", "QR code", "WhatsApp", "meta tags"];
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const { news, guides } = loaderData;
-  const tools = toolsFor(useAvailability());
+  const available = useAvailability();
+  const tools = toolsFor(available);
   const [query, setQuery] = useState("");
   const count = filterTools(tools, query).length;
 
@@ -125,6 +126,22 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                 Ver todas as notícias
               </Link>
             </section>
+          )}
+          {available.sections.includes("guias") && (
+            <Link
+              to="/criar-site-com-ia"
+              className="group flex flex-col gap-1.5 rounded-[14px] bg-night p-4 text-moon hover:bg-night-2 focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              <span className="flex items-center gap-1.5 text-[12px] font-bold tracking-wide text-glow uppercase">
+                <svg aria-hidden width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z" />
+                </svg>
+                Roteiro novo
+              </span>
+              <span className="text-[17px] leading-snug font-extrabold">Criar site com IA, do jeito certo</span>
+              <span className="text-[13.5px] text-moon-muted">6 etapas, do pedido ao site no ar, sem colar senha no chat.</span>
+              <span className="text-[13px] font-bold text-glow group-hover:text-moon">Ver o roteiro →</span>
+            </Link>
           )}
           {guides.length > 0 && (
             <section aria-labelledby="guias-novos" className="rounded-[14px] border border-line bg-card px-4 pt-3 pb-2">

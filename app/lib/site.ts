@@ -45,7 +45,7 @@ export const SECTIONS: Section[] = [
     slug: "ia",
     label: "IA",
     kicker: "IA",
-    description: "Inteligência artificial para criar, escrever e cuidar de sites: o que já funciona e o que é promessa.",
+    description: "IA para criar e cuidar de sites: assistentes e agentes de código, geradores de site, MCP e o que já funciona de verdade.",
   },
   {
     slug: "seguranca",
@@ -84,6 +84,15 @@ export const GUIDE_ORDER = [
   "google-search-console-passo-a-passo",
   "site-lento-causas-e-como-otimizar-imagens",
   "checklist-de-lancamento-do-site",
+  // Guias do roteiro "Criar site com IA" (tag "Com IA"): depois dos clássicos, dentro de cada nível.
+  "criar-site-com-ia-do-jeito-certo",
+  "prompt-para-criar-site-com-ia",
+  "site-feito-com-ia-seo-acessibilidade-e-velocidade",
+  "seguranca-ao-criar-site-com-ia",
+  "arquivo-de-instrucoes-para-assistente-de-codigo",
+  "como-revisar-codigo-gerado-por-ia",
+  "skills-para-assistentes-de-ia",
+  "o-que-e-mcp-servidores-mcp",
 ];
 
 /** Compara dois guias: nível (do mais básico ao mais avançado), depois GUIDE_ORDER, depois data de publicação. */
@@ -325,6 +334,73 @@ export const TRAIL: TrailStep[] = [
   },
 ];
 
+// ───────────── Roteiro "Criar site com IA" (/criar-site-com-ia) ─────────────
+
+/** Tag dos guias do roteiro (kicker e pílula no card). Os guias continuam na seção "guias". */
+export const AI_TAG = "Com IA";
+
+export interface AiStep {
+  id: string;
+  title: string;
+  /** Nome curto (lista lateral). */
+  short: string;
+  text: string;
+  /** Slugs dos guias desta etapa, em ordem (seção guias). Guia que não existir no banco não aparece. */
+  guides: string[];
+  tools: ToolSlug[];
+}
+
+export const AI_TRACK: AiStep[] = [
+  {
+    id: "planejar",
+    title: "Planeje antes de pedir",
+    short: "Planejar",
+    text: "Escreva em um parágrafo o que o site precisa ter, para quem é e o que fica de fora. Domínio, hospedagem e contas no seu nome continuam sendo decisão sua, não da IA.",
+    guides: ["criar-site-com-ia-do-jeito-certo"],
+    tools: [],
+  },
+  {
+    id: "contexto",
+    title: "Dê contexto ao assistente",
+    short: "Contexto",
+    text: "Um arquivo de instruções com as regras do projeto evita repetir tudo a cada conversa e deixa as respostas mais previsíveis.",
+    guides: ["arquivo-de-instrucoes-para-assistente-de-codigo"],
+    tools: [],
+  },
+  {
+    id: "pedir",
+    title: "Peça em partes pequenas",
+    short: "Pedir",
+    text: "Uma página ou uma mudança por pedido, com objetivo, público e restrições. Salve uma versão antes de cada pedido para poder voltar.",
+    guides: ["prompt-para-criar-site-com-ia"],
+    tools: ["contraste-cores"],
+  },
+  {
+    id: "revisar",
+    title: "Revise e teste o que a IA fez",
+    short: "Revisar",
+    text: "Leia o que mudou, teste no celular e confira formulários, títulos, contraste e peso das imagens antes de publicar.",
+    guides: ["como-revisar-codigo-gerado-por-ia", "site-feito-com-ia-seo-acessibilidade-e-velocidade"],
+    tools: ["meta-tags", "comprimir-imagem"],
+  },
+  {
+    id: "publicar",
+    title: "Proteja e publique",
+    short: "Publicar",
+    text: "Senha, chave de API e dado de cliente não vão para o chat nem para o código. O checklist de lançamento vale para qualquer site, feito com IA ou não.",
+    guides: ["seguranca-ao-criar-site-com-ia", "checklist-de-lancamento-do-site"],
+    tools: ["status-http"],
+  },
+  {
+    id: "alem",
+    title: "Vá além: skills e MCP",
+    short: "Ir além",
+    text: "Para quem já trabalha com assistente de código: receitas reutilizáveis (skills) e conexões com outras ferramentas (MCP), com permissões mínimas.",
+    guides: ["skills-para-assistentes-de-ia", "o-que-e-mcp-servidores-mcp"],
+    tools: [],
+  },
+];
+
 export const absoluteUrl = (path: string) => `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
 
 /**
@@ -343,7 +419,7 @@ export const DOC_PAGES: DocPage[] = [
   { to: "/sobre", label: "Sobre", group: "site", updated: "2026-11-14" },
   { to: "/contato", label: "Contato", group: "site", updated: "2026-11-14" },
   { to: "/faq", label: "Perguntas frequentes", group: "site", updated: "2026-11-14" },
-  { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-14" },
+  { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-17" },
   { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-14" },
   { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-14" },
   { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-14" },

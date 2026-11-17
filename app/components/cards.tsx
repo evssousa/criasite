@@ -113,7 +113,12 @@ export function GuideCard({ post }: { post: PostView }) {
         <Cover image={post.image} section="guias" zoom className="aspect-[16/9] w-full" />
       </span>
       <span className="flex flex-1 flex-col gap-2.5 p-5">
-        {post.level && <span className="w-fit rounded-full bg-violet-soft px-2.5 py-1 text-xs font-bold text-violet">Nível {post.level} · {LEVEL_LABEL[post.level]}</span>}
+        {(post.tag || post.level) && (
+          <span className="flex flex-wrap gap-1.5">
+            {post.tag && <span className="w-fit rounded-full bg-ink px-2.5 py-1 text-xs font-bold text-white">{post.tag}</span>}
+            {post.level && <span className="w-fit rounded-full bg-violet-soft px-2.5 py-1 text-xs font-bold text-violet">Nível {post.level} · {LEVEL_LABEL[post.level]}</span>}
+          </span>
+        )}
         <span className="text-lg font-extrabold leading-snug group-hover:text-violet">{post.title}</span>
         <span className="mt-auto text-sm text-muted">{post.readMinutes} min de leitura</span>
       </span>

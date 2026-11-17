@@ -10,6 +10,10 @@ export interface PostFilter {
   /** Deixa uma editoria de fora (o feed de notícias não mostra os guias). */
   excludeSection?: SectionSlug;
   exclude?: string[];
+  /** Só estes endereços (página do roteiro de IA). Lista vazia não devolve nada. */
+  slugs?: string[];
+  /** String: só posts com esta tag. null: só posts sem tag. undefined: sem filtro. */
+  tag?: string | null;
 }
 
 export interface Repo {

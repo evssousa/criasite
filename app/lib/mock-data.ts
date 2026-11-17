@@ -119,6 +119,21 @@ const SEEDS: Seed[] = [
     views: 1100,
   },
   {
+    slug: "criar-site-com-ia-do-jeito-certo",
+    image: {
+      src: "/capas/criar-site-com-ia-do-jeito-certo.webp",
+      alt: "Ilustração de um ciclo de cinco caixas ligadas por setas dentro de uma janela de navegador: plano, pedido à IA, partes pequenas, revisão aprovada e versão salva.",
+    },
+    title: "Como criar um site com IA do jeito certo, passo a passo",
+    excerpt: "A IA escreve código rápido, mas quem decide é você. Veja o fluxo que evita retrabalho.",
+    section: "guias",
+    tag: "Com IA",
+    level: 1,
+    h: 50,
+    read: 6,
+    views: 800,
+  },
+  {
     slug: "o-que-e-um-redirecionamento-301",
     title: "O que é um redirecionamento 301",
     excerpt: "Quando usar, como configurar e o erro que faz o site perder posições no Google.",

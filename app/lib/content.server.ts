@@ -32,6 +32,8 @@ export interface ListOptions {
   section?: SectionSlug;
   excludeSection?: SectionSlug;
   exclude?: string[];
+  slugs?: string[];
+  tag?: string | null;
   page?: number;
   perPage?: number;
 }

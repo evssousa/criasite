@@ -98,6 +98,20 @@ export default function Trail() {
           </ul>
         </aside>
       </div>
+
+      {available.sections.includes("guias") && (
+        <div className="flex flex-col gap-3 rounded-[14px] border border-line bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-[62ch] text-[16px] leading-relaxed">
+            <strong>Vai usar IA para montar o site?</strong> As 7 etapas continuam valendo. O roteiro mostra como pedir, revisar e publicar sem perder o controle.
+          </p>
+          <Link
+            to="/criar-site-com-ia"
+            className="inline-flex min-h-10 w-fit shrink-0 items-center gap-1.5 rounded-full border-2 border-ink bg-card px-4 text-sm font-bold text-ink hover:bg-ink hover:text-white"
+          >
+            Ver o roteiro <span aria-hidden>→</span>
+          </Link>
+        </div>
+      )}
     </main>
   );
 }

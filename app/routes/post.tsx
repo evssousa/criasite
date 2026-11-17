@@ -20,7 +20,8 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   const post = await getPost(firstSegment(request), params.slug, preview);
   if (!post) throw data("Post não encontrado", { status: 404 });
   const [related, mostRead] = await Promise.all([
-    listPosts({ section: post.section, exclude: [post.slug], perPage: 3 }),
+    // Guias: sugere a mesma família (guia de IA sugere guia de IA; clássico sugere clássico).
+    listPosts({ section: post.section, exclude: [post.slug], perPage: 3, ...(post.section === "guias" ? { tag: post.tag ?? null } : {}) }),
     getMostRead(5, [post.slug]),
   ]);
   const result = { post, related: related.items, mostRead, section: sectionBySlug(post.section)!, preview };

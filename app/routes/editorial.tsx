@@ -32,6 +32,7 @@ const sections: DocSection[] = [
     title: "Automação e inteligência artificial",
     body: (
       <>
+        <p>As notícias são escritas por inteligência artificial a partir de fontes identificadas e sempre creditadas, seguindo as regras abaixo.</p>
         <p>
           Para acompanhar o que muda na web todos os dias, o {SITE.name} usa ferramentas automatizadas e de inteligência artificial para monitorar fontes, resumir notícias e
           traduzir informações. Essas ferramentas seguem regras fixas:
@@ -42,6 +43,14 @@ const sections: DocSection[] = [
           <li>não prometem resultado (“vai subir no Google”) nem escrevem em tom de propaganda.</li>
         </ul>
         <p>Notícias produzidas com apoio de automação podem conter erros. Se encontrar um, use o canal de correções abaixo.</p>
+        <p>
+          Os guias são planejados pela Equipe CriaSite e escritos com apoio de ferramentas de inteligência artificial. Antes de publicar, cada guia passa por revisão humana e
+          checagem dos fatos em fontes oficiais. Nenhuma empresa paga para aparecer nos guias, e os produtos citados são só exemplos.
+        </p>
+        <p>
+          Ferramentas de IA mudam rápido: quando um guia fala delas, descreve categorias e cuidados, e não preços ou versões. Se algo ficou desatualizado, avise pelo canal de
+          correções.
+        </p>
       </>
     ),
   },

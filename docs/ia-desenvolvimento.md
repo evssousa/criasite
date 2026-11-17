@@ -973,13 +973,13 @@ próprio CriaSite foi construído com um assistente de código, seguindo estas e
 4. As outras 7 artes e entradas; gerar as 8; conferir pesos e a zona segura (corte 21:9 e 1:1).
 5. Commit `feat(capas): capas do roteiro de IA` e push (as imagens ficam sem uso até a F4; não quebra nada).
 
-### F3 · Estrutura e hub (M) — **mesmo push da F4**
+### F3 · Estrutura e hub (M) — ✅ executada em 2026-11-17 (mesmo push da F4)
 1. Itens 1 a 11 da seção A.2, na ordem.
 2. Página do hub conforme C.2 e C.3; card da home (C.4); box da trilha (C.5); aviso editorial (H).
 3. `npm run typecheck`, `npm run build`, `npm run dev` (mock): conferir o critério C.6 com o guia de exemplo.
 4. Não fazer push sozinho: o hub sem guias no banco ficaria só com etapas (e com `noindex`); o push vai com a F4.
 
-### F4 · Guias (G) — dividir em 2 dias, push só no fim
+### F4 · Guias (G) — ✅ executada em 2026-11-17 (migration `008_guias_ia.sql`, 8 guias de 703 a 854 palavras; todos acima do mínimo de 700 do validador, 7 abaixo do alvo de 800)
 1. Dia 1: escrever G1, G2, G3, G6 (os 4 que abrem o roteiro e vão para a home). Sem push.
 2. Dia 2: G7, G8, G4, G5; montar o script temporário (B.3) e gerar `0NN_guias_ia.sql`; caminho inverso do SQL;
    checklist de qualidade (guias.md, seção E) + regra de fatos (B.0.4) + lista de avisos do script.

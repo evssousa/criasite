@@ -63,6 +63,7 @@ docs/                    este plano
 - `criasite_favs`: lista de slugs de ferramentas. Sem nada salvo, começa com comprimir imagem, QR code
   e link do WhatsApp (a área não nasce vazia).
 - `criasite_trail`: ids das etapas da trilha marcadas.
+- `criasite_trilha_ia`: ids das etapas do roteiro "Criar site com IA" (`/criar-site-com-ia`) marcadas. Mesmo `useChecklist` da trilha (`app/lib/prefs.ts`).
 - `criasite_consent`: escolha do banner de cookies (só com AdSense ligado).
 - O servidor renderiza o padrão; o navegador lê o salvo depois de hidratar. Sem `localStorage` (aba
   anônima), funciona igual e só não lembra.
