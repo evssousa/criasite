@@ -34,7 +34,8 @@ Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver 
 
 ## Próximas (por ordem de volume de busca e de uso recorrente)
 
-- Gerador de prompt para site (F5, `/ferramentas/prompt-para-site`): ver [ia-desenvolvimento.md](ia-desenvolvimento.md), seção E.
+- Gerador de prompt para site (F5, `/ferramentas/prompt-para-site`, categoria "Dia a dia"): **plano pronto** em
+  [ferramenta-prompt-site.md](ferramenta-prompt-site.md) (2026-11-17), dom 29/11.
 - Orçamento de site para freelancer (salvo no navegador, exporta texto/PDF).
 - Gerador de paleta de cores a partir de uma imagem ou cor base; pares de fontes.
 - Gerador de slug, minificador de HTML/CSS, regras de redirecionamento (.htaccess).

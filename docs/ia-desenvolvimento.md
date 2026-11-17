@@ -734,7 +734,7 @@ estados) no mesmo arquivo, seção nova.
 
 | Ferramenta | O que faz | Esforço | Valor | Quando |
 |---|---|---|---|---|
-| **Gerador de prompt para site** (`/ferramentas/prompt-para-site`) | formulário (tipo de negócio, cidade/região, ação principal, público, páginas em caixas de marcar, 2 cores, clima em 3 opções, tecnologia: HTML simples / WordPress / construtor / "a IA sugere", onde vai hospedar, o que evitar) → pedido estruturado em pt-BR no formato do G2, com "Antes de escrever código, liste os arquivos e espere o meu ok"; copiar; rascunho salvo no `localStorage` (`criasite_prompt_site`); botão limpar | M | alto: casa com a busca "prompt para criar site", serve a iniciante, uso recorrente (cada página nova) | **1ª** (F5) |
+| **Gerador de prompt para site** (`/ferramentas/prompt-para-site`) | formulário (tipo de negócio, cidade/região, ação principal, público, páginas em caixas de marcar, 2 cores, clima em 3 opções, tecnologia: HTML simples / WordPress / construtor / "a IA sugere", onde vai hospedar, o que evitar) → pedido estruturado em pt-BR no formato do G2, com "Antes de escrever código, liste os arquivos e espere o meu ok"; copiar; rascunho salvo no `localStorage` (`criasite_prompt_site`); botão limpar | M | alto: casa com a busca "prompt para criar site", serve a iniciante, uso recorrente (cada página nova) | **1ª** (F5) — **plano pronto**: [ferramenta-prompt-site.md](ferramenta-prompt-site.md) (categoria mudou para `dia-a-dia`, ver lá) |
 | **Gerador de arquivo de instruções** (`/ferramentas/arquivo-de-instrucoes-ia`) | campos do G3 (projeto, público, tecnologias em chips, 4 comandos, pastas, regras prontas para marcar: perguntar antes de apagar, rodar o build, não instalar sem pedir, textos em pt-BR, nunca segredo no código) → Markdown; copiar e baixar com nome escolhido (AGENTS.md, CLAUDE.md ou outro: só muda o nome do arquivo baixado); salvo no navegador | M | alto e raro em pt-BR; público mais técnico | **2ª** (F6) — **plano pronto**: [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) |
 | Checklist de revisão de código gerado por IA | itens do G7 com progresso salvo | P | médio: o G7 e o checklist do hub já cobrem | **depois** (só se o G7 tiver tráfego no Search Console) |
 
@@ -992,6 +992,9 @@ Plano visual curto em seção nova deste doc antes de cada uma (pode ser feito p
 "Como adicionar uma ferramenta" de `ferramentas.md`; ligar no hub (etapas 3 e 2) e nos guias G2 e G3.
 **F6: ✅ feita em 2026-11-17 ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md))**: Markdown exato com
 arquivo de ouro, escapes, detector de segredos, tela em 390/1280, textos, testes e 8 perguntas com recomendação.
+**F5: plano pronto em 2026-11-17 ([ferramenta-prompt-site.md](ferramenta-prompt-site.md))**: pedido exato com 2 arquivos
+de ouro, cores com contraste AA (conta movida para `lib/contraste.ts`), textos colados entre marcas contra injeção,
+segredos, tela em 390/1280, textos, testes e 10 perguntas com recomendação; 2 commits (peças comuns com a F6, depois a ferramenta).
 
 ## K. Ordem, tamanho e dia sugerido
 
@@ -1001,7 +1004,7 @@ arquivo de ouro, escapes, detector de segredos, tela em 390/1280, textos, testes
 | F2 Capas do roteiro | M | sim (imagens sem uso até a F4) | **seg 23/11** |
 | F4 dia 1: G1, G2, G3, G6 | G | não (sem push) | **ter 24/11** |
 | F3 estrutura/hub + F4 dia 2: G7, G8, G4, G5 + push | G | sim (o par F3+F4) | **qua 25/11** |
-| F5 Gerador de prompt | M | sim | **dom 29/11** (dia de ferramenta) |
+| F5 Gerador de prompt — plano pronto ([ferramenta-prompt-site.md](ferramenta-prompt-site.md)) | M grande | sim | **dom 29/11** (dia de ferramenta) |
 | F6 Gerador de instruções ✅ feita em 2026-11-17 ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md)) | M | sim | feita antes da F5 |
 | 2ª leva de IA (ideias: vibe coding, quando não usar IA, IA no WordPress, IA para os textos do site, erros e alucinação) | G | sim | depois de 4 semanas de dados no Search Console |
 

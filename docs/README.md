@@ -24,6 +24,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [ia-desenvolvimento.md](ia-desenvolvimento.md) | Novo eixo "criar site com IA": hub `/criar-site-com-ia` (roteiro de 6 etapas), 8 guias, capas com régua própria, robô (fontes e filtro de assunto), 2 ferramentas, aviso editorial; em fatias |
 | [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | Plano da ferramenta "Está fora do ar?" (1ª com servidor): proteção contra SSRF, limites em memória, API `/api/fora-do-ar`, tela, textos legais |
 | [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | Plano da F6 "Gerador de arquivo de instruções" (AGENTS.md/CLAUDE.md): Markdown exato, escapes, detector de segredos, tela, textos, testes |
+| [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | Plano da F5 "Gerador de prompt para site": pedido exato com 2 arquivos de ouro, cores com contraste AA, textos colados entre marcas (anti-injeção), segredos, tela, textos, testes; 2 commits (peças comuns + ferramenta) |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
@@ -54,9 +55,10 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
 | 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
 | 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
-| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F1, F2, F3 e F4 feitas em 2026-11-17**: hub `/criar-site-com-ia`, menu "Site com IA", 8 guias "Com IA" (migration 008) e capas; F5 e F6 (ferramentas) pendentes) |
+| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F1, F2, F3 e F4 feitas em 2026-11-17**: hub `/criar-site-com-ia`, menu "Site com IA", 8 guias "Com IA" (migration 008) e capas; **F6 ✅ no ar**; F5 com plano pronto) |
 | 2 | Ferramenta "Está fora do ar?" (servidor, anti-SSRF, limites por IP/alvo/global, histórico no navegador): plano em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | ✅ (feita em 2026-11-17: guarda anti-SSRF, checagem, API `/api/fora-do-ar`, tela, textos legais; 84 testes puros + 14 de rede) |
 | 2 | Ferramenta "Gerador de arquivo de instruções" (F6, `/ferramentas/arquivo-de-instrucoes-ia`, 100% no navegador, rascunho em `criasite_instrucoes`, alerta de segredos): plano em [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | ✅ (feita em 2026-11-17: 8 recomendações aprovadas; 79 testes puros; falta só o link no G3, pelo painel) |
+| 2 | Ferramenta "Gerador de prompt para site" (F5, `/ferramentas/prompt-para-site`, 100% no navegador, rascunho em `criasite_prompt_site`, cores com contraste AA, textos colados entre marcas contra injeção, alerta de segredos): plano em [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | ⏳ (plano pronto em 2026-11-17; 10 perguntas com recomendação; dom 29/11) |
 | 2 | Mais ferramentas: orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -69,7 +71,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 2. **Novo eixo: criar site com IA** (pedido do dono, 2026-11-17). **Plano pronto** em [ia-desenvolvimento.md](ia-desenvolvimento.md),
    em fatias: **F1** robô ✅ **feita em 2026-11-17** (5 fontes de IA conferidas com curl na migration 007, `AI_DEV_TOPIC`,
    `AI_INTEREST_TOPIC` e `GENERIC_AI_OFF` em `topic.ts`, BOOST, guia do redator; 41 casos de teste certos, com a notícia de Harvard passando); **F2** capas ✅ **feita em 2026-11-17** (8 webp de 8 a 12 KB em `public/capas/`, régua com 6 losangos e faísca; o dono aprovou a amostra e a folha);
-   **F3+F4** ✅ **feitas em 2026-11-17** (hub `/criar-site-com-ia` com 6 etapas e progresso no navegador, card na home, box na `/trilha`, menu "Site com IA", pílula "Com IA" nos cards, "Leia também" por família, aviso na política editorial, migration `008_guias_ia.sql` com 8 guias); **F5** gerador de prompt — M, dom 29/11; **F6** gerador de arquivo de instruções — M, depois da F5; **plano pronto** em [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) (2026-11-17; executor segue os passos 1 a 12; um commit só).
+   **F3+F4** ✅ **feitas em 2026-11-17** (hub `/criar-site-com-ia` com 6 etapas e progresso no navegador, card na home, box na `/trilha`, menu "Site com IA", pílula "Com IA" nos cards, "Leia também" por família, aviso na política editorial, migration `008_guias_ia.sql` com 8 guias); **F6** gerador de arquivo de instruções ✅ **no ar em 2026-11-17** ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md));
+   **F5** gerador de prompt — M grande, dom 29/11; **plano pronto** em [ferramenta-prompt-site.md](ferramenta-prompt-site.md)
+   (2026-11-17; executor segue os passos 1 a 17, em 2 commits: peças comuns com a F6 + conta de contraste em `lib`, depois a ferramenta).
    As 9 perguntas do plano foram aprovadas com as recomendações (2026-11-17).
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
@@ -92,6 +96,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - "Está fora do ar?": abrir `https://criasite.app/api/cron/cabecalhos?token=...` e mandar o resultado no chat (define a regra do IP do visitante no limite por IP). Testar a ferramenta no ar com `criasite.app`, `expired.badssl.com` e `localhost`.
 - ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
 - F6 (gerador de arquivo de instruções), no ar: inserir pelo painel (`/admin/materias`, guia `arquivo-de-instrucoes-para-assistente-de-codigo`) o parágrafo com o link para a ferramenta, logo depois da lista de "Modelo para começar" (texto exato na Parte D, item 6 de [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md)).
+- F5 (gerador de prompt): responder às 10 perguntas de [ferramenta-prompt-site.md](ferramenta-prompt-site.md) ou aprovar as
+  recomendações (principais: categoria "Dia a dia" em vez de "Técnico"; extrair peças comuns com a F6 num commit antes). Depois do
+  deploy, inserir pelo painel o link no guia G2 (texto exato na Parte E, item 8).
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
