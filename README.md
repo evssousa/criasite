@@ -31,11 +31,11 @@ que muda para o site de quem lê.
 
 ### Destaques
 
-- **11 ferramentas 100% no navegador** — compressor e conversor de imagem (WebP/PNG/JPG, lote de até
+- **12 ferramentas: 11 rodando 100% no navegador e um verificador de site fora do ar no servidor**, com proteção contra SSRF (DNS validado e fixado, bloqueio de redes internas, limite por IP e por alvo) — compressor e conversor de imagem (WebP/PNG/JPG, lote de até
   20), gerador de QR code (link, Wi-Fi, WhatsApp, texto; PNG e SVG, sem validade), link do WhatsApp,
   meta tags com prévia no Google e no WhatsApp, contador de caracteres, verificador de contraste
   (WCAG), gerador de favicon (ICO montado à mão), sitemap e robots.txt, guia de status HTTP e tabela de
-  tamanhos de imagem. Nenhum arquivo sai do computador de quem usa.
+  tamanhos de imagem. Nas 11 do navegador, nenhum arquivo sai do computador de quem usa.
 - **Feito para voltar** — o visitante fixa as ferramentas que mais usa com uma estrela e marca as
   etapas da trilha; tudo fica salvo no próprio navegador (`localStorage`), sem conta e sem servidor.
 - **Busca que leva direto à ferramenta** — filtra o diretório enquanto a pessoa digita, entende

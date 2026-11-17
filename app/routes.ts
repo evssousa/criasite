@@ -22,6 +22,7 @@ export default [
   route("ferramentas/gerador-favicon", "routes/tool-favicon.tsx"),
   route("ferramentas/sitemap-robots", "routes/tool-sitemap.tsx"),
   route("ferramentas/status-http", "routes/tool-status.tsx"),
+  route("ferramentas/esta-fora-do-ar", "routes/tool-uptime.tsx"),
   route("ferramentas/tamanhos-de-imagem", "routes/tool-sizes.tsx"),
   route("criar-site-com-ia", "routes/ai-track.tsx"),
   route("trilha", "routes/trail.tsx"),
@@ -62,6 +63,8 @@ export default [
   route("api/cron/:job", "routes/cron.ts"),
   // Contador de visitas (a página da matéria avisa depois de carregar no navegador).
   route("api/view", "routes/view.ts"),
+  // Ferramenta "Está fora do ar?": checagem feita pelo servidor (ver docs/ferramenta-fora-do-ar.md).
+  route("api/fora-do-ar", "routes/api-fora-do-ar.ts"),
 
   route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

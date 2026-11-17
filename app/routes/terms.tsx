@@ -22,8 +22,9 @@ const sections: DocSection[] = [
     body: (
       <p>
         O {SITE.name} é um site gratuito com ferramentas, notícias e guias para quem cria e cuida de sites. Não é preciso criar conta para usar o site. As
-        ferramentas rodam no seu navegador: os arquivos e textos que você usa nelas não são enviados para os nossos servidores. Podemos mudar, suspender ou
-        encerrar qualquer parte do site a qualquer momento.
+        ferramentas rodam no seu navegador: os arquivos e textos que você usa nelas não são enviados para os nossos servidores. A exceção é a “Está fora do ar?”, que
+        precisa do servidor para acessar o endereço digitado; ela tem limite de uso e não pode ser usada para testar redes internas nem para sobrecarregar sites de
+        terceiros. Podemos mudar, suspender ou encerrar qualquer parte do site a qualquer momento.
       </p>
     ),
   },

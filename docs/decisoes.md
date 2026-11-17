@@ -17,6 +17,17 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 - **Pendente do dono:** 6 perguntas com recomendação (cabeçalho do IP real, lado padrão do "O que fazer", limites,
   plano B em http, cabeçalho Server, monitoramento futuro).
 
+## 2026-11-17 — "Está fora do ar?" no ar (commits 1 e 2)
+
+- **Feito como no plano** ([ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md)): guarda anti-SSRF (`guard.server.ts`), checagem com DNS resolvido uma vez
+  e conexão no IP validado (`check.server.ts`), limites em memória (`limits.server.ts`), API `POST /api/fora-do-ar`, tela com laudo e "O que fazer agora",
+  histórico no navegador, textos legais e do portfólio. As 6 recomendações do planejador foram aprovadas pelo dono.
+- **Desvios:** (1) `checkTarget` aceita um 4º parâmetro só para testes (DNS e conexão falsos), porque `httpbin`/`httpbingo` recusam redirecionar para
+  endereços internos e o caminho `redirecionamento-bloqueado` não podia ser testado na rede; (2) o portão `isbot` também barra `curl` e navegadores
+  headless: nos testes manuais use um User-Agent de navegador; (3) o caso `redirect-to` do `httpbin` saiu da tabela de rede (foi trocado pelos testes com servidor falso).
+- **Testes:** `node scripts/test-fora-do-ar.ts` (84, sem rede) e `--rede` (14 casos ao vivo). Rota testada com curl (403 sem Origin/com bot, 415, 405,
+  413, 422, 429 no 6º envio) e a tela em 390 e 1280 px.
+
 ## 2026-11-17 — Roteiro "Criar site com IA" no ar (F3+F4)
 
 - **Feito:** hub `/criar-site-com-ia` (6 etapas, regras de ouro, progresso em `localStorage`), menu "Site com IA", card na home e box na

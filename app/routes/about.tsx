@@ -41,7 +41,7 @@ const sections: DocSection[] = [
     body: (
       <p>
         As ferramentas funcionam no seu navegador. As imagens que você comprime, os textos que conta e os links que gera não são enviados para nenhum servidor do{" "}
-        {SITE.name}. As ferramentas favoritas e o progresso da trilha ficam salvos só no seu navegador. Os detalhes estão na{" "}
+        {SITE.name}. A exceção é a ferramenta “Está fora do ar?”, que usa o nosso servidor para acessar o endereço digitado, sem gravá-lo. As ferramentas favoritas e o progresso da trilha ficam salvos só no seu navegador. Os detalhes estão na{" "}
         <TextLink to="/privacidade">política de privacidade</TextLink>.
       </p>
     ),

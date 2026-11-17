@@ -32,6 +32,7 @@ const TOOL_TERMS: { re: RegExp; url: string }[] = [
   { re: /(?<![\p{L}\d])(link do WhatsApp|botão do WhatsApp)(?![\p{L}\d])/iu, url: "/ferramentas/link-whatsapp" },
   { re: /(?<![\p{L}\d])(favicon)(?![\p{L}\d])/iu, url: "/ferramentas/gerador-favicon" },
   { re: /(?<![\p{L}\d])(sitemap(?:\.xml)?|robots\.txt)(?![\p{L}\d])/iu, url: "/ferramentas/sitemap-robots" },
+  { re: /(?<![\p{L}\d])(fora do ar|sites? caíram|sites? caiu|site caído|queda do site|instabilidade no site)(?![\p{L}\d])/iu, url: "/ferramentas/esta-fora-do-ar" },
   { re: /(?<![\p{L}\d])(erro 404|código 404|redirecionamento 301|erro 503|códigos? de status)(?![\p{L}\d])/iu, url: "/ferramentas/status-http" },
   { re: /(?<![\p{L}\d])(contraste de cores?|contraste mínimo)(?![\p{L}\d])/iu, url: "/ferramentas/contraste-cores" },
 ];

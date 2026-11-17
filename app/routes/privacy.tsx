@@ -53,7 +53,19 @@ const sections: DocSection[] = [
               <tr>
                 <td>Arquivos e textos usados nas ferramentas</td>
                 <td>Quando você usa uma ferramenta (imagens, textos, números de telefone, links).</td>
-                <td>Nenhum: as ferramentas rodam no seu navegador e não enviam esses dados para os nossos servidores. Eles somem quando você fecha a página.</td>
+                <td>
+                  Nenhum: as ferramentas rodam no seu navegador e não enviam esses dados para os nossos servidores. Eles somem quando você fecha a página. A única exceção é a
+                  ferramenta “Está fora do ar?”, descrita na linha abaixo.
+                </td>
+              </tr>
+              <tr>
+                <td>Endereço de site digitado na ferramenta “Está fora do ar?”</td>
+                <td>Quando você pede uma checagem nessa ferramenta.</td>
+                <td>
+                  Fazer a checagem: o nosso servidor acessa esse endereço uma vez e devolve o resultado. O endereço não é gravado em banco de dados nem em arquivo de log. Ele fica
+                  só na memória do servidor por até 1 minuto, para reaproveitar uma checagem feita há pouco e não sobrecarregar o site checado, e o seu endereço IP fica na memória
+                  por até 1 hora, para limitar abusos. Depois, os dois são descartados. As suas últimas checagens ficam só no armazenamento local do seu navegador.
+                </td>
               </tr>
               <tr>
                 <td>Ferramentas favoritas e progresso da trilha</td>

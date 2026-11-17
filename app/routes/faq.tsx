@@ -6,12 +6,12 @@ import { SITE } from "~/lib/site";
 const FAQ: { q: string; a: string; link?: { to: string; label: string } }[] = [
   {
     q: "As ferramentas são grátis mesmo?",
-    a: "Sim. Todas são gratuitas, sem cadastro e sem limite de uso. O site se mantém com anúncios.",
+    a: "Sim. Todas são gratuitas e sem cadastro. Só a “Está fora do ar?” tem um limite de checagens por minuto, para evitar abuso. O site se mantém com anúncios.",
     link: { to: "/ferramentas", label: "Ver as ferramentas" },
   },
   {
     q: "As minhas imagens e textos são enviados para algum lugar?",
-    a: "Não. As ferramentas rodam no seu navegador: a compressão de imagem, o QR code, o link do WhatsApp e as meta tags são gerados no seu computador ou celular, sem envio para os nossos servidores.",
+    a: "Não. As ferramentas rodam no seu navegador: a compressão de imagem, o QR code, o link do WhatsApp e as meta tags são gerados no seu computador ou celular, sem envio para os nossos servidores. A exceção é a “Está fora do ar?”: o endereço que você digita vai para o nosso servidor só para fazer a checagem e não é gravado.",
     link: { to: "/privacidade", label: "Política de privacidade" },
   },
   {

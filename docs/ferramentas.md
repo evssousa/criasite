@@ -1,6 +1,6 @@
 # Ferramentas
 
-Todas rodam no navegador: nada do que o visitante digita ou envia vai para o servidor.
+Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md)): nas outras, nada do que o visitante digita ou envia vai para o servidor.
 
 ## No ar
 
@@ -15,6 +15,7 @@ Todas rodam no navegador: nada do que o visitante digita ou envia vai para o ser
 | Contraste de cores | `/ferramentas/contraste-cores` | luminância relativa e razão do WCAG 2.x; testes AA/AAA para texto normal, grande e componentes; prévia do texto; troca texto/fundo |
 | Gerador de favicon | `/ferramentas/gerador-favicon` | canvas → PNGs 16/32/48/180/192/512; `favicon.ico` montado à mão com 16, 32 e 48 (PNG dentro do ICO); opções de encaixe, fundo e cantos; código HTML pronto |
 | Sitemap e robots.txt | `/ferramentas/sitemap-robots` | lista de caminhos ou URLs → `sitemap.xml` (com `lastmod` opcional, URLs de outro domínio ignoradas, duplicadas removidas) e `robots.txt` com `Disallow` e a linha do sitemap |
+| Está fora do ar? | `/ferramentas/esta-fora-do-ar` | servidor (`/api/fora-do-ar`, POST): DNS validado e fixado, conexão no IP validado, só cabeçalhos, até 5 redirecionamentos, 9 s, bloqueio de redes internas (SSRF), limites por IP, alvo e global em memória, cache de 30 s; histórico das últimas 5 checagens em `criasite_checagens` (só no navegador); "O que fazer agora" por caso, para dono e visitante |
 | Status HTTP | `/ferramentas/status-http` | referência de 19 códigos com significado e "o que fazer no seu site"; filtro por família e busca (número casa pelo começo do código) |
 | Tamanhos de imagem | `/ferramentas/tamanhos-de-imagem` | tabela de 21 medidas (site, Instagram, Facebook/LinkedIn/X/WhatsApp, YouTube) com proporção; toque copia a medida. São medidas de referência: as redes mudam, a página avisa |
 
@@ -32,9 +33,6 @@ Todas rodam no navegador: nada do que o visitante digita ou envia vai para o ser
 
 ## Próximas (por ordem de volume de busca e de uso recorrente)
 
-- Está fora do ar? **Plano pronto** em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) (2026-11-17): 1ª ferramenta com
-  servidor (`/api/fora-do-ar`), DNS validado e fixado, só cabeçalhos, limites por IP/alvo/global em memória, categoria
-  `tecnico`, etapa Lançamento da trilha. Ao executar, mudar a frase do topo desta página (exceção ao "tudo no navegador").
 - Orçamento de site para freelancer (salvo no navegador, exporta texto/PDF).
 - Gerador de paleta de cores a partir de uma imagem ou cor base; pares de fontes.
 - Gerador de slug, minificador de HTML/CSS, regras de redirecionamento (.htaccess).

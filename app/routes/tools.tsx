@@ -21,8 +21,8 @@ export default function Tools() {
       <header className="flex flex-col gap-3">
         <h1 className="text-[36px] leading-[1.05] font-extrabold tracking-[-0.03em] sm:text-[48px]">Ferramentas</h1>
         <p className="max-w-2xl text-lg text-muted">
-          Grátis, sem cadastro e rodando no seu navegador: o que você digita ou envia não sai do seu computador. Marque a estrela para fixar as que você mais usa na
-          página inicial.
+          Grátis, sem cadastro e quase todas rodando no seu navegador: o que você digita ou envia não sai do seu computador (a exceção, avisada na página, é a “Está fora do ar?”).
+          Marque a estrela para fixar as que você mais usa na página inicial.
         </p>
       </header>
       <div className="flex max-w-xl flex-col gap-1.5">

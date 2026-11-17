@@ -139,7 +139,8 @@ export type ToolSlug =
   | "gerador-favicon"
   | "sitemap-robots"
   | "status-http"
-  | "tamanhos-de-imagem";
+  | "tamanhos-de-imagem"
+  | "esta-fora-do-ar";
 
 export interface Tool {
   slug: ToolSlug;
@@ -247,6 +248,15 @@ export const TOOLS: Tool[] = [
     keywords: "erro 404 301 500 503 redirecionamento código http",
   },
   {
+    slug: "esta-fora-do-ar",
+    title: "Está fora do ar? Teste se o site caiu",
+    short: "Está fora do ar?",
+    hint: "caiu para todos ou só para você?",
+    description: "Veja se um site está fora do ar para todo mundo ou só para você: código HTTP, tempo de resposta, HTTPS e DNS, com o que fazer em cada caso.",
+    category: "tecnico",
+    keywords: "site caiu fora do ar offline down não abre não carrega teste verificar site funcionando disponibilidade uptime ping certificado ssl dns",
+  },
+  {
     slug: "tamanhos-de-imagem",
     title: "Tamanhos de imagem para site e redes sociais",
     short: "Tamanhos de imagem",
@@ -329,7 +339,7 @@ export const TRAIL: TrailStep[] = [
     title: "Publique e avise o Google",
     short: "Lançamento",
     text: "Confira se tudo abre com HTTPS, cadastre o site no Google Search Console e envie o sitemap. Imprima um QR code para levar clientes da loja física ao site.",
-    tools: ["qr-code", "status-http"],
+    tools: ["qr-code", "status-http", "esta-fora-do-ar"],
     guide: "checklist-de-lancamento-do-site",
   },
 ];
@@ -421,8 +431,8 @@ export const DOC_PAGES: DocPage[] = [
   { to: "/faq", label: "Perguntas frequentes", group: "site", updated: "2026-11-14" },
   { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-17" },
   { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-14" },
-  { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-14" },
-  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-14" },
+  { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-17" },
+  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-17" },
   { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-14" },
   { to: "/acessibilidade", label: "Acessibilidade", group: "legal", updated: "2026-11-14" },
   { to: "/mapa-do-site", label: "Mapa do site", group: "legal", updated: "2026-11-14" },

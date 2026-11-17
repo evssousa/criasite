@@ -54,7 +54,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
 | 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
 | 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F1, F2, F3 e F4 feitas em 2026-11-17**: hub `/criar-site-com-ia`, menu "Site com IA", 8 guias "Com IA" (migration 008) e capas; F5 e F6 (ferramentas) pendentes) |
-| 2 | Ferramenta "Está fora do ar?" (servidor, anti-SSRF, limites por IP/alvo/global, histórico no navegador): plano em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | 🔄 (plano pronto e 6 recomendações aprovadas em 2026-11-17; **commit 1 feito**: guarda anti-SSRF, 71 testes e job `cabecalhos`; falta o commit 2) |
+| 2 | Ferramenta "Está fora do ar?" (servidor, anti-SSRF, limites por IP/alvo/global, histórico no navegador): plano em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | ✅ (feita em 2026-11-17: guarda anti-SSRF, checagem, API `/api/fora-do-ar`, tela, textos legais; 84 testes puros + 14 de rede) |
 | 2 | Mais ferramentas: orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -72,10 +72,10 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
    (pelo painel ou migration de UPDATE).
-4. **Está fora do ar?**: plano pronto em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) (G). Commit 1 = guarda
-   anti-SSRF + testes + job `cabecalhos` ✅ (2026-11-17); o dono confere o IP real; commit 2 = checagem, API, tela, textos legais
-   (passos 6 a 15 do plano; `limits.server.ts` usa o último valor de `x-forwarded-for` até sair o resultado do diagnóstico).
-   Links nos guias antigos ficam para o sáb 21/11 (lista na Parte D do plano). Depois: orçamento de site.
+4. **Está fora do ar?** ✅ **no ar em 2026-11-17** ([ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md)): commit 1 (guarda anti-SSRF, testes, job
+   `cabecalhos`) e commit 2 (checagem, limites, API, tela, textos legais). `limits.server.ts` usa o último valor de `x-forwarded-for`
+   até sair o resultado do diagnóstico (se o último for sempre o mesmo IP de proxy, trocar pelo penúltimo ou por `x-real-ip`).
+   Falta: links nos guias antigos (sáb 21/11, lista na Parte D do plano) e rever os limites em 2 semanas. Depois: orçamento de site.
 5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
    conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
    (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
@@ -87,7 +87,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
 - Excluir a notícia da Nvidia em `/admin/materias` (a de Harvard fica).
-- "Está fora do ar?": as 6 recomendações foram aprovadas (2026-11-17). Depois do deploy do commit 1, abrir `https://criasite.app/api/cron/cabecalhos?token=...` e mandar o resultado no chat.
+- "Está fora do ar?": abrir `https://criasite.app/api/cron/cabecalhos?token=...` e mandar o resultado no chat (define a regra do IP do visitante no limite por IP). Testar a ferramenta no ar com `criasite.app`, `expired.badssl.com` e `localhost`.
 - ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.

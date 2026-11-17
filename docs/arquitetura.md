@@ -28,6 +28,7 @@ app/
     availability.ts      o que tem conteúdo (menu, home, sitemap, noindex)
     content.server.ts    API de dados usada pelas rotas
     repo/                contrato das fontes + mock (mock-data.ts, fictício) + MySQL
+    uptime/              ferramenta "Está fora do ar?": guarda anti-SSRF, checagem, limites, textos do laudo (ver ferramenta-fora-do-ar.md)
     robot/               robô de notícias (coleta, Gemini, qualidade, mídia)
     admin/               sessão e dados do painel /admin
 db/migrations/           001 estrutura, 002 fontes do robô
@@ -63,6 +64,7 @@ docs/                    este plano
 - `criasite_favs`: lista de slugs de ferramentas. Sem nada salvo, começa com comprimir imagem, QR code
   e link do WhatsApp (a área não nasce vazia).
 - `criasite_trail`: ids das etapas da trilha marcadas.
+- `criasite_checagens`: últimas 5 checagens da ferramenta "Está fora do ar?" (endereço, veredito, hora); nunca vão para o servidor.
 - `criasite_trilha_ia`: ids das etapas do roteiro "Criar site com IA" (`/criar-site-com-ia`) marcadas. Mesmo `useChecklist` da trilha (`app/lib/prefs.ts`).
 - `criasite_consent`: escolha do banner de cookies (só com AdSense ligado).
 - O servidor renderiza o padrão; o navegador lê o salvo depois de hidratar. Sem `localStorage` (aba
