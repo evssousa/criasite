@@ -223,6 +223,133 @@ const ARTES = {
     <path d="M544 380 H472 V316" fill="none" stroke="#cdd5ef" stroke-width="4" stroke-dasharray="2 10"/>
     <path d="M466 322 l6 -8 l6 8" fill="none" stroke="#cdd5ef" stroke-width="4"/>
   </g>`,
+
+  // Conversa com pedido estruturado (guia 2).
+  prompt: () => {
+    const ys = [260, 286, 312, 338];
+    const ws = [170, 140, 190, 120];
+    const linhas = ys
+      .map((y, i) => `<rect x="450" y="${y}" width="50" height="12" rx="6" fill="${L}"/><rect x="510" y="${y}" width="${ws[i]}" height="12" rx="6" fill="${i === 0 ? N : "#cdd5ef"}"/>`)
+      .join("");
+    return `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="430" y="240" width="300" height="130" rx="18" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    ${linhas}
+    <rect x="430" y="396" width="340" height="44" rx="22" fill="#fff" stroke="${N}" stroke-width="4"/>
+    <path d="M452 408 v20" stroke="${L}" stroke-width="4" fill="none"/>
+    <circle cx="746" cy="418" r="16" fill="${L}"/>
+    <path d="M739 418 h14 M747 411 l7 7 -7 7" stroke="#fff" stroke-width="4" fill="none"/>
+    <path d="${FAISCA}" fill="${LC}" transform="translate(744 236) scale(2)"/>
+  </g>`;
+  },
+
+  // Arquivo de instruções lido pelo assistente (guia 3).
+  instrucoes: () => {
+    const itens = [[372, 110], [390, 90], [408, 120]]
+      .map(([cy, w]) => `<circle cx="468" cy="${cy}" r="4" fill="${N}"/><rect x="480" y="${cy - 4}" width="${w}" height="8" rx="4" fill="#cdd5ef"/>`)
+      .join("");
+    return `<g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M440 240 h150 l40 40 v150 h-190 Z" fill="#fff" stroke="${N}" stroke-width="5"/>
+    <path d="M590 240 v40 h40 Z" fill="#eef1fb" stroke="${N}" stroke-width="5"/>
+    <rect x="462" y="266" width="16" height="16" rx="4" fill="${L}"/><rect x="486" y="268" width="80" height="12" rx="6" fill="${N}"/>
+    <rect x="462" y="298" width="140" height="8" rx="4" fill="#cdd5ef"/><rect x="462" y="314" width="140" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="462" y="338" width="16" height="16" rx="4" fill="${L}"/><rect x="486" y="340" width="100" height="12" rx="6" fill="${N}"/>
+    ${itens}
+    <path d="M646 336 h50 M686 326 l10 10 -10 10" stroke="${L}" stroke-width="6" fill="none"/>
+    <circle cx="740" cy="336" r="40" fill="${N}"/>
+    <path d="${FAISCA}" fill="#fff" transform="translate(716 312) scale(2)"/>
+  </g>`;
+  },
+
+  // Três cartões de receita, o do meio escolhido (guia 4).
+  skills: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="430" y="290" width="110" height="140" rx="14" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    <rect x="446" y="308" width="60" height="10" rx="5" fill="${N}"/><rect x="446" y="330" width="78" height="6" rx="3" fill="#cdd5ef"/><rect x="446" y="344" width="60" height="6" rx="3" fill="#cdd5ef"/>
+    <circle cx="485" cy="395" r="16" fill="none" stroke="${N}" stroke-width="4"/><path d="M485 387 v16 M477 395 h16" stroke="${N}" stroke-width="4"/>
+    <rect x="660" y="290" width="110" height="140" rx="14" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    <rect x="676" y="308" width="60" height="10" rx="5" fill="${N}"/><rect x="676" y="330" width="78" height="6" rx="3" fill="#cdd5ef"/><rect x="676" y="344" width="60" height="6" rx="3" fill="#cdd5ef"/>
+    <path d="M706 383 l-12 12 12 12 M730 383 l12 12 -12 12" stroke="${N}" stroke-width="4" fill="none"/>
+    <rect x="545" y="250" width="110" height="140" rx="14" fill="${L}"/>
+    <rect x="561" y="268" width="60" height="10" rx="5" fill="#fff"/><rect x="561" y="290" width="78" height="6" rx="3" fill="#fff0e5"/><rect x="561" y="304" width="60" height="6" rx="3" fill="#fff0e5"/>
+    <circle cx="600" cy="350" r="22" fill="#fff"/><path d="M590 350 l7 7 l13 -14" stroke="${L}" stroke-width="5" fill="none"/>
+  </g>`,
+
+  // Assistente no centro ligado a três conectores (guia 5).
+  mcp: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M562 338 H480 M630 316 L700 280 M630 360 L700 398" stroke="#cdd5ef" stroke-width="6" fill="none"/>
+    <circle cx="520" cy="338" r="6" fill="${L}"/><circle cx="665" cy="298" r="6" fill="${L}"/><circle cx="665" cy="379" r="6" fill="${L}"/>
+    <circle cx="600" cy="338" r="38" fill="${N}"/>
+    <path d="${FAISCA}" fill="#fff" transform="translate(576 314) scale(2)"/>
+    <path d="M416 312 v52 a30 10 0 0 0 60 0 v-52" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <ellipse cx="446" cy="312" rx="30" ry="10" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <path d="M416 338 a30 10 0 0 0 60 0" fill="none" stroke="${N}" stroke-width="3"/>
+    <path d="M704 250 h24 l8 10 h34 v42 h-66 Z" fill="#fff0e5" stroke="${L}" stroke-width="4"/>
+    <rect x="704" y="384" width="66" height="48" rx="8" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <path d="M704 398 h66" stroke="${N}" stroke-width="3"/>
+    <circle cx="712" cy="391" r="3" fill="${N}"/><circle cx="721" cy="391" r="3" fill="${N}"/>
+  </g>`,
+
+  // Escudo, chave proibida no chat e confirmação (guia 6).
+  escudo: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 238 l80 30 v58 c0 52 -34 88 -80 104 c-46 -16 -80 -52 -80 -104 v-58 Z" fill="${N}"/>
+    <circle cx="600" cy="318" r="18" fill="${L}"/><rect x="592" y="326" width="16" height="40" rx="8" fill="${L}"/>
+    <rect x="414" y="262" width="84" height="60" rx="14" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    <circle cx="440" cy="292" r="10" fill="none" stroke="${N}" stroke-width="4"/>
+    <path d="M450 292 h30 M470 292 v8 M478 292 v6" stroke="${N}" stroke-width="4" fill="none"/>
+    <circle cx="456" cy="292" r="36" fill="none" stroke="${L}" stroke-width="5"/>
+    <path d="M431 317 L481 267" stroke="${L}" stroke-width="5"/>
+    <circle cx="730" cy="380" r="24" fill="#3ee0b0"/>
+    <path d="M719 380 l7 7 l13 -14" stroke="#fff" stroke-width="5" fill="none"/>
+  </g>`,
+
+  // Painel de diferenças e lista de revisão (guia 7).
+  revisao: () => {
+    const ws = [120, 90, 150, 110, 70, 130, 100];
+    const linhas = ws
+      .map((w, i) => {
+        const y = 266 + 24 * i;
+        const mc = i === 2 || i === 3 ? "#3ee0b0" : i === 5 ? L : "#2a3c80";
+        const cc = i === 5 ? LC : "#2a3c80";
+        return `<rect x="436" y="${y}" width="10" height="10" rx="3" fill="${mc}"/><rect x="456" y="${y}" width="${w}" height="10" rx="5" fill="${cc}"/>`;
+      })
+      .join("");
+    const itens = [284, 324, 364]
+      .map((y, i) =>
+        i < 2
+          ? `<rect x="694" y="${y}" width="22" height="22" rx="6" fill="${L}"/><path d="M699 ${y + 11} l5 5 l9 -10" stroke="#fff" stroke-width="4" fill="none"/><rect x="724" y="${y + 7}" width="46" height="8" rx="4" fill="${N}"/>`
+          : `<rect x="694" y="${y}" width="22" height="22" rx="6" fill="none" stroke="#cdd5ef" stroke-width="3"/><rect x="724" y="${y + 7}" width="46" height="8" rx="4" fill="#cdd5ef"/>`,
+      )
+      .join("");
+    return `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="420" y="244" width="240" height="186" rx="14" fill="${N}"/>
+    <rect x="428" y="379" width="224" height="24" rx="6" fill="#1d2c66"/>
+    ${linhas}
+    <rect x="680" y="264" width="104" height="148" rx="12" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    ${itens}
+  </g>`;
+  },
+
+  // Página e três selos: busca, contraste e velocidade (guia 8).
+  qualidade: () => {
+    const checks = [254, 320, 386]
+      .map((cy) => `<circle cx="742" cy="${cy}" r="10" fill="#3ee0b0"/><path d="M737 ${cy} l4 4 l7 -8" stroke="#fff" stroke-width="3" fill="none"/>`)
+      .join("");
+    return `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="420" y="240" width="200" height="190" rx="12" fill="#eef1fb" stroke="#cdd5ef" stroke-width="3"/>
+    <rect x="438" y="258" width="120" height="14" rx="7" fill="${N}"/>
+    <rect x="438" y="284" width="160" height="8" rx="4" fill="#cdd5ef"/><rect x="438" y="298" width="160" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="438" y="316" width="164" height="70" rx="8" fill="#dde3f6"/>
+    <path d="M450 376 l26 -28 l18 16 l14 -10 l30 22 Z" fill="#cdd5ef"/>
+    <rect x="438" y="398" width="70" height="18" rx="9" fill="${L}"/>
+    <path d="M620 272 H670 M620 338 H670 M620 404 H670" stroke="#cdd5ef" stroke-width="4" fill="none"/>
+    <circle cx="700" cy="272" r="30" fill="#fff" stroke="${N}" stroke-width="5"/>
+    <circle cx="696" cy="268" r="10" fill="none" stroke="${N}" stroke-width="4"/><path d="M703 275 l9 9" stroke="${N}" stroke-width="5"/>
+    <circle cx="700" cy="338" r="30" fill="#fff" stroke="${N}" stroke-width="5"/>
+    <circle cx="700" cy="338" r="14" fill="none" stroke="${N}" stroke-width="4"/><path d="M700 324 a14 14 0 0 1 0 28 Z" fill="${N}"/>
+    <circle cx="700" cy="404" r="30" fill="#fff" stroke="${N}" stroke-width="5"/>
+    <path d="M704 388 L690 408 H702 L698 424 L714 402 H702 Z" fill="${L}"/>
+    ${checks}
+  </g>`;
+  },
 };
 
 /** Moldura comum a todas as capas (janela de navegador com sombra laranja + régua da trilha). */
@@ -353,6 +480,55 @@ export const CAPAS = [
     etapa: "planejar",
     arte: "fluxo",
     alt: "Ilustração de um ciclo de cinco caixas ligadas por setas dentro de uma janela de navegador: plano, pedido à IA, partes pequenas, revisão aprovada e versão salva.",
+  },
+  {
+    slug: "prompt-para-criar-site-com-ia",
+    trilha: "ia",
+    etapa: "pedir",
+    arte: "prompt",
+    alt: "Ilustração de uma conversa com um assistente de IA: um balão com o pedido dividido em partes marcadas em laranja e a caixa de envio logo abaixo.",
+  },
+  {
+    slug: "arquivo-de-instrucoes-para-assistente-de-codigo",
+    trilha: "ia",
+    etapa: "contexto",
+    arte: "instrucoes",
+    alt: "Ilustração de um arquivo de texto com títulos e listas sendo lido por um assistente de IA, representado por um círculo azul-marinho com uma faísca branca.",
+  },
+  {
+    slug: "skills-para-assistentes-de-ia",
+    trilha: "ia",
+    etapa: "alem",
+    arte: "skills",
+    alt: "Ilustração de três cartões de receita lado a lado, com o do meio em laranja e levantado, representando a skill escolhida pelo assistente para a tarefa.",
+  },
+  {
+    slug: "o-que-e-mcp-servidores-mcp",
+    trilha: "ia",
+    etapa: "alem",
+    arte: "mcp",
+    alt: "Ilustração de um assistente de IA no centro ligado por linhas a um banco de dados, uma pasta e uma janela de ferramenta, como num padrão de conexão.",
+  },
+  {
+    slug: "seguranca-ao-criar-site-com-ia",
+    trilha: "ia",
+    etapa: "publicar",
+    arte: "escudo",
+    alt: "Ilustração de um escudo azul-marinho com fechadura laranja, uma chave riscada dentro de um balão de conversa e um selo verde de confirmação.",
+  },
+  {
+    slug: "como-revisar-codigo-gerado-por-ia",
+    trilha: "ia",
+    etapa: "revisar",
+    arte: "revisao",
+    alt: "Ilustração de um painel de código com linhas marcadas em verde e uma em laranja, ao lado de uma lista de revisão com dois itens concluídos.",
+  },
+  {
+    slug: "site-feito-com-ia-seo-acessibilidade-e-velocidade",
+    trilha: "ia",
+    etapa: "revisar",
+    arte: "qualidade",
+    alt: "Ilustração do rascunho de uma página ao lado de três selos aprovados: uma lupa de busca, um círculo de contraste e um raio de velocidade.",
   },
 ];
 

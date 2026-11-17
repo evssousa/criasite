@@ -966,7 +966,7 @@ próprio CriaSite foi construído com um assistente de código, seguindo estas e
 8. Depois do deploy: `/api/cron/fontes` e `/api/cron/paginas` (como no doc de automação); `/admin/fontes` sem erro;
    fila acompanhada por 3 dias.
 
-### F2 · Capas (M)
+### F2 · Capas (M) — ✅ executada em 2026-11-17 (8 capas, 8 a 12 KB; as capas só aparecem no site quando a migration dos guias da F3+F4 apontar para elas)
 1. Ler `capas.md` e `make-capas.mjs`.
 2. Régua de IA (D.1) e a arte `fluxo` com a entrada do G1; gerar com `--folha`.
 3. **Parar e mostrar ao dono** a capa e a folha (régua com losangos e faísca). Seguir com o ok.
