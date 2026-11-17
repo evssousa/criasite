@@ -17,6 +17,11 @@ const MAX_BYTES = 61_440; // 60 KB
 // Etapas da trilha (ids de TRAIL em app/lib/site.ts).
 const ETAPAS = { dominio: 1, hospedagem: 2, visual: 3, paginas: 4, google: 5, velocidade: 6, lancamento: 7 };
 
+// Etapas do roteiro "Criar site com IA" (régua própria, com losangos e uma faísca; ver docs/ia-desenvolvimento.md).
+const ETAPAS_IA = { planejar: 1, contexto: 2, pedir: 3, revisar: 4, publicar: 5, alem: 6 };
+// Faísca da IA (mesmo desenho do ícone da editoria "ia" no Cover), viewBox 24.
+const FAISCA = "M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z";
+
 // Cores (tokens do site, ver app/app.css).
 const N = "#0c1a4b"; // marinho
 const L = "#ff7a1a"; // laranja forte
@@ -194,12 +199,37 @@ const ARTES = {
     <circle cx="600" cy="282" r="18" fill="#ffffff"/>
     ${[660, 678, 696, 714, 732].map((x, i) => `<circle cx="${x}" cy="394" r="6" fill="${i < 4 ? L : "#cdd5ef"}"/>`).join("")}
   </g>`,
+
+  // Ciclo de 5 caixas: plano, pedido à IA, partes pequenas, revisão aprovada, versão salva (roteiro de IA, guia 1).
+  fluxo: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="420" y="246" width="104" height="60" rx="12" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <rect x="436" y="262" width="44" height="10" rx="5" fill="${N}"/>
+    <rect x="436" y="280" width="68" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="548" y="246" width="104" height="60" rx="12" fill="#fff0e5" stroke="${L}" stroke-width="4"/>
+    <path d="${FAISCA}" fill="${L}" transform="translate(582 258) scale(1.6)"/>
+    <rect x="676" y="246" width="104" height="60" rx="12" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <rect x="692" y="262" width="56" height="8" rx="4" fill="${N}"/>
+    <rect x="692" y="276" width="72" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="692" y="290" width="40" height="8" rx="4" fill="#cdd5ef"/>
+    <path d="M528 276 h14 M536 270 l6 6 -6 6 M656 276 h14 M664 270 l6 6 -6 6 M728 310 v30 M722 334 l6 6 6 -6" fill="none" stroke="${N}" stroke-width="4"/>
+    <rect x="676" y="350" width="104" height="60" rx="12" fill="${N}"/>
+    <path d="M712 380 l10 10 l22 -22" stroke="#ffffff" stroke-width="6" fill="none"/>
+    <rect x="548" y="350" width="104" height="60" rx="12" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <path d="M576 368 V394 M576 378 Q576 380 606 380" fill="none" stroke="${N}" stroke-width="4"/>
+    <circle cx="576" cy="366" r="6" fill="${N}"/>
+    <circle cx="576" cy="396" r="6" fill="${N}"/>
+    <circle cx="612" cy="380" r="6" fill="${L}"/>
+    <path d="M672 380 h-14 M664 374 l-6 6 6 6" fill="none" stroke="${N}" stroke-width="4"/>
+    <path d="M544 380 H472 V316" fill="none" stroke="#cdd5ef" stroke-width="4" stroke-dasharray="2 10"/>
+    <path d="M466 322 l6 -8 l6 8" fill="none" stroke="#cdd5ef" stroke-width="4"/>
+  </g>`,
 };
 
 /** Moldura comum a todas as capas (janela de navegador com sombra laranja + régua da trilha). */
-function moldura(arte, etapa) {
-  const n = ETAPAS[etapa];
-  const pontos = [1, 2, 3, 4, 5, 6, 7]
+function moldura(arte, etapa, trilha = "site") {
+  const ia = trilha === "ia";
+  const n = (ia ? ETAPAS_IA : ETAPAS)[etapa];
+  const pontosSite = [1, 2, 3, 4, 5, 6, 7]
     .map((i) => {
       const x = 510 + (i - 1) * 30;
       if (i < n) return `<circle cx="${x}" cy="548" r="6" fill="${LC}"/>`;
@@ -207,6 +237,20 @@ function moldura(arte, etapa) {
       return `<circle cx="${x}" cy="548" r="6" fill="#2a3c80"/>`;
     })
     .join("");
+  // Régua do roteiro de IA: faísca à esquerda e 6 losangos (um por etapa).
+  const losango = (x, fill) => `<rect x="-6" y="-6" width="12" height="12" rx="2" fill="${fill}" transform="translate(${x} 548) rotate(45)"/>`;
+  const pontosIa =
+    `<path d="${FAISCA}" fill="${LC}" transform="translate(462 536)"/>` +
+    [1, 2, 3, 4, 5, 6]
+      .map((i) => {
+        const x = 510 + (i - 1) * 36;
+        if (i < n) return losango(x, LC);
+        if (i === n)
+          return `<rect x="-15" y="-15" width="30" height="30" rx="6" fill="none" stroke="${L}" stroke-width="3" opacity="0.5" transform="translate(${x} 548) rotate(45)"/><rect x="-9" y="-9" width="18" height="18" rx="3" fill="${L}" transform="translate(${x} 548) rotate(45)"/>`;
+        return losango(x, "#2a3c80");
+      })
+      .join("");
+  const pontos = ia ? pontosIa : pontosSite;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <rect width="1200" height="675" fill="${N}"/>
   <pattern id="p" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="16" cy="16" r="2" fill="#1d2c66"/></pattern>
@@ -302,13 +346,21 @@ export const CAPAS = [
     arte: "pino",
     alt: "Ilustração de um mapa simplificado com um pino laranja marcando o local do negócio e uma fileira de estrelas de avaliação.",
   },
+  // Roteiro "Criar site com IA" (migration dos guias de IA; régua própria com losangos)
+  {
+    slug: "criar-site-com-ia-do-jeito-certo",
+    trilha: "ia",
+    etapa: "planejar",
+    arte: "fluxo",
+    alt: "Ilustração de um ciclo de cinco caixas ligadas por setas dentro de uma janela de navegador: plano, pedido à IA, partes pequenas, revisão aprovada e versão salva.",
+  },
 ];
 
 function validar(capas) {
   const erros = [];
   for (const c of capas) {
     if (!/^[a-z0-9-]+$/.test(c.slug)) erros.push(`${c.slug}: slug inválido`);
-    if (!(c.etapa in ETAPAS)) erros.push(`${c.slug}: etapa desconhecida (${c.etapa})`);
+    if (!(c.etapa in (c.trilha === "ia" ? ETAPAS_IA : ETAPAS))) erros.push(`${c.slug}: etapa desconhecida (${c.etapa})`);
     if (!(c.arte in ARTES)) erros.push(`${c.slug}: arte desconhecida (${c.arte})`);
     if (c.alt.length < 60 || c.alt.length > 220) erros.push(`${c.slug}: alt com ${c.alt.length} caracteres (60 a 220)`);
     if (c.alt.includes('"') || c.alt.includes("\\")) erros.push(`${c.slug}: alt com aspas duplas ou barra invertida`);
@@ -343,7 +395,7 @@ async function main() {
   const tabela = [];
   const feitos = [];
   for (const c of alvo) {
-    const svg = Buffer.from(moldura(ARTES[c.arte](), c.etapa));
+    const svg = Buffer.from(moldura(ARTES[c.arte](), c.etapa, c.trilha));
     const semPerda = await sharp(svg).webp({ lossless: true, effort: 6 }).toBuffer();
     const comPerda = await sharp(svg).webp({ quality: 90, effort: 6, smartSubsample: true }).toBuffer();
     const melhor = semPerda.length <= comPerda.length ? semPerda : comPerda;

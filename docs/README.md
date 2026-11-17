@@ -52,7 +52,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
 | 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
 | 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
-| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; F2 a F6 esperam as 9 perguntas do plano) |
+| 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F2 capas em andamento**: 1ª capa de amostra pronta, aguardando ok) |
 | 2 | Mais ferramentas: está fora do ar? (precisa de servidor), orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -67,7 +67,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    `AI_INTEREST_TOPIC` e `GENERIC_AI_OFF` em `topic.ts`, BOOST, guia do redator; 41 casos de teste certos, com a notícia de Harvard passando); **F2** capas (régua do roteiro com losangos) — M, seg 23/11;
    **F3+F4** hub `/criar-site-com-ia` + 8 guias "Com IA" + menu "Site com IA" + aviso editorial — G, ter 24 e qua 25/11
    (push único); **F5** gerador de prompt — M, dom 29/11; **F6** gerador de arquivo de instruções — M, depois.
-   Antes da F3/F4, o dono responde as perguntas em aberto do plano.
+   As 9 perguntas do plano foram aprovadas com as recomendações (2026-11-17).
 3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
    "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
    (pelo painel ou migration de UPDATE).
@@ -83,12 +83,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
 - Excluir a notícia da Nvidia em `/admin/materias` (a de Harvard fica).
-- **Responder as 9 perguntas do plano de IA** ([ia-desenvolvimento.md](ia-desenvolvimento.md), fim do arquivo; cada uma tem
-  recomendação): estrutura (hub + tag), nome no menu, card na home, **revisão humana dos 8 guias** (ler em até 3 dias pelo
-  painel), citar que o CriaSite foi feito com assistente de código, ordem das ferramentas, fontes de fornecedores e
-  Tecnoblog, "Leia também" por família e até onde vai a "IA em geral" no robô. Bloqueia a F3/F4 (a F1 do robô pode seguir
-  com as recomendações, se você não responder antes).
-- Quando a F2 for feita: aprovar a 1ª capa do roteiro de IA (régua com losangos e faísca) antes das outras 7.
+- Plano de IA: as 9 recomendações foram aprovadas (2026-11-17). Compromisso: **ler os 8 guias de IA em até 3 dias após a publicação**
+  (pelo painel), porque a política editorial dirá "revisão humana".
+- **Agora:** aprovar a 1ª capa do roteiro de IA (`public/capas/criar-site-com-ia-do-jeito-certo.webp`, régua com losangos e faísca) antes das outras 7.
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 

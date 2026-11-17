@@ -2,7 +2,13 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
-## 2026-11-17 — Novo eixo "criar site com IA" (plano; perguntas ao dono pendentes)
+## 2026-11-17 — Novo eixo "criar site com IA" (plano; 9 recomendações aprovadas pelo dono)
+
+- **Aprovado ("aprovo as recomendações", 2026-11-17):** as 9 recomendações do planejador valem como estão: hub + tag "Com IA" (sem
+  editoria nova), menu "Site com IA", só um card no `aside` da home, 8 guias publicados direto com o dono lendo em até 3 dias pelo
+  painel (a política pode dizer "revisão humana"), citar que o CriaSite foi feito com assistente de código, ferramentas na ordem
+  gerador de prompt e depois gerador de arquivo de instruções, fontes de fornecedores com peso baixo (Tecnoblog em teste por 2
+  semanas), "Leia também" por família e o corte da "IA em geral" no robô como o planejador definiu.
 
 - **O quê (proposta do planejador, plano em `ia-desenvolvimento.md`):** os guias de IA ficam na seção `guias` (mesmas
   URLs `/guias/<slug>`, mesmo validador) com `tag = 'Com IA'` (kicker e pílula no card), e ganham uma página-hub
