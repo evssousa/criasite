@@ -57,9 +57,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 ## Próximos passos
 
 1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). A fonte The Verge IA **fica** (decisão do dono,
-   2026-11-17): com o filtro, só passa com assunto de sites. Falta, no painel, arquivar as 2 notícias fora do assunto que saíram
-   antes do filtro (Nvidia e "Harvard revela alto impacto ambiental de data centers para IA") em `/admin/materias`: arquivar é
-   reversível e mantém o site coerente em um único tema (bom para o leitor e para a avaliação do AdSense).
+   2026-11-17): com o filtro, só passa com assunto de sites. Decisão do dono (2026-11-17): a notícia da **Nvidia** será excluída por ele
+   no painel; a de **Harvard sobre IA e data centers fica**, porque o site também terá assuntos de IA (por isso o filtro de assunto
+   precisa deixar entrar IA aplicada a sites e a IA em geral que interesse a quem cria sites: ver `docs/ia-desenvolvimento.md`).
 2. **Novo eixo: desenvolvimento de sites com IA** (pedido do dono, 2026-11-17: assunto em alta; skills interessantes, jeito
    correto de desenvolver com IA, dicas). Planejamento com o `planejador` em `docs/ia-desenvolvimento.md` (guias, notícias,
    ferramentas, trilha, fontes do robô e ajuste do filtro de assunto para não barrar esse tema).
@@ -77,7 +77,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
-- Arquivar as 2 notícias fora do assunto (Nvidia e Harvard) em `/admin/materias` (ver Próximos passos, item 1).
+- Excluir a notícia da Nvidia em `/admin/materias` (a de Harvard fica).
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
