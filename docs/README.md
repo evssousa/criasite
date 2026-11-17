@@ -82,9 +82,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
 - Excluir a notícia da Nvidia em `/admin/materias` (a de Harvard fica).
-- **Depois do deploy (F4):** abrir `/criar-site-com-ia` e os 8 guias em `/guias`; enviar `/criar-site-com-ia` ao Search Console (inspeção de URL); conferir que o menu mostra "Site com IA".
-- Plano de IA: as 9 recomendações foram aprovadas (2026-11-17). Compromisso: **ler os 8 guias de IA em até 3 dias após a publicação**
-  (pelo painel), porque a política editorial dirá "revisão humana".
+- ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
