@@ -32,7 +32,9 @@ Todas rodam no navegador: nada do que o visitante digita ou envia vai para o ser
 
 ## Próximas (por ordem de volume de busca e de uso recorrente)
 
-- Está fora do ar? (precisa de servidor: rota que testa o endereço; cuidado com abuso e SSRF, limitar por IP e bloquear endereços internos).
+- Está fora do ar? **Plano pronto** em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) (2026-11-17): 1ª ferramenta com
+  servidor (`/api/fora-do-ar`), DNS validado e fixado, só cabeçalhos, limites por IP/alvo/global em memória, categoria
+  `tecnico`, etapa Lançamento da trilha. Ao executar, mudar a frase do topo desta página (exceção ao "tudo no navegador").
 - Orçamento de site para freelancer (salvo no navegador, exporta texto/PDF).
 - Gerador de paleta de cores a partir de uma imagem ou cor base; pares de fontes.
 - Gerador de slug, minificador de HTML/CSS, regras de redirecionamento (.htaccess).

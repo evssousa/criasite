@@ -2,6 +2,21 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-17 — Ferramenta "Está fora do ar?" (plano)
+
+- **O quê (proposta do planejador, plano em `ferramenta-fora-do-ar.md`):** 1ª ferramenta que usa o servidor. Resource
+  route `api/fora-do-ar` (POST com JSON, no padrão de `api/view`), sem mexer no Express e sem banco. Checagem com
+  `node:http/https` conectando **no IP já validado** (DNS resolvido uma vez; qualquer IP interno derruba a checagem),
+  só GET com leitura dos cabeçalhos, até 5 redirecionamentos revalidados, 9 s no total, IP literal e portas não padrão
+  bloqueados. Limites em memória: 5/min e 30/h por IP, cache de 30 s e 4/min por alvo, 60/min e 8 simultâneas no global.
+  Os IPs resolvidos não voltam ao navegador. Histórico só no navegador (`criasite_checagens`, 5 itens).
+- **Privacidade:** endereço digitado não vai para banco nem log; fica na memória até 1 min (IP até 1 h). Privacidade,
+  termos, sobre, FAQ e `/ferramentas` ganham a exceção ao "tudo roda no navegador" (textos exatos no plano).
+- **Por quê:** o navegador não consegue checar outro site (CORS); a ferramenta é a de maior busca da lista, e o risco
+  (SSRF, virar proxy ou DDoS) se resolve com regras fechadas e testáveis, sem custo nem serviço externo.
+- **Pendente do dono:** 6 perguntas com recomendação (cabeçalho do IP real, lado padrão do "O que fazer", limites,
+  plano B em http, cabeçalho Server, monitoramento futuro).
+
 ## 2026-11-17 — Roteiro "Criar site com IA" no ar (F3+F4)
 
 - **Feito:** hub `/criar-site-com-ia` (6 etapas, regras de ouro, progresso em `localStorage`), menu "Site com IA", card na home e box na

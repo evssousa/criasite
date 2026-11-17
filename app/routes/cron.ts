@@ -5,6 +5,7 @@
 //   GET /api/cron/paginas?token=...   testa, fonte por fonte, se a página da notícia abre do servidor
 //   GET /api/cron/fontes?token=...    pautas por fonte e situação nos últimos 7 dias (diagnóstico)
 //   GET /api/cron/status?token=...    últimas execuções
+//   GET /api/cron/cabecalhos?token=... mostra os cabeçalhos de IP que a Hostinger repassa (diagnóstico, sem gravar nada)
 // Parâmetros de publicar: dry=1 (gera sem gravar), force=1 (ignora horário/limite/intervalo),
 // refazer=<id do post> (reescreve um post do robô com as regras atuais, mesmo endereço).
 //
@@ -37,6 +38,14 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 
   if (params.job === "status") return Response.json(await recentRuns(Number(url.searchParams.get("n")) || 10), { headers });
   if (params.job === "fontes") return Response.json(await feedStats(), { headers });
+  if (params.job === "cabecalhos") {
+    // Diagnóstico para a ferramenta "Está fora do ar?": mostra qual cabeçalho traz o IP real de quem chama (limite por IP).
+    const h = (k: string) => request.headers.get(k);
+    return Response.json(
+      { xff: h("x-forwarded-for"), xRealIp: h("x-real-ip"), cfConnectingIp: h("cf-connecting-ip"), trueClientIp: h("true-client-ip"), forwarded: h("forwarded"), via: h("via") },
+      { headers },
+    );
+  }
 
   let job: () => Promise<JobResult>;
   if (params.job === "coletar") job = collect;
