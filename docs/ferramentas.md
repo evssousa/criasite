@@ -16,6 +16,7 @@ Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver 
 | Gerador de favicon | `/ferramentas/gerador-favicon` | canvas → PNGs 16/32/48/180/192/512; `favicon.ico` montado à mão com 16, 32 e 48 (PNG dentro do ICO); opções de encaixe, fundo e cantos; código HTML pronto |
 | Sitemap e robots.txt | `/ferramentas/sitemap-robots` | lista de caminhos ou URLs → `sitemap.xml` (com `lastmod` opcional, URLs de outro domínio ignoradas, duplicadas removidas) e `robots.txt` com `Disallow` e a linha do sitemap |
 | Está fora do ar? | `/ferramentas/esta-fora-do-ar` | servidor (`/api/fora-do-ar`, POST): DNS validado e fixado, conexão no IP validado, só cabeçalhos, até 5 redirecionamentos, 9 s, bloqueio de redes internas (SSRF), limites por IP, alvo e global em memória, cache de 30 s; histórico das últimas 5 checagens em `criasite_checagens` (só no navegador); "O que fazer agora" por caso, para dono e visitante |
+| Arquivo de instruções | `/ferramentas/arquivo-de-instrucoes-ia` | campos (projeto, público, tecnologias em chips, 4 comandos, pastas, 13 regras prontas + livres, documentação) → Markdown ao vivo (função pura em `lib/instrucoes/build.ts`, escapes contra títulos e blocos injetados); copiar e baixar como AGENTS.md, CLAUDE.md ou nome validado; detector de segredos colados (`lib/segredos.ts`) bloqueia copiar/baixar; medidor de linhas (aviso acima de 120); rascunho em `criasite_instrucoes` |
 | Status HTTP | `/ferramentas/status-http` | referência de 19 códigos com significado e "o que fazer no seu site"; filtro por família e busca (número casa pelo começo do código) |
 | Tamanhos de imagem | `/ferramentas/tamanhos-de-imagem` | tabela de 21 medidas (site, Instagram, Facebook/LinkedIn/X/WhatsApp, YouTube) com proporção; toque copia a medida. São medidas de referência: as redes mudam, a página avisa |
 
@@ -33,6 +34,7 @@ Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver 
 
 ## Próximas (por ordem de volume de busca e de uso recorrente)
 
+- Gerador de prompt para site (F5, `/ferramentas/prompt-para-site`): ver [ia-desenvolvimento.md](ia-desenvolvimento.md), seção E.
 - Orçamento de site para freelancer (salvo no navegador, exporta texto/PDF).
 - Gerador de paleta de cores a partir de uma imagem ou cor base; pares de fontes.
 - Gerador de slug, minificador de HTML/CSS, regras de redirecionamento (.htaccess).

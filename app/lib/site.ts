@@ -140,7 +140,8 @@ export type ToolSlug =
   | "sitemap-robots"
   | "status-http"
   | "tamanhos-de-imagem"
-  | "esta-fora-do-ar";
+  | "esta-fora-do-ar"
+  | "arquivo-de-instrucoes-ia";
 
 export interface Tool {
   slug: ToolSlug;
@@ -255,6 +256,15 @@ export const TOOLS: Tool[] = [
     description: "Veja se um site está fora do ar para todo mundo ou só para você: código HTTP, tempo de resposta, HTTPS e DNS, com o que fazer em cada caso.",
     category: "tecnico",
     keywords: "site caiu fora do ar offline down não abre não carrega teste verificar site funcionando disponibilidade uptime ping certificado ssl dns",
+  },
+  {
+    slug: "arquivo-de-instrucoes-ia",
+    title: "Gerador de arquivo de instruções para IA (AGENTS.md)",
+    short: "Arquivo de instruções",
+    hint: "AGENTS.md e CLAUDE.md prontos",
+    description: "Monte o arquivo de instruções do seu projeto para o assistente de código (AGENTS.md, CLAUDE.md): tecnologias, comandos e regras, sem enviar nada.",
+    category: "tecnico",
+    keywords: "agents.md claude.md agents claude instruções ia assistente de código agente regras do projeto contexto markdown cursor copilot gemini vibe coding prompt",
   },
   {
     slug: "tamanhos-de-imagem",
@@ -375,7 +385,7 @@ export const AI_TRACK: AiStep[] = [
     short: "Contexto",
     text: "Um arquivo de instruções com as regras do projeto evita repetir tudo a cada conversa e deixa as respostas mais previsíveis.",
     guides: ["arquivo-de-instrucoes-para-assistente-de-codigo"],
-    tools: [],
+    tools: ["arquivo-de-instrucoes-ia"],
   },
   {
     id: "pedir",

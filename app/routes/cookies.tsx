@@ -10,7 +10,7 @@ const COOKIE_TYPES = [
   {
     type: "Preferências",
     status: "Em uso",
-    use: "Guardam no seu navegador (armazenamento local) a escolha no aviso de cookies, as ferramentas favoritas e o progresso da trilha.",
+    use: "Guardam no seu navegador (armazenamento local) a escolha no aviso de cookies, as ferramentas favoritas, o progresso da trilha e os rascunhos das ferramentas que salvam o que você digitou.",
     consent: "Não precisa: só guardam o que você escolheu, e nada é enviado para nós.",
   },
   { type: "Métricas", status: "Ainda não usamos", use: "Contam visitas e páginas lidas, de forma agregada.", consent: "Sim, pedido no aviso de cookies." },

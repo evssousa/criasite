@@ -1,5 +1,5 @@
 // Preferências do visitante guardadas no navegador (localStorage): ferramentas favoritas, a
-// trilha do site no ar, o roteiro de criar site com IA e as últimas checagens do "Está fora do ar?". Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
+// trilha do site no ar, o roteiro de criar site com IA, as últimas checagens do "Está fora do ar?" e o rascunho do gerador de arquivo de instruções. Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
 // site funciona igual, só não lembra na próxima visita.
 //
 // O servidor sempre renderiza o valor padrão; o navegador lê o salvo depois de hidratar
@@ -149,4 +149,33 @@ export function useCheckHistory() {
     write(CHECKS_KEY, "[]");
   }, []);
   return { items, add, clear };
+}
+
+// ───────────── Rascunho do gerador de arquivo de instruções ─────────────
+// Não dispara o evento criasite:prefs (ninguém assina o rascunho). Nunca vai para o servidor.
+
+const INSTR_KEY = "criasite_instrucoes";
+const INSTR_MAX_CHARS = 50_000;
+
+export function loadInstrDraft(): string | null {
+  return read(INSTR_KEY);
+}
+
+/** False se o rascunho for grande demais ou se o navegador não deixar gravar. */
+export function saveInstrDraft(json: string): boolean {
+  if (json.length > INSTR_MAX_CHARS) return false;
+  try {
+    localStorage.setItem(INSTR_KEY, json);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function clearInstrDraft(): void {
+  try {
+    localStorage.removeItem(INSTR_KEY);
+  } catch {
+    // Sem armazenamento: nada a apagar.
+  }
 }

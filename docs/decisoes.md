@@ -2,6 +2,21 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-17 — F6 "Gerador de arquivo de instruções" (plano)
+
+- **O quê (proposta do planejador, plano em `ferramenta-instrucoes-ia.md`):** ferramenta 100% no navegador em
+  `/ferramentas/arquivo-de-instrucoes-ia` (categoria `tecnico`, ligada à etapa `contexto` do hub). Formulário em 5 seções
+  à vista (não em etapas) com prévia ao vivo ao lado em 1280 px e abaixo em 390 px, em forma de aba de editor com números
+  de linha. Markdown montado por função pura (`app/lib/instrucoes/build.ts`) com modelo fixo: bloco vazio some, 13 regras
+  prontas com texto exato (7 marcadas de fábrica), escapes só no começo da linha e em tags HTML. Copiar e baixar como
+  AGENTS.md, CLAUDE.md ou nome validado (sem pastas, sem ponto inicial, sem nomes reservados do Windows, sempre `.md`).
+  Medidor de linhas com aviso acima de 120. Rascunho automático em `criasite_instrucoes`.
+- **Segurança:** detector de segredos colados (`app/lib/segredos.ts`, reaproveitável pela F5) bloqueia copiar e baixar e
+  pausa o rascunho até apagar ou confirmar; aviso fixo com link para o guia de segurança; nada vai para servidor.
+- **Por quê:** a prévia ao vivo precisa de todos os campos à vista; o arquivo vai para o Git público e para a IA, então
+  segredo e Markdown quebrado são os dois erros caros; a função pura permite testar com `node` como no "fora do ar".
+- **Pendente do dono:** 8 perguntas com recomendação; depois do deploy, link no guia G3 pelo painel.
+
 ## 2026-11-17 — Ferramenta "Está fora do ar?" (plano)
 
 - **O quê (proposta do planejador, plano em `ferramenta-fora-do-ar.md`):** 1ª ferramenta que usa o servidor. Resource
@@ -16,6 +31,15 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
   (SSRF, virar proxy ou DDoS) se resolve com regras fechadas e testáveis, sem custo nem serviço externo.
 - **Pendente do dono:** 6 perguntas com recomendação (cabeçalho do IP real, lado padrão do "O que fazer", limites,
   plano B em http, cabeçalho Server, monitoramento futuro).
+
+## 2026-11-17 — Gerador de arquivo de instruções no ar (F6)
+
+- **Feito como no plano** ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md)); as 8 recomendações foram aprovadas pelo dono. A F6 foi feita **antes**
+  da F5 (gerador de prompt), porque o plano funciona nas duas ordens. `lib/segredos.ts` fica genérico para a F5 reaproveitar.
+- **Desvio:** a regra de nome do arquivo trata `../x` como caracteres inválidos (e não como "começa com ponto"), como a tabela de testes do plano pedia;
+  o ponto no começo só dá a mensagem própria quando não há barra no nome.
+- **Testes:** `node scripts/test-instrucoes.ts` (79 casos, incluindo o arquivo de ouro de 46 linhas). Tela conferida em 390 e 1280 px (exemplo, segredo
+  com confirmação, chips, download, nome inválido, medidor, limpar) e nenhuma requisição ao digitar.
 
 ## 2026-11-17 — "Está fora do ar?" no ar (commits 1 e 2)
 
