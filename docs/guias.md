@@ -540,3 +540,11 @@ VALUES
 2. **Capas**: guias sem imagem usam a arte padrão. Quer capas próprias depois (ilustração simples por etapa, mesma
    paleta), ou a arte padrão basta?
 3. **Afiliado**: quando tiver o link da Hostinger, confirmar o texto do aviso (seção F) antes de publicar.
+
+## Página /guias: organização por nível (2026-11-17)
+
+A página `/guias` agrupa os guias por **nível** (Iniciante, Intermediário, Avançado) e, dentro de cada nível, segue a ordem de
+aprendizado definida em `GUIDE_ORDER` (`app/lib/site.ts`); guia que não estiver na lista vai para o fim do seu nível, por data de
+publicação; guia sem nível aparece no grupo "Outros guias". Há filtro por nível (`/guias?nivel=1|2|3`; nível inválido mostra todos).
+**Ao criar um guia novo, acrescente o slug em `GUIDE_ORDER`** (e defina o nível no painel ou na migration).
+

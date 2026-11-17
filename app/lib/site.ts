@@ -67,6 +67,38 @@ export const sectionBySlug = (slug: string) => SECTIONS.find((s) => s.slug === s
 export type GuideLevel = 1 | 2 | 3;
 export const LEVEL_LABEL: Record<GuideLevel, string> = { 1: "Iniciante", 2: "Intermediário", 3: "Avançado" };
 
+/**
+ * Ordem de aprendizado dos guias dentro de cada nível (página /guias). Guia que não estiver aqui vai para o fim do seu
+ * nível, em ordem de publicação. Ao criar um guia novo, acrescente o slug na posição certa.
+ */
+export const GUIDE_ORDER = [
+  "como-escolher-o-dominio-do-site",
+  "como-escolher-a-hospedagem-do-site",
+  "wordpress-ou-construtor-de-sites",
+  "cores-fonte-e-favicon-do-site",
+  "como-escrever-as-paginas-do-site",
+  "seo-basico-para-aparecer-no-google",
+  "https-e-certificado-ssl",
+  "perfil-da-empresa-no-google",
+  "email-com-dominio-proprio",
+  "google-search-console-passo-a-passo",
+  "site-lento-causas-e-como-otimizar-imagens",
+  "checklist-de-lancamento-do-site",
+];
+
+/** Compara dois guias: nível (do mais básico ao mais avançado), depois GUIDE_ORDER, depois data de publicação. */
+export function compareGuides(a: { level?: number; slug: string; publishedAt: string }, b: { level?: number; slug: string; publishedAt: string }) {
+  const la = a.level ?? 99;
+  const lb = b.level ?? 99;
+  if (la !== lb) return la - lb;
+  const ia = GUIDE_ORDER.indexOf(a.slug);
+  const ib = GUIDE_ORDER.indexOf(b.slug);
+  const oa = ia < 0 ? 1000 : ia;
+  const ob = ib < 0 ? 1000 : ib;
+  if (oa !== ob) return oa - ob;
+  return a.publishedAt.localeCompare(b.publishedAt);
+}
+
 // ───────────── Ferramentas ─────────────
 
 export type ToolCategoryId = "dia-a-dia" | "google" | "visual" | "freelancer" | "tecnico";
