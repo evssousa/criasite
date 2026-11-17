@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import type { Route } from "./+types/tool-contrast";
 import { Field, ToolDisclaimer, ToolLayout, ToolPanel, btnGhostCls, inputCls } from "~/components/ToolLayout";
 import { cx } from "~/components/ui";
+import { contrastRatio, normalizeHex } from "~/lib/contraste";
 import { seo } from "~/lib/seo";
 import { toolBySlug } from "~/lib/site";
 
@@ -10,27 +11,6 @@ const tool = toolBySlug("contraste-cores")!;
 
 export function meta(_: Route.MetaArgs) {
   return seo({ title: "Verificador de contraste de cores (WCAG AA e AAA)", description: tool.description, path: "/ferramentas/contraste-cores" });
-}
-
-/** "#abc", "abc", "#aabbcc" → "#aabbcc"; inválido → null. */
-function normalizeHex(v: string): string | null {
-  const m = v.trim().replace(/^#/, "").toLowerCase();
-  if (/^[0-9a-f]{3}$/.test(m)) return `#${m[0]}${m[0]}${m[1]}${m[1]}${m[2]}${m[2]}`;
-  if (/^[0-9a-f]{6}$/.test(m)) return `#${m}`;
-  return null;
-}
-
-function luminance(hex: string) {
-  const [r, g, b] = [1, 3, 5].map((i) => {
-    const v = parseInt(hex.slice(i, i + 2), 16) / 255;
-    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
-  });
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-
-function ratio(a: string, b: string) {
-  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
-  return (hi + 0.05) / (lo + 0.05);
 }
 
 const CHECKS = [
@@ -64,7 +44,7 @@ export default function ContrastTool() {
   const [bg, setBg] = useState("#ffffff");
   const f = normalizeHex(fg);
   const b = normalizeHex(bg);
-  const r = f && b ? ratio(f, b) : null;
+  const r = f && b ? contrastRatio(f, b) : null;
 
   return (
     <ToolLayout
