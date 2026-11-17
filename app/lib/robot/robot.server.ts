@@ -76,6 +76,8 @@ const BOOST: [RegExp, number][] = [
   [/\b(wordpress|woocommerce|wix|shopify|squarespace|elementor|gutenberg|hostinger)\b/i, 10],
   [/\b(chrome|safari|firefox|https|ssl|webp|avif|accessibility|wcag)\b/i, 6],
   [/\b(brasil|brazil|brazilian|lgpd|pix)\b/i, 10],
+  // IA aplicada a sites: peso baixo de propósito (menor que Google e segurança) para a IA não dominar o feed.
+  [/\b(coding (assistant|agent)s?|ai coding|vibe[- ]?cod\w*|model context protocol|mcp|agentic|agent skills)\b/i, 8],
 ];
 
 function scoreItem(title: string, weight: number) {

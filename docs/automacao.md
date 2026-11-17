@@ -14,8 +14,11 @@ Cron Jobs da Hostinger (depois do deploy; horários desencontrados dos outros si
 
 1. **Coleta**: lê os feeds ativos (`feeds`), descarta pela regra de `app/lib/robot/topic.ts` (`skipReason`): tipo de texto
    (patrocinado, listas de "melhores", cupom, podcast/webinar, opinião, newsletter) e **assunto** (chips e hardware, aparelhos,
-   bolsa, criptomoedas, política e guerra, esporte e entretenimento, troca de CEO). Fonte genérica (`GENERIC_FEEDS`, hoje só
-   The Verge IA) só entra se o título ou o início do resumo tiver assunto de sites. A fila que já existia também é revista
+   bolsa, criptomoedas, política e guerra, esporte e entretenimento, troca de CEO). Fonte genérica (`GENERIC_FEEDS`: The Verge IA, GitHub Blog (IA), OpenAI News,
+   Vercel Blog e Tecnoblog) só entra se o título ou o início do resumo tiver assunto de sites (`SITE_TOPIC`), IA para criar e programar
+   sites (`AI_DEV_TOPIC`: assistentes e agentes de código, MCP, skills, vibe coding) ou IA em geral que interessa a quem tem site
+   (`AI_INTEREST_TOPIC`: impacto ambiental e data centers, IA na busca, conteúdo feito com IA); regulação, processos, compra de
+   empresas, AGI e chips continuam barrados (`GENERIC_AI_OFF`). A fila que já existia também é revista
    a cada coleta (`reviewQueue`). Testado em 2026-11-16 com 18 títulos reais e inventados. A coleta também dá pontos (`BOOST`: lançamento,
    atualização do Google/Search Console/Core Web Vitals, falha de segurança, WordPress/Shopify/Wix,
    Chrome/HTTPS/WebP, Brasil/LGPD).
@@ -42,3 +45,12 @@ RSS chegava): fontes que não rendem texto saem ou perdem peso pelo painel `/adm
 Notícia para quem tem site pequeno: o que mudou e o que muda para o site dele. Sem promessa de
 resultado, sem tom de propaganda, falha de segurança com quem é afetado e qual versão corrige, nada
 inventado, 400+ palavras, links só das listas permitidas.
+
+## Fontes de IA (migration 007, 2026-11-17)
+
+Feeds conferidos com curl: GitHub Blog (categoria IA, peso 6), Make WordPress AI (6), OpenAI News (4), Vercel Blog (4) e Tecnoblog
+(pt-BR, 3). Ficaram de fora: Anthropic (não tem RSS oficial) e Google Developers Blog (itens sem data: o robô descarta). `BOOST` de IA
+aplicada a sites é 8, menor que o de Google (14) e segurança (12), de propósito. Se em 2 semanas mais da metade das notícias for de IA,
+baixar os pesos em `/admin/fontes`. Casos de teste do filtro (41, todos certos em 2026-11-17): títulos que passam (Copilot abrindo pull
+request, MCP, Claude Code com skills, vibe coding, impacto dos data centers) e que são barrados (chips, regulação, investimento, voz do
+ChatGPT, Copilot do Windows, compra de empresa de IA).

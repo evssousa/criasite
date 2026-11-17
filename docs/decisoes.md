@@ -2,6 +2,25 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-17 — Novo eixo "criar site com IA" (plano; perguntas ao dono pendentes)
+
+- **O quê (proposta do planejador, plano em `ia-desenvolvimento.md`):** os guias de IA ficam na seção `guias` (mesmas
+  URLs `/guias/<slug>`, mesmo validador) com `tag = 'Com IA'` (kicker e pílula no card), e ganham uma página-hub
+  `/criar-site-com-ia` com um roteiro de 6 etapas (planejar, contexto, pedir, revisar, publicar, ir além) e checklist no
+  navegador (`criasite_trilha_ia`). Sem editoria nova e sem segunda faixa na home: um card no `aside` e um box no fim da
+  `/trilha`. Menu ganha "Site com IA". "Leia também" dos guias passa a sugerir a mesma família (tag).
+- **1ª leva de IA:** 8 guias (jeito certo, prompt, arquivo de instruções, skills, MCP, segurança, revisão de código,
+  SEO/acessibilidade/velocidade), texto atemporal: produtos só como exemplo neutro em grupo, sem preço, versão, data,
+  porcentagem ou ranking; o que muda manda conferir na documentação oficial.
+- **Capas:** mesma moldura, com régua própria do roteiro (6 losangos e uma faísca) para diferenciar da trilha.
+- **Robô:** fontes de IA aplicada a sites (conferidas com curl antes da migration), filtro com `AI_DEV_TOPIC` e
+  `AI_INTEREST_TOPIC` para fontes genéricas e `GENERIC_AI_OFF` (regulação, justiça, negócios, AGI). Data centers e
+  impacto ambiental da IA **entram**, por decisão do dono (a notícia de Harvard fica; a da Nvidia sai).
+- **Transparência:** política editorial diz que as notícias são escritas por IA e que os guias são escritos com apoio de
+  IA e revisados antes de publicar (a palavra "humana" só se o dono de fato ler os guias).
+- **Por quê:** pedido do dono (assunto em alta, pouca gente sabe fazer direito); reaproveita rota, validador e capas
+  existentes; uma página forte para "criar site com IA" sem misturar as duas jornadas.
+
 ## 2026-11-15 — Capas próprias dos guias e 2ª leva (planos)
 
 - **Capas (plano em `capas.md`):** arte vetorial desenhada em SVG num script Node (`scripts/make-capas.mjs`, `sharp`
