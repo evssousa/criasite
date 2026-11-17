@@ -141,6 +141,7 @@ export type ToolSlug =
   | "status-http"
   | "tamanhos-de-imagem"
   | "esta-fora-do-ar"
+  | "prompt-para-site"
   | "arquivo-de-instrucoes-ia";
 
 export interface Tool {
@@ -258,13 +259,22 @@ export const TOOLS: Tool[] = [
     keywords: "site caiu fora do ar offline down não abre não carrega teste verificar site funcionando disponibilidade uptime ping certificado ssl dns",
   },
   {
+    slug: "prompt-para-site",
+    title: "Gerador de prompt para criar site com IA",
+    short: "Prompt para site",
+    hint: "o pedido certo para a IA",
+    description: "Monte o pedido (prompt) para a IA criar o seu site: negócio, páginas, cores com contraste conferido, tecnologia e restrições, sem enviar nada.",
+    category: "dia-a-dia",
+    keywords: "prompt para criar site gerar prompt gerador de prompt pedido para ia chatgpt gemini claude criar site com ia vibe coding modelo de prompt briefing landing page",
+  },
+  {
     slug: "arquivo-de-instrucoes-ia",
     title: "Gerador de arquivo de instruções para IA (AGENTS.md)",
     short: "Arquivo de instruções",
     hint: "AGENTS.md e CLAUDE.md prontos",
     description: "Monte o arquivo de instruções do seu projeto para o assistente de código (AGENTS.md, CLAUDE.md): tecnologias, comandos e regras, sem enviar nada.",
     category: "tecnico",
-    keywords: "agents.md claude.md agents claude instruções ia assistente de código agente regras do projeto contexto markdown cursor copilot gemini vibe coding prompt",
+    keywords: "agents.md claude.md agents claude instruções ia assistente de código agente regras do projeto contexto markdown cursor copilot gemini vibe coding",
   },
   {
     slug: "tamanhos-de-imagem",
@@ -393,7 +403,7 @@ export const AI_TRACK: AiStep[] = [
     short: "Pedir",
     text: "Uma página ou uma mudança por pedido, com objetivo, público e restrições. Salve uma versão antes de cada pedido para poder voltar.",
     guides: ["prompt-para-criar-site-com-ia"],
-    tools: ["contraste-cores"],
+    tools: ["prompt-para-site", "contraste-cores"],
   },
   {
     id: "revisar",
@@ -443,7 +453,7 @@ export const DOC_PAGES: DocPage[] = [
   { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-14" },
   { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-17" },
   { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-17" },
-  { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-14" },
+  { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-17" },
   { to: "/acessibilidade", label: "Acessibilidade", group: "legal", updated: "2026-11-14" },
   { to: "/mapa-do-site", label: "Mapa do site", group: "legal", updated: "2026-11-14" },
 ];

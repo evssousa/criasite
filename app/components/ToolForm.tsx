@@ -1,11 +1,12 @@
 // Peças comuns dos geradores (arquivo de instruções e prompt para site): ícones, caixa de campo, seção numerada,
 // mensagem e cartão de segredo, status do rascunho e download. Moradas aqui para não duplicar o código entre as ferramentas.
-import type { ReactNode } from "react";
+import { useRef, type KeyboardEvent, type ReactNode } from "react";
+import { cx } from "~/components/ui";
 import type { SecretHit } from "~/lib/segredos";
 
 // ───────────── Ícones (SVG inline, sem biblioteca) ─────────────
 
-export type IconName = "check" | "x" | "alert" | "lock" | "file" | "disk" | "info";
+export type IconName = "check" | "x" | "alert" | "lock" | "file" | "disk" | "info" | "plus" | "chat" | "arrow";
 
 export function Icon({ name, size = 16 }: { name: IconName; size?: number }) {
   const p = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
@@ -41,6 +42,24 @@ export function Icon({ name, size = 16 }: { name: IconName; size?: number }) {
         <svg {...p}>
           <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" />
           <path d="M14 3v5h5" />
+        </svg>
+      );
+    case "plus":
+      return (
+        <svg {...p}>
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      );
+    case "chat":
+      return (
+        <svg {...p}>
+          <path d="M4 5h16v11H9l-5 4V5Z" />
+        </svg>
+      );
+    case "arrow":
+      return (
+        <svg {...p}>
+          <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>
       );
     case "disk":
@@ -169,5 +188,97 @@ export function DraftStatus({ status }: { status: "none" | "saved" | "nostorage"
         </span>
       )}
     </span>
+  );
+}
+
+/** Escolha única (radio) em pílulas ou cartões, com roving tabindex e setas que já marcam. */
+export function RadioGroup<T extends string>({
+  labelledBy,
+  options,
+  value,
+  onChange,
+  variant,
+  className,
+  allowClear,
+}: {
+  labelledBy: string;
+  options: { v: T; label: string; desc?: string; visual?: ReactNode }[];
+  value: T | "";
+  onChange: (v: T | "") => void;
+  variant: "pill" | "card";
+  className?: string;
+  allowClear?: boolean;
+}) {
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const checkedIndex = options.findIndex((o) => o.v === value);
+  function onKey(e: KeyboardEvent<HTMLButtonElement>, i: number) {
+    const forward = e.key === "ArrowRight" || e.key === "ArrowDown";
+    const back = e.key === "ArrowLeft" || e.key === "ArrowUp";
+    if (!forward && !back) return;
+    e.preventDefault();
+    const next = (i + (forward ? 1 : options.length - 1)) % options.length;
+    onChange(options[next].v);
+    refs.current[next]?.focus();
+  }
+  return (
+    <div className="flex flex-col gap-2">
+      <div role="radiogroup" aria-labelledby={labelledBy} className={className ?? (variant === "pill" ? "flex flex-wrap gap-2" : "grid grid-cols-2 gap-3")}>
+        {options.map((o, i) => {
+          const on = o.v === value;
+          return (
+            <button
+              key={o.v}
+              ref={(el) => {
+                refs.current[i] = el;
+              }}
+              type="button"
+              role="radio"
+              aria-checked={on}
+              tabIndex={on || (checkedIndex < 0 && i === 0) ? 0 : -1}
+              onClick={() => onChange(o.v)}
+              onKeyDown={(e) => onKey(e, i)}
+              className={
+                variant === "pill"
+                  ? cx(
+                      "inline-flex min-h-10 items-center gap-1.5 rounded-full border px-4 text-sm font-bold transition-colors",
+                      on ? "border-brand bg-brand text-white" : "border-night-line-2 bg-night-2 text-moon hover:bg-night-3",
+                    )
+                  : cx("relative flex min-h-11 flex-col items-start gap-2 rounded-2xl border p-3 text-left transition-colors", on ? "border-brand bg-brand/10" : "border-night-line-2 bg-night-2 hover:bg-night-3")
+              }
+            >
+              {variant === "pill" ? (
+                <>
+                  {on && <Icon name="check" size={14} />}
+                  {o.label}
+                </>
+              ) : (
+                <>
+                  {on && (
+                    <span className="absolute top-2.5 right-2.5 z-10 grid h-[22px] w-[22px] place-items-center rounded-full bg-brand text-white">
+                      <Icon name="check" size={14} />
+                    </span>
+                  )}
+                  {o.visual}
+                  <span className="pr-7 text-[15px] leading-snug font-bold">{o.label}</span>
+                  {o.desc && <span className="text-xs leading-snug text-moon-muted">{o.desc}</span>}
+                </>
+              )}
+            </button>
+          );
+        })}
+      </div>
+      {allowClear && value !== "" && (
+        <button
+          type="button"
+          onClick={() => {
+            onChange("");
+            refs.current[0]?.focus();
+          }}
+          className="min-h-10 w-fit text-sm font-bold text-moon-muted underline-offset-4 hover:text-moon hover:underline"
+        >
+          Limpar escolha
+        </button>
+      )}
+    </div>
   );
 }

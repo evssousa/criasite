@@ -1,5 +1,5 @@
 // Preferências do visitante guardadas no navegador (localStorage): ferramentas favoritas, a
-// trilha do site no ar, o roteiro de criar site com IA, as últimas checagens do "Está fora do ar?" e o rascunho do gerador de arquivo de instruções. Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
+// trilha do site no ar, o roteiro de criar site com IA, as últimas checagens do "Está fora do ar?" e os rascunhos dos geradores de prompt e de arquivo de instruções. Nada vai para o servidor. Sem localStorage (aba anônima, bloqueio), o
 // site funciona igual, só não lembra na próxima visita.
 //
 // O servidor sempre renderiza o valor padrão; o navegador lê o salvo depois de hidratar
@@ -175,6 +175,35 @@ export function saveInstrDraft(json: string): boolean {
 export function clearInstrDraft(): void {
   try {
     localStorage.removeItem(INSTR_KEY);
+  } catch {
+    // Sem armazenamento: nada a apagar.
+  }
+}
+
+// ───────────── Rascunho do gerador de prompt para site ─────────────
+// Mesmo estilo do rascunho de instruções: não dispara o evento criasite:prefs e nunca vai para o servidor.
+
+const PROMPT_KEY = "criasite_prompt_site";
+const PROMPT_MAX_CHARS = 20_000;
+
+export function loadPromptDraft(): string | null {
+  return read(PROMPT_KEY);
+}
+
+/** False se o rascunho for grande demais ou se o navegador não deixar gravar. */
+export function savePromptDraft(json: string): boolean {
+  if (json.length > PROMPT_MAX_CHARS) return false;
+  try {
+    localStorage.setItem(PROMPT_KEY, json);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function clearPromptDraft(): void {
+  try {
+    localStorage.removeItem(PROMPT_KEY);
   } catch {
     // Sem armazenamento: nada a apagar.
   }

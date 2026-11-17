@@ -69,10 +69,10 @@ const sections: DocSection[] = [
               </tr>
               <tr>
                 <td>Ferramentas favoritas, progresso da trilha e rascunhos das ferramentas</td>
-                <td>Quando você fixa uma ferramenta, marca uma etapa da trilha ou preenche o gerador de arquivo de instruções.</td>
+                <td>Quando você fixa uma ferramenta, marca uma etapa da trilha ou preenche os geradores de prompt e de arquivo de instruções.</td>
                 <td>
-                  Lembrar as suas escolhas e o seu rascunho na próxima visita. Ficam só no armazenamento local do seu navegador (localStorage); não chegam até nós. O rascunho do
-                  gerador de arquivo de instruções pode ser apagado a qualquer momento no botão “Limpar tudo” da ferramenta.
+                  Lembrar as suas escolhas e os seus rascunhos na próxima visita. Ficam só no armazenamento local do seu navegador (localStorage); não chegam até nós. Os rascunhos dos
+                  geradores podem ser apagados a qualquer momento no botão “Limpar tudo” de cada ferramenta.
                 </td>
               </tr>
               <tr>

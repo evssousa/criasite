@@ -23,6 +23,7 @@ export default [
   route("ferramentas/sitemap-robots", "routes/tool-sitemap.tsx"),
   route("ferramentas/status-http", "routes/tool-status.tsx"),
   route("ferramentas/esta-fora-do-ar", "routes/tool-uptime.tsx"),
+  route("ferramentas/prompt-para-site", "routes/tool-prompt-site.tsx"),
   route("ferramentas/arquivo-de-instrucoes-ia", "routes/tool-instructions.tsx"),
   route("ferramentas/tamanhos-de-imagem", "routes/tool-sizes.tsx"),
   route("criar-site-com-ia", "routes/ai-track.tsx"),

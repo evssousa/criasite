@@ -484,7 +484,7 @@ export default function ToolInstructions() {
             as regras importantes se perdem no meio. Se o arquivo cresceu, corte o que o assistente descobre sozinho lendo o código e transforme procedimentos longos, usados só de
             vez em quando, em <Link to="/guias/skills-para-assistentes-de-ia">skills</Link>. O que colocar e o que deixar de fora está no guia{" "}
             <Link to="/guias/arquivo-de-instrucoes-para-assistente-de-codigo">arquivo de instruções para IA</Link>; com as regras prontas, o próximo passo do roteiro é{" "}
-            <Link to="/criar-site-com-ia#pedir">pedir em partes pequenas</Link>.
+            <Link to="/criar-site-com-ia#pedir">pedir em partes pequenas</Link>, com a ajuda do <Link to="/ferramentas/prompt-para-site">gerador de prompt</Link>.
           </p>
           <h2>Perguntas frequentes</h2>
           {FAQ.map((f) => (

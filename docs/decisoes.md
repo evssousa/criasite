@@ -51,6 +51,16 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 - **Pendente do dono:** 6 perguntas com recomendação (cabeçalho do IP real, lado padrão do "O que fazer", limites,
   plano B em http, cabeçalho Server, monitoramento futuro).
 
+## 2026-11-17 — Gerador de prompt para site no ar (F5)
+
+- **Feito como no plano** ([ferramenta-prompt-site.md](ferramenta-prompt-site.md)); as 10 recomendações foram aprovadas pelo dono. Em 2 commits de código:
+  a refatoração (peças comuns em `components/ToolForm.tsx` e conta de contraste em `lib/contraste.ts`, conferida na F6 e no verificador antes do push) e a ferramenta.
+- **Números:** o exemplo gera 47 linhas e 425 palavras; o estado inicial, 20 linhas e 174 palavras; 80 testes puros em `scripts/test-prompt-site.ts`.
+- **Desvios:** (1) o nome `../x` dá a mensagem de caracteres inválidos (como na F6); (2) o selo de marcado dos cartões de escolha ganhou `z-10`, porque a miniatura do
+  clima (posicionada depois dele) o escondia; (3) `/cookies` só teve a data corrigida para 2026-11-17 (o texto já era genérico desde a F6).
+- **Testes de tela:** exemplo, cores (normalização, aviso de contraste, cor inválida), injeção, segredo com confirmação, baixar .txt/.md, nome inválido, tecnologia
+  construtor, setas e "Limpar escolha", medidor longo e limpar; nenhuma requisição ao digitar.
+
 ## 2026-11-17 — Gerador de arquivo de instruções no ar (F6)
 
 - **Feito como no plano** ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md)); as 8 recomendações foram aprovadas pelo dono. A F6 foi feita **antes**

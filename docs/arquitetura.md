@@ -20,6 +20,7 @@ app/
   routes/                páginas, ferramentas (tool-*.tsx), trilha, resource routes (sitemap, rss, robots, ads.txt)
   components/
     directory.tsx        diretório de ferramentas com estrela, "Suas ferramentas", faixa da trilha, botão de favoritar
+    ToolForm.tsx         peças comuns dos geradores (seções, campos, ícones, escolha única, cartão de segredo, status do rascunho)
     ToolLayout.tsx       moldura das ferramentas: título, painel marinho, texto explicativo, outras ferramentas
     Header, Footer, cards, StaticPage, RichText, CookieConsent, ui, admin-ui
   lib/
@@ -29,6 +30,8 @@ app/
     content.server.ts    API de dados usada pelas rotas
     repo/                contrato das fontes + mock (mock-data.ts, fictício) + MySQL
     instrucoes/          gerador de arquivo de instruções (puro, sem React; ver ferramenta-instrucoes-ia.md)
+    prompt-site/         gerador de prompt para site (puro, sem React; ver ferramenta-prompt-site.md)
+    contraste.ts         conta de contraste WCAG (pura; verificador de contraste e gerador de prompt)
     segredos.ts          detector de segredos colados em campos (puro)
     uptime/              ferramenta "Está fora do ar?": guarda anti-SSRF, checagem, limites, textos do laudo (ver ferramenta-fora-do-ar.md)
     robot/               robô de notícias (coleta, Gemini, qualidade, mídia)
@@ -44,7 +47,7 @@ docs/                    este plano
 |---|---|
 | `/` | Home: busca grande, atalhos, faixa da trilha, Suas ferramentas, diretório, notícias e guias novos |
 | `/ferramentas` | Diretório completo com filtro |
-| `/ferramentas/{comprimir-imagem,converter-imagem,qr-code,link-whatsapp,contador-de-caracteres,meta-tags,contraste-cores,gerador-favicon,sitemap-robots,status-http,esta-fora-do-ar,arquivo-de-instrucoes-ia,tamanhos-de-imagem}` | Ferramentas |
+| `/ferramentas/{comprimir-imagem,converter-imagem,qr-code,link-whatsapp,contador-de-caracteres,meta-tags,contraste-cores,gerador-favicon,sitemap-robots,status-http,esta-fora-do-ar,prompt-para-site,arquivo-de-instrucoes-ia,tamanhos-de-imagem}` | Ferramentas |
 | `/trilha` | As 7 etapas com checklist salvo no navegador |
 | `/noticias` (tudo, menos guias), `/google`, `/plataformas`, `/ia`, `/seguranca`, `/guias` | Editorias |
 | `/:editoria/:slug` | Notícia ou guia |
@@ -66,6 +69,7 @@ docs/                    este plano
 - `criasite_favs`: lista de slugs de ferramentas. Sem nada salvo, começa com comprimir imagem, QR code
   e link do WhatsApp (a área não nasce vazia).
 - `criasite_trail`: ids das etapas da trilha marcadas.
+- `criasite_prompt_site`: rascunho do gerador de prompt para site (JSON com `v: 1`); nunca vai para o servidor; apagado no botão Limpar tudo.
 - `criasite_instrucoes`: rascunho do gerador de arquivo de instruções (JSON com `v: 1`); nunca vai para o servidor; apagado no botão Limpar tudo.
 - `criasite_checagens`: últimas 5 checagens da ferramenta "Está fora do ar?" (endereço, veredito, hora); nunca vão para o servidor.
 - `criasite_trilha_ia`: ids das etapas do roteiro "Criar site com IA" (`/criar-site-com-ia`) marcadas. Mesmo `useChecklist` da trilha (`app/lib/prefs.ts`).
