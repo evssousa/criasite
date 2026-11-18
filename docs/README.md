@@ -94,8 +94,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - ✅ A notícia da Nvidia foi excluída pelo dono em 2026-11-17 (a de Harvard fica).
 - "Está fora do ar?": abrir `https://criasite.app/api/cron/cabecalhos?token=...` e mandar o resultado no chat (define a regra do IP do visitante no limite por IP). Testar a ferramenta no ar com `criasite.app`, `expired.badssl.com` e `localhost`.
 - ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
-- F6 (gerador de arquivo de instruções), no ar: inserir pelo painel (`/admin/materias`, guia `arquivo-de-instrucoes-para-assistente-de-codigo`) o parágrafo com o link para a ferramenta, logo depois da lista de "Modelo para começar" (texto exato na Parte D, item 6 de [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md)).
-- F5 (gerador de prompt), no ar: inserir pelo painel (`/admin/materias`, guia `prompt-para-criar-site-com-ia`) o parágrafo com o link para a ferramenta, logo depois da lista de "Modelo para copiar e adaptar" (texto exato na Parte E, item 8 de [ferramenta-prompt-site.md](ferramenta-prompt-site.md)).
+- ✅ Links dos guias G2 e G3 para as ferramentas de IA: feitos por migration (`009_links_ferramentas_ia.sql`, 2026-11-17), que só mexe em guia ainda não editado no painel. Se algum não aparecer (guia já editado), inserir pelo painel o parágrafo do plano (Parte E, item 8 de `ferramenta-prompt-site.md`; Parte D, item 6 de `ferramenta-instrucoes-ia.md`).
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 
