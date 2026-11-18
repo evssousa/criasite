@@ -92,7 +92,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
 - ✅ A notícia da Nvidia foi excluída pelo dono em 2026-11-17 (a de Harvard fica).
-- "Está fora do ar?": abrir `https://criasite.app/api/cron/cabecalhos?token=...` e mandar o resultado no chat (define a regra do IP do visitante no limite por IP). Testar a ferramenta no ar com `criasite.app`, `expired.badssl.com` e `localhost`.
+- ✅ "Está fora do ar?": diagnóstico dos cabeçalhos feito em 2026-11-17 (ver `decisoes.md`). A regra do limite por IP (último valor de `x-forwarded-for`) está confirmada e não muda. Falta só testar a ferramenta no navegador e rever os limites em 2 semanas.
 - ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
 - ✅ Links dos guias G2 e G3 para as ferramentas de IA: feitos por migration (`009_links_ferramentas_ia.sql`, 2026-11-17), que só mexe em guia ainda não editado no painel. Se algum não aparecer (guia já editado), inserir pelo painel o parágrafo do plano (Parte E, item 8 de `ferramenta-prompt-site.md`; Parte D, item 6 de `ferramenta-instrucoes-ia.md`).
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.

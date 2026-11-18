@@ -51,6 +51,13 @@ Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 - **Pendente do dono:** 6 perguntas com recomendação (cabeçalho do IP real, lado padrão do "O que fazer", limites,
   plano B em http, cabeçalho Server, monitoramento futuro).
 
+## 2026-11-17 — Limite por IP da "Está fora do ar?": regra confirmada
+
+- **Diagnóstico (`/api/cron/cabecalhos`):** a Hostinger devolve `x-forwarded-for` com o IP do visitante repetido pelas camadas do proxy
+  (`IP, IP,IP`) e `x-real-ip` com o mesmo IP. Os outros cabeçalhos (`cf-connecting-ip`, `true-client-ip`, `forwarded`, `via`) vêm vazios.
+- **Decisão:** manter o **último valor de `x-forwarded-for`** (já era o padrão em `limits.server.ts`). Teste em produção: 6 pedidos seguidos com
+  `X-Forwarded-For` e `X-Real-IP` forjados e diferentes em cada um; o 6º voltou 429. Ou seja, forjar o cabeçalho não escapa do limite por IP.
+
 ## 2026-11-17 — Gerador de prompt para site no ar (F5)
 
 - **Feito como no plano** ([ferramenta-prompt-site.md](ferramenta-prompt-site.md)); as 10 recomendações foram aprovadas pelo dono. Em 2 commits de código:
