@@ -2,6 +2,16 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-19 — "Quanto custa um site": execução (desvios do plano)
+
+- Recomendações A1 a A12 aprovadas pelo dono. Feito: conta, dados e 32 testes (commit `3c65017`), tela, catálogo, trilha, roteiro de IA,
+  robô, impressão e migration 010 (commit `9f653a5`, sem push até as faixas serem conferidas).
+- **Desvios:** (1) a palavra "oficial" saiu do critério do tema do WordPress, porque o próprio teste a barra; (2) "o selo não aparece quando
+  todos os caminhos empatam" (não diz nada); (3) as contas ficam abertas na impressão, o que dá 4 páginas A4 (o plano previa 2); sem as contas
+  seria 1 a 2; (4) o `hidden` do HTML perdia para o reset do Tailwind na impressão: as contas fechadas usam `hidden print:flex`;
+  (5) `recursosEfetivos` ignora `pagamento` na loja e `blog` no blog (não soma duas vezes).
+- **Ainda aberto:** conferência das faixas (A4). `updatedAt` está com a data do commit 1 e só vale como conferido quando o dono revisar.
+
 ## 2026-11-19 — Ferramenta "Quanto custa um site" (plano)
 
 - **O quê (proposta do planejador, plano em `orcamento-site.md`):** calculadora 100% no navegador em

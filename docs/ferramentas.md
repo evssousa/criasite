@@ -17,6 +17,7 @@ Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver 
 | Sitemap e robots.txt | `/ferramentas/sitemap-robots` | lista de caminhos ou URLs → `sitemap.xml` (com `lastmod` opcional, URLs de outro domínio ignoradas, duplicadas removidas) e `robots.txt` com `Disallow` e a linha do sitemap |
 | Está fora do ar? | `/ferramentas/esta-fora-do-ar` | servidor (`/api/fora-do-ar`, POST): DNS validado e fixado, conexão no IP validado, só cabeçalhos, até 5 redirecionamentos, 9 s, bloqueio de redes internas (SSRF), limites por IP, alvo e global em memória, cache de 30 s; histórico das últimas 5 checagens em `criasite_checagens` (só no navegador); "O que fazer agora" por caso, para dono e visitante |
 | Prompt para site | `/ferramentas/prompt-para-site` | campos (negócio, cidade, público, ação principal, páginas marcáveis + livres, 2 cores com seletor e contraste AA ao vivo, fonte, clima em cartões, evitar, tecnologia, hospedagem, textos colados, 6 restrições) → pedido em texto ao vivo no formato do guia G2 (função pura em `lib/prompt-site/build.ts`); textos colados entre marcas, com caracteres invisíveis removidos e aviso de injeção; detector de segredos (`lib/segredos.ts`) bloqueia copiar/baixar; medidor de palavras (aviso acima de 600); baixar .txt ou .md com nome validado; rascunho em `criasite_prompt_site` |
+| Quanto custa um site | `/ferramentas/quanto-custa-um-site` | calculadora 100% no navegador: tipo de site, recursos, domínio, e-mail, imagens, textos, manutenção e valor da hora (opcional) → 5 caminhos (IA, construtor, WordPress, freelancer, agência) em faixas de 1º ano e por mês depois, horas do seu tempo, conta linha a linha, avisos e selos calculados; premissas só em `lib/orcamento/data.ts` (180 dias de validade); resumo .txt, cópia e impressão; rascunho `criasite_orcamento` |
 | Arquivo de instruções | `/ferramentas/arquivo-de-instrucoes-ia` | campos (projeto, público, tecnologias em chips, 4 comandos, pastas, 13 regras prontas + livres, documentação) → Markdown ao vivo (função pura em `lib/instrucoes/build.ts`, escapes contra títulos e blocos injetados); copiar e baixar como AGENTS.md, CLAUDE.md ou nome validado; detector de segredos colados (`lib/segredos.ts`) bloqueia copiar/baixar; medidor de linhas (aviso acima de 120); rascunho em `criasite_instrucoes` |
 | Status HTTP | `/ferramentas/status-http` | referência de 19 códigos com significado e "o que fazer no seu site"; filtro por família e busca (número casa pelo começo do código) |
 | Tamanhos de imagem | `/ferramentas/tamanhos-de-imagem` | tabela de 21 medidas (site, Instagram, Facebook/LinkedIn/X/WhatsApp, YouTube) com proporção; toque copia a medida. São medidas de referência: as redes mudam, a página avisa |
@@ -35,7 +36,7 @@ Todas rodam no navegador, menos a "Está fora do ar?" (precisa do servidor; ver 
 
 ## Próximas (por ordem de volume de busca e de uso recorrente)
 
-- Orçamento de site para freelancer (salvo no navegador, exporta texto/PDF).
+- Proposta de orçamento para cliente (freelancer; salvo no navegador, exporta texto/PDF).
 - Gerador de paleta de cores a partir de uma imagem ou cor base; pares de fontes.
 - Gerador de slug, minificador de HTML/CSS, regras de redirecionamento (.htaccess).
 - Dados estruturados (LocalBusiness, FAQ), política de privacidade e termos para o site do cliente.

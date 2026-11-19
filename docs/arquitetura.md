@@ -31,6 +31,7 @@ app/
     repo/                contrato das fontes + mock (mock-data.ts, fictício) + MySQL
     instrucoes/          gerador de arquivo de instruções (puro, sem React; ver ferramenta-instrucoes-ia.md)
     prompt-site/         gerador de prompt para site (puro, sem React; ver ferramenta-prompt-site.md)
+    orcamento/           calculadora "Quanto custa um site" (types, data.ts com as premissas, calc.ts; puro; ver orcamento-site.md)
     contraste.ts         conta de contraste WCAG (pura; verificador de contraste e gerador de prompt)
     segredos.ts          detector de segredos colados em campos (puro)
     media-kit/           mídia kit de /anuncie: tipos e regras (comuns aos sites), data.ts (conteúdo do site); ver midia-kit.md
@@ -70,6 +71,7 @@ docs/                    este plano
 - `criasite_favs`: lista de slugs de ferramentas. Sem nada salvo, começa com comprimir imagem, QR code
   e link do WhatsApp (a área não nasce vazia).
 - `criasite_trail`: ids das etapas da trilha marcadas.
+- `criasite_orcamento`: rascunho da calculadora "Quanto custa um site" (JSON com `v: 1`); nunca vai para o servidor; apagado no botão Limpar tudo.
 - `criasite_prompt_site`: rascunho do gerador de prompt para site (JSON com `v: 1`); nunca vai para o servidor; apagado no botão Limpar tudo.
 - `criasite_instrucoes`: rascunho do gerador de arquivo de instruções (JSON com `v: 1`); nunca vai para o servidor; apagado no botão Limpar tudo.
 - `criasite_checagens`: últimas 5 checagens da ferramenta "Está fora do ar?" (endereço, veredito, hora); nunca vão para o servidor.
