@@ -62,7 +62,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Ferramenta "Gerador de arquivo de instruções" (F6, `/ferramentas/arquivo-de-instrucoes-ia`, 100% no navegador, rascunho em `criasite_instrucoes`, alerta de segredos): plano em [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | ✅ (feita em 2026-11-17: 8 recomendações aprovadas; 79 testes puros; falta só o link no G3, pelo painel) |
 | 2 | Ferramenta "Gerador de prompt para site" (F5, `/ferramentas/prompt-para-site`, 100% no navegador, rascunho em `criasite_prompt_site`, cores com contraste AA, textos colados entre marcas contra injeção, alerta de segredos): plano em [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | ✅ (feita em 2026-11-17: 10 recomendações aprovadas; 80 testes puros; falta só o link no G2, pelo painel) |
 | 2 | Mídia kit em `/anuncie` (piloto para animeprofile, respawnou e vibecoin): plano em [midia-kit.md](midia-kit.md) | ✅ (feito em 2026-11-19; 10 recomendações aprovadas pelo dono; 27 testes; `/anuncie` com PDF por CSS de impressão em 2 páginas) |
-| 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | 🔄 (12 recomendações aprovadas pelo dono em 2026-11-19; commits 1 (conta, 32 testes) e 3 (tela, catálogo, impressão, migration 010) feitos **localmente, sem push**: falta o dono conferir as faixas de `data.ts` (A4); depois push, migration colada no chat e docs) |
+| 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | ✅ no ar em 2026-11-19 (faixas conferidas pelo dono; migration 010 a rodar, ver Pendências suas; revisar premissas até 2027-05) |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -88,12 +88,11 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 5. **Mídia kit** em `/anuncie` ✅ **feito em 2026-11-19** ([midia-kit.md](midia-kit.md); piloto dos 4 sites). Copiar para vibecoin,
    respawnou (só depois do AdSense) e animeprofile pela Parte G do plano (`types.ts`, `rules.ts`, teste e CSS iguais; `data.ts` e `SKIN` mudam).
    Selo "Patrocinado" nos posts e faixa nas ferramentas (Parte H) só quando fechar o 1º contrato.
-6. **Quanto custa um site** (orçamento de site, [orcamento-site.md](orcamento-site.md)): conta e tela prontas e testadas (2026-11-19), commits locais
-   `3c65017` (já no GitHub) e `9f653a5` (tela + migration 010, **sem push**). Falta: o dono conferir as faixas de `app/lib/orcamento/data.ts` (~20 min), ajustar,
-   pôr a data da conferência em `updatedAt`, rodar `npm run test:orcamento`, dar push e colar a migration 010 no chat. Depois: marcar no quadro e revisar as premissas em 6 meses.
+6. **Quanto custa um site**: no ar (2026-11-19). Revisar as premissas de `app/lib/orcamento/data.ts` até 2027-05 (o teste falha se vencer). Conferir em produção a tela, `/sitemap.xml`, `/trilha` e os 4 guias após a migration 010.
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
+- Rodar a migration `db/migrations/010_links_orcamento.sql` (SQL colado no chat de 2026-11-19): links da calculadora em 4 guias. Se a guarda barrar, incluir o parágrafo pelo painel.
 
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
