@@ -10,7 +10,8 @@
     "typecheck": "react-router typegen && tsc",
     "db:migrate": "node scripts/db-migrate.ts",
     "db:seed-dev": "node scripts/db-seed-dev.ts",
-    "admin:hash": "node scripts/admin-hash.ts"
+    "admin:hash": "node scripts/admin-hash.ts",
+    "test:midia-kit": "node scripts/test-midia-kit.ts"
   },
   "dependencies": {
     "@react-router/dev": "^8.5.1",

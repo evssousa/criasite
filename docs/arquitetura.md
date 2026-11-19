@@ -33,6 +33,7 @@ app/
     prompt-site/         gerador de prompt para site (puro, sem React; ver ferramenta-prompt-site.md)
     contraste.ts         conta de contraste WCAG (pura; verificador de contraste e gerador de prompt)
     segredos.ts          detector de segredos colados em campos (puro)
+    media-kit/           mídia kit de /anuncie: tipos e regras (comuns aos sites), data.ts (conteúdo do site); ver midia-kit.md
     uptime/              ferramenta "Está fora do ar?": guarda anti-SSRF, checagem, limites, textos do laudo (ver ferramenta-fora-do-ar.md)
     robot/               robô de notícias (coleta, Gemini, qualidade, mídia)
     admin/               sessão e dados do painel /admin

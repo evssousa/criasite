@@ -79,8 +79,9 @@ const sections: DocSection[] = [
     title: "Patrocínio e afiliados",
     body: (
       <p>
-        Conteúdo pago, se existir, é marcado como <strong>patrocinado</strong> no topo da página. Links de afiliados (por exemplo, de hospedagem) são sinalizados no texto, levam o atributo <code>sponsored</code> e
-        nunca mudam o conteúdo das notícias e dos guias. Mais detalhes em <TextLink to="/anuncie">anuncie</TextLink>.
+        Conteúdo pago é marcado como <strong>patrocinado</strong> no topo da página e nos cards, com o nome de quem pagou, e é escrito pela Equipe CriaSite: a marca confere só os dados do próprio produto. Links
+        pagos e de afiliados (por exemplo, de hospedagem) são sinalizados no texto e levam o atributo <code>sponsored</code>. Patrocínio e afiliados nunca mudam notícias, guias ou o funcionamento das ferramentas, e nenhum
+        texto pago promete posição no Google ou resultado. Podemos recusar qualquer proposta. Formatos, regras e o que não aceitamos estão no <TextLink to="/anuncie">mídia kit</TextLink>.
       </p>
     ),
   },

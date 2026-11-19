@@ -2,6 +2,33 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-19 — Mídia kit em `/anuncie` no ar (piloto)
+
+- **Feito como no plano** ([midia-kit.md](midia-kit.md)), com as 10 recomendações aprovadas pelo dono: preço "sob consulta", audiência só sob pedido até fev/2027,
+  prazos como no plano, página indexada, patrocinado só depois do AdSense. `/anuncie` virou `StaticPage` + `MediaKitView`; conteúdo em `lib/media-kit/data.ts`;
+  contagem de ferramentas, guias e notícias lida do banco (`getInventory`, cache de 1 h, nunca do mock); 27 testes em `scripts/test-midia-kit.ts`.
+- **Desvio na impressão (D4):** para o PDF caber em 2 páginas A4 foi preciso mais do que o plano previa. Fica escondido na impressão: "Procura" dos perfis, "Por que
+  anunciar aqui", "Marcas que combinam", "Como funciona", o resumo do formato (`mk-summary`), o texto "quem é" de cada perfil, a caixa do AdSense, o texto de apoio do topo
+  e a lista "o que mandar no primeiro e-mail". Fonte 8 a 8,5 pt, listas dos formatos e das regras em 2 colunas, recusas em 2 colunas. Medido com `page.pdf` do Chrome: 2 páginas.
+- **Para os outros 3 sites:** copiar `types.ts`, `rules.ts`, o teste, o bloco `@media print` do `app.css` e o `MediaKit.tsx`; trocar `data.ts` e o objeto `SKIN`.
+
+## 2026-11-19 — Mídia kit em `/anuncie` (plano, piloto dos 4 sites)
+
+- **O quê (proposta do planejador, plano em `midia-kit.md`):** `/anuncie` vira mídia kit no `StaticPage` (2 props novas:
+  `toc` e `printHeader`) com um componente `MediaKit.tsx` (classes no objeto `SKIN`). Dados em `app/lib/media-kit/data.ts`;
+  tipos, regras puras e teste (`rules.ts`, `scripts/test-midia-kit.ts`) iguais nos 4 sites. Números: contagem de conteúdo
+  automática (banco, cache 1 h, nunca do mock) + audiência manual do Search Console, cada número com fonte e data, sumindo
+  após 90 dias; hoje audiência "sob pedido". Sem gráfico. 3 formatos (guia patrocinado, oferta em guia relacionado, apoio
+  a uma ferramenta), preço "sob consulta", AdSense explicado como não vendido direto. 8 regras (CDC art. 36, CONAR,
+  `rel="sponsored"`, sem pixel de terceiros) e 8 categorias recusadas. PDF só com `@media print` + `window.print()`, A4 até
+  2 páginas. Página indexada, FAQ de 4 perguntas com JSON-LD. E-mail `[Comercial]` com corpo pré-preenchido.
+- **Textos alterados:** política editorial (patrocínio), privacidade (anunciante só recebe números agregados), cartão
+  "Comercial" do contato.
+- **Por quê:** o site é novo e não tem audiência para mostrar; a página precisa ser honesta e útil mesmo assim, e o teste
+  barra número sem fonte e frases como "milhares de leitores". Separar dado de layout deixa a cópia para os irmãos em P/M.
+- **Pendente do dono:** 10 perguntas com recomendação (preço, quando publicar números, prazos, afiliado x patrocínio,
+  revisão da marca, assunto do e-mail, indexação, patrocinado só depois do AdSense, relatório, cobrança/nota fiscal).
+
 ## 2026-11-17 — F5 "Gerador de prompt para site" (plano)
 
 - **O quê (proposta do planejador, plano em `ferramenta-prompt-site.md`):** ferramenta 100% no navegador em

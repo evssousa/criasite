@@ -447,12 +447,12 @@ export interface DocPage {
 
 export const DOC_PAGES: DocPage[] = [
   { to: "/sobre", label: "Sobre", group: "site", updated: "2026-11-14" },
-  { to: "/contato", label: "Contato", group: "site", updated: "2026-11-14" },
+  { to: "/contato", label: "Contato", group: "site", updated: "2026-11-19" },
   { to: "/faq", label: "Perguntas frequentes", group: "site", updated: "2026-11-14" },
-  { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-17" },
-  { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-14" },
+  { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-19" },
+  { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-19" },
   { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-17" },
-  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-17" },
+  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-19" },
   { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-17" },
   { to: "/acessibilidade", label: "Acessibilidade", group: "legal", updated: "2026-11-14" },
   { to: "/mapa-do-site", label: "Mapa do site", group: "legal", updated: "2026-11-14" },
@@ -468,4 +468,4 @@ const AFFILIATE_LINKS = [/^https:\/\/(www\.)?hostinger\.com\/br\?REFERRALCODE=/i
 export const isAffiliateLink = (href: string) => AFFILIATE_LINKS.some((re) => re.test(href));
 
 /** Link "mailto" com assunto preenchido, para separar os pedidos na caixa de entrada. */
-export const mailto = (subject: string) => `mailto:${SITE.email}?subject=${encodeURIComponent(`[${subject}] `)}`;
+export const mailto = (subject: string, body?: string) => `mailto:${SITE.email}?subject=${encodeURIComponent(`[${subject}] `)}${body ? `&body=${encodeURIComponent(body)}` : ""}`;

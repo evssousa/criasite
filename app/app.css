@@ -280,3 +280,171 @@ body {
     animation: none !important;
   }
 }
+
+/* Mídia kit (/anuncie): a tabela não força largura mínima (evita rolagem horizontal no celular). */
+.mk-table table {
+  min-width: 0;
+}
+
+/* Versão para salvar em PDF (A4, compacta). Ver docs/midia-kit.md, parte D. No A4 valem as classes sm: e não as md:/lg:. */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 13mm 14mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  body {
+    font-size: 9pt;
+    line-height: 1.35;
+    color: #0c1a4b;
+  }
+  ins.adsbygoogle,
+  .google-auto-placed,
+  .adsbygoogle,
+  iframe {
+    display: none !important;
+  }
+  main#conteudo {
+    max-width: none;
+    padding: 0;
+  }
+  main#conteudo h1 {
+    font-size: 18pt;
+  }
+  main#conteudo > header {
+    padding-bottom: 6pt;
+    gap: 3pt;
+  }
+  main#conteudo > header p {
+    font-size: 9pt;
+  }
+  main#conteudo > header p.text-lg {
+    display: none;
+  }
+  main#conteudo > div {
+    padding-top: 8pt;
+  }
+  .mk {
+    gap: 9pt !important;
+  }
+  .mk section {
+    gap: 5pt !important;
+  }
+  .mk h2 {
+    font-size: 12pt;
+  }
+  .mk h3 {
+    font-size: 10pt;
+  }
+  .mk p,
+  .mk li,
+  .mk dd,
+  .mk dt {
+    font-size: 8pt !important;
+    line-height: 1.3 !important;
+  }
+  .mk-hero,
+  .mk-contact {
+    background: #fff !important;
+    color: #0c1a4b !important;
+    border: 1.2pt solid #0c1a4b;
+    padding: 8pt !important;
+    gap: 4pt !important;
+  }
+  .mk-hero *,
+  .mk-contact * {
+    color: #0c1a4b !important;
+  }
+  .mk-hero .num {
+    color: #c24e06 !important;
+    font-size: 16pt !important;
+  }
+  .mk-hero p.text-2xl,
+  .mk-contact p.text-2xl {
+    font-size: 13pt !important;
+  }
+  .mk-card,
+  .mk-section-head,
+  .mk-table tr,
+  .mk-persona {
+    break-inside: avoid;
+  }
+  .mk-card {
+    padding: 7pt !important;
+    gap: 4pt !important;
+  }
+  .mk-card h3 {
+    font-size: 10.5pt !important;
+  }
+  .mk-card ul {
+    gap: 1pt !important;
+  }
+  .mk-persona {
+    padding: 6pt !important;
+    gap: 2pt !important;
+  }
+  .mk h2,
+  .mk h3 {
+    break-after: avoid;
+  }
+  .mk a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .mk-table table {
+    font-size: 8.5pt;
+  }
+  .mk-table th,
+  .mk-table td {
+    padding: 3pt 5pt;
+  }
+  .mk .article-body {
+    max-width: none;
+    font-size: 8.5pt;
+  }
+  .mk .article-body li,
+  .mk .article-body p {
+    margin: 0 0 2pt;
+  }
+  .mk .article-body ol,
+  .mk .article-body ul {
+    margin: 0;
+  }
+  .mk-card ul,
+  .mk-rules ol,
+  .mk-refused ul {
+    columns: 2;
+    column-gap: 14pt;
+  }
+  .mk-card li,
+  .mk-rules li {
+    break-inside: avoid;
+  }
+  .mk-who,
+  .mk-lead {
+    display: none;
+  }
+  .mk-card .mk-summary {
+    display: none;
+  }
+  .mk-card .grid {
+    display: block;
+  }
+  .mk-card ul {
+    display: block;
+  }
+  .mk-card li {
+    display: flex;
+    margin-bottom: 1pt;
+  }
+  .mk-card dl {
+    gap: 2pt 14pt !important;
+    padding-top: 4pt !important;
+  }
+  .mk-refused li {
+    break-inside: avoid;
+  }
+}

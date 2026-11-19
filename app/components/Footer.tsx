@@ -13,7 +13,7 @@ export function Footer({ adsOn }: { adsOn: boolean }) {
     { title: "Legal", links: DOC_PAGES.filter((d) => d.group === "legal") },
   ];
   return (
-    <footer className="night mt-16 bg-night text-moon">
+    <footer className="night mt-16 bg-night text-moon print:hidden">
       <div className="mx-auto flex max-w-[1180px] flex-col gap-10 px-4 py-12 sm:px-6">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="flex max-w-md flex-col gap-3">

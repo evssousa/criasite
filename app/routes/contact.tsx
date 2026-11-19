@@ -46,8 +46,8 @@ export default function Contact() {
         <ChannelCard code="LGPD" title="Privacidade" href={mailto("LGPD")} cta="Pedido de dados">
           Pedidos sobre os seus dados pessoais.
         </ChannelCard>
-        <ChannelCard code="Comercial" title="Publicidade" href="/anuncie" cta="Ver como anunciar">
-          Regras e formatos para anunciar.
+        <ChannelCard code="Comercial" title="Publicidade" href="/anuncie" cta="Ver o mídia kit">
+          Mídia kit, formatos e regras para anunciar.
         </ChannelCard>
       </div>
     </StaticPage>

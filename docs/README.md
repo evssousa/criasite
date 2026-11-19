@@ -25,6 +25,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | Plano da ferramenta "Está fora do ar?" (1ª com servidor): proteção contra SSRF, limites em memória, API `/api/fora-do-ar`, tela, textos legais |
 | [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | Plano da F6 "Gerador de arquivo de instruções" (AGENTS.md/CLAUDE.md): Markdown exato, escapes, detector de segredos, tela, textos, testes |
 | [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | Plano da F5 "Gerador de prompt para site": pedido exato com 2 arquivos de ouro, cores com contraste AA, textos colados entre marcas (anti-injeção), segredos, tela, textos, testes; 2 commits (peças comuns + ferramenta) |
+| [midia-kit.md](midia-kit.md) | Plano do mídia kit em `/anuncie` (piloto para os 4 sites): números só com fonte e data, público, 3 formatos, regras, recusas, PDF por CSS de impressão, SEO/FAQ, textos legais e como copiar para os outros sites |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
@@ -59,6 +60,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Ferramenta "Está fora do ar?" (servidor, anti-SSRF, limites por IP/alvo/global, histórico no navegador): plano em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | ✅ (feita em 2026-11-17: guarda anti-SSRF, checagem, API `/api/fora-do-ar`, tela, textos legais; 84 testes puros + 14 de rede) |
 | 2 | Ferramenta "Gerador de arquivo de instruções" (F6, `/ferramentas/arquivo-de-instrucoes-ia`, 100% no navegador, rascunho em `criasite_instrucoes`, alerta de segredos): plano em [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | ✅ (feita em 2026-11-17: 8 recomendações aprovadas; 79 testes puros; falta só o link no G3, pelo painel) |
 | 2 | Ferramenta "Gerador de prompt para site" (F5, `/ferramentas/prompt-para-site`, 100% no navegador, rascunho em `criasite_prompt_site`, cores com contraste AA, textos colados entre marcas contra injeção, alerta de segredos): plano em [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | ✅ (feita em 2026-11-17: 10 recomendações aprovadas; 80 testes puros; falta só o link no G2, pelo painel) |
+| 2 | Mídia kit em `/anuncie` (piloto para animeprofile, respawnou e vibecoin): plano em [midia-kit.md](midia-kit.md) | ✅ (feito em 2026-11-19; 10 recomendações aprovadas pelo dono; 27 testes; `/anuncie` com PDF por CSS de impressão em 2 páginas) |
 | 2 | Mais ferramentas: orçamento de site, paleta, slug | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -81,10 +83,9 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    `cabecalhos`) e commit 2 (checagem, limites, API, tela, textos legais). `limits.server.ts` usa o último valor de `x-forwarded-for`
    até sair o resultado do diagnóstico (se o último for sempre o mesmo IP de proxy, trocar pelo penúltimo ou por `x-real-ip`).
    Falta: links nos guias antigos (sáb 21/11, lista na Parte D do plano) e rever os limites em 2 semanas. Depois: orçamento de site.
-5. **Mídia kit** dentro de "Anuncie" (`app/routes/advertise.tsx`): público e números reais, formatos e pacotes, regras de
-   conteúdo patrocinado, versão para baixar/imprimir e contato. Outra fonte de renda, vale para todos os sites
-   (animeprofile, criasite, vibecoin e respawnou). Falta planejar (chamar o `planejador`, pois tem parte visual); este site
-   pode ser o piloto.
+5. **Mídia kit** em `/anuncie` ✅ **feito em 2026-11-19** ([midia-kit.md](midia-kit.md); piloto dos 4 sites). Copiar para vibecoin,
+   respawnou (só depois do AdSense) e animeprofile pela Parte G do plano (`types.ts`, `rules.ts`, teste e CSS iguais; `data.ts` e `SKIN` mudam).
+   Selo "Patrocinado" nos posts e faixa nas ferramentas (Parte H) só quando fechar o 1º contrato.
 6. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
@@ -95,6 +96,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 - ✅ "Está fora do ar?": diagnóstico dos cabeçalhos feito em 2026-11-17 (ver `decisoes.md`). A regra do limite por IP (último valor de `x-forwarded-for`) está confirmada e não muda. O dono testou a ferramenta no navegador em 2026-11-17 e confirmou que funciona. Falta só rever os limites em 2 semanas (por volta de 01/12).
 - ✅ Feito pelo dono em 2026-11-17: leu os 8 guias de IA ("estão bons", então a política editorial "revisão humana" vale) e enviou `/criar-site-com-ia` ao Search Console.
 - ✅ Links dos guias G2 e G3 para as ferramentas de IA: feitos por migration (`009_links_ferramentas_ia.sql`, 2026-11-17), que só mexe em guia ainda não editado no painel. Se algum não aparecer (guia já editado), inserir pelo painel o parágrafo do plano (Parte E, item 8 de `ferramenta-prompt-site.md`; Parte D, item 6 de `ferramenta-instrucoes-ia.md`).
+- Mídia kit no ar: **antes do 1º contrato**, resolver como cobrar e emitir nota (pessoa física, MEI ou outra forma; falar com um contador). Quando quiser publicar números de audiência, siga a rotina de `app/lib/media-kit/data.ts` (Search Console → cliques e impressões de 28 dias → `value` e `updatedAt`; repetir todo mês). Publicar conteúdo patrocinado só depois do AdSense.
 - Afiliado da Hostinger: já está no guia de hospedagem (migration 004). Se editar esse guia no painel, mantenha o aviso e o link juntos.
 - O TXT antigo do Google (`B0Z4u6o-…`) foi removido da zona ao trocar para a conta centralizada; o novo (`H8ZjO9tf…`) está no DNS e não deve ser apagado.
 

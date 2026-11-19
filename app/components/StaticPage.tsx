@@ -22,6 +22,8 @@ export function StaticPage({
   sections = [],
   children,
   after,
+  toc,
+  printHeader,
 }: {
   /** Caminho da página em DOC_PAGES, ex.: "/termos". */
   path: string;
@@ -32,12 +34,18 @@ export function StaticPage({
   children?: ReactNode;
   /** Blocos visuais depois das seções. */
   after?: ReactNode;
+  /** Índice próprio (quando o conteúdo vem em `children` e não em `sections`). */
+  toc?: { id: string; title: string }[];
+  /** Cabeçalho que só aparece na impressão (ex.: logo e contato do mídia kit). */
+  printHeader?: ReactNode;
 }) {
   const doc = docPage(path);
-  const showToc = sections.length > 2;
+  const tocItems = toc ?? sections;
+  const showToc = tocItems.length > 2;
 
   return (
     <main id="conteudo" className="mx-auto max-w-[1180px] px-4 pt-10 sm:px-6">
+      {printHeader && <div className="hidden print:block">{printHeader}</div>}
       <header className="flex flex-col gap-4 border-b border-line pb-8">
         <span className="eyebrow text-violet">{doc?.group === "legal" ? "legal" : "institucional"}</span>
         <h1 className="text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">{title}</h1>
@@ -52,12 +60,12 @@ export function StaticPage({
       <div className="grid gap-10 pt-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-14">
         <div className="flex min-w-0 flex-col gap-8">
           {showToc && (
-            <details className="rounded-[18px] border border-line bg-card lg:hidden">
+            <details className="rounded-[18px] border border-line bg-card lg:hidden print:hidden">
               <summary className="flex min-h-12 cursor-pointer items-center justify-between px-4 font-mono text-xs font-bold text-violet">
-                Nesta página ({sections.length})
+                Nesta página ({tocItems.length})
                 <span aria-hidden>▾</span>
               </summary>
-              <Toc sections={sections} />
+              <Toc sections={tocItems} />
             </details>
           )}
 
@@ -82,11 +90,11 @@ export function StaticPage({
           {after}
         </div>
 
-        <aside className="hidden flex-col gap-8 lg:sticky lg:top-6 lg:flex lg:self-start">
+        <aside className="hidden flex-col gap-8 lg:sticky lg:top-6 lg:flex lg:self-start print:hidden">
           {showToc && (
             <nav aria-label="Nesta página">
               <p className="mb-2 eyebrow text-violet">NESTA PÁGINA</p>
-              <Toc sections={sections} />
+              <Toc sections={tocItems} />
             </nav>
           )}
           <DocNav />
@@ -96,7 +104,7 @@ export function StaticPage({
   );
 }
 
-function Toc({ sections }: { sections: DocSection[] }) {
+function Toc({ sections }: { sections: { id: string; title: string }[] }) {
   return (
     <ol className="flex flex-col border-t border-line lg:border-t-0 lg:border-l">
       {sections.map((s, i) => (

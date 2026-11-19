@@ -52,7 +52,7 @@ export function CookieConsent() {
       role="dialog"
       aria-modal="false"
       aria-labelledby="cookies-titulo"
-      className="night fixed inset-x-3 bottom-3 z-50 mx-auto flex max-w-3xl flex-col gap-4 rounded-[22px] border border-night-line-2 bg-night-2 p-5 text-moon shadow-2xl sm:inset-x-6 sm:bottom-6 sm:p-6"
+      className="night fixed inset-x-3 bottom-3 z-50 mx-auto flex print:hidden max-w-3xl flex-col gap-4 rounded-[22px] border border-night-line-2 bg-night-2 p-5 text-moon shadow-2xl sm:inset-x-6 sm:bottom-6 sm:p-6"
     >
       <div className="flex flex-col gap-2">
         <h2 id="cookies-titulo" className="eyebrow text-glow">

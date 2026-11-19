@@ -96,3 +96,31 @@ export async function getAvailability(): Promise<Availability> {
   availabilityCache = { at: Date.now(), value };
   return value;
 }
+
+let inventoryCache: { at: number; value: Inventory | null } | undefined;
+
+export interface Inventory {
+  tools: number;
+  guides: number;
+  news: number;
+}
+
+/**
+ * Contagem de conteúdo publicado para o mídia kit (/anuncie). Cache de 1 h. `null` sem banco ou se a consulta falhar:
+ * nunca lê os dados de exemplo (o mock tem visitas e contagens fictícias).
+ */
+export async function getInventory(): Promise<Inventory | null> {
+  if (!hasDatabase()) return null;
+  if (inventoryCache && Date.now() - inventoryCache.at < 60 * 60_000) return inventoryCache.value;
+  let value: Inventory | null = null;
+  try {
+    const stats = await repo().sectionStats();
+    const guides = stats.find((x) => x.section === "guias")?.total ?? 0;
+    const news = stats.filter((x) => x.section !== "guias").reduce((n, x) => n + x.total, 0);
+    value = { tools: TOOLS.length, guides, news };
+  } catch {
+    value = null;
+  }
+  inventoryCache = { at: Date.now(), value };
+  return value;
+}

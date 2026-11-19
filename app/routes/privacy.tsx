@@ -154,6 +154,7 @@ const sections: DocSection[] = [
         <p>
           Alguns desses fornecedores podem guardar dados fora do Brasil. Nesses casos, a transferência segue as regras da LGPD para transferência internacional.
         </p>
+        <p>Anunciantes e parceiros comerciais recebem só números agregados, como o total de leituras de uma página, nunca dados que identifiquem você.</p>
       </>
     ),
   },
