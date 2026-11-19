@@ -24,6 +24,7 @@ export default [
   route("ferramentas/status-http", "routes/tool-status.tsx"),
   route("ferramentas/esta-fora-do-ar", "routes/tool-uptime.tsx"),
   route("ferramentas/prompt-para-site", "routes/tool-prompt-site.tsx"),
+  route("ferramentas/quanto-custa-um-site", "routes/tool-orcamento.tsx"),
   route("ferramentas/arquivo-de-instrucoes-ia", "routes/tool-instructions.tsx"),
   route("ferramentas/tamanhos-de-imagem", "routes/tool-sizes.tsx"),
   route("criar-site-com-ia", "routes/ai-track.tsx"),

@@ -142,6 +142,7 @@ export type ToolSlug =
   | "tamanhos-de-imagem"
   | "esta-fora-do-ar"
   | "prompt-para-site"
+  | "quanto-custa-um-site"
   | "arquivo-de-instrucoes-ia";
 
 export interface Tool {
@@ -268,6 +269,15 @@ export const TOOLS: Tool[] = [
     keywords: "prompt para criar site gerar prompt gerador de prompt pedido para ia chatgpt gemini claude criar site com ia vibe coding modelo de prompt briefing landing page",
   },
   {
+    slug: "quanto-custa-um-site",
+    title: "Quanto custa um site? Calculadora de custo do 1º ano e por mês",
+    short: "Orçamento de site",
+    hint: "domínio, hospedagem e o resto, em faixas",
+    description: "Estime quanto custa criar e manter um site: domínio, hospedagem, e-mail, plataforma e manutenção. Compare fazer com IA, construtor, WordPress e contratar.",
+    category: "dia-a-dia",
+    keywords: "quanto custa um site quanto custa fazer um site preço de site valor de site orçamento de site custo de site calculadora hospedagem domínio e-mail profissional manutenção freelancer agência construtor wordpress loja virtual",
+  },
+  {
     slug: "arquivo-de-instrucoes-ia",
     title: "Gerador de arquivo de instruções para IA (AGENTS.md)",
     short: "Arquivo de instruções",
@@ -319,7 +329,7 @@ export const TRAIL: TrailStep[] = [
     title: "Contrate a hospedagem",
     short: "Hospedagem",
     text: "Para um site institucional ou um blog, uma hospedagem compartilhada resolve. Confira se inclui certificado SSL (o cadeado) e e-mail com o seu domínio.",
-    tools: [],
+    tools: ["quanto-custa-um-site"],
     guide: "como-escolher-a-hospedagem-do-site",
   },
   {
@@ -387,7 +397,7 @@ export const AI_TRACK: AiStep[] = [
     short: "Planejar",
     text: "Escreva em um parágrafo o que o site precisa ter, para quem é e o que fica de fora. Domínio, hospedagem e contas no seu nome continuam sendo decisão sua, não da IA.",
     guides: ["criar-site-com-ia-do-jeito-certo"],
-    tools: [],
+    tools: ["quanto-custa-um-site"],
   },
   {
     id: "contexto",

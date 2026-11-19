@@ -16,7 +16,7 @@ export function ToolLayout({ tool, lead, children, explain }: { tool: Tool; lead
   const cat = toolCategory(tool.category);
   return (
     <main id="conteudo" className="mx-auto flex max-w-[1180px] flex-col gap-8 px-4 pt-6 sm:px-6">
-      <nav aria-label="Você está em" className="text-sm font-semibold text-muted">
+      <nav aria-label="Você está em" className="text-sm font-semibold text-muted print:hidden">
         <Link to="/ferramentas" className="-my-3 inline-block py-3 hover:text-violet">
           Ferramentas
         </Link>
@@ -29,15 +29,17 @@ export function ToolLayout({ tool, lead, children, explain }: { tool: Tool; lead
           <h1 className="text-[34px] leading-[1.08] font-extrabold tracking-[-0.03em] text-balance sm:text-[44px]">{tool.title}</h1>
           <p className="text-lg leading-relaxed text-muted">{lead}</p>
         </div>
-        <FavoriteButton tool={tool} />
+        <span className="print:hidden">
+          <FavoriteButton tool={tool} />
+        </span>
       </header>
 
       {children}
 
-      {explain && <div className="article-body max-w-3xl">{explain}</div>}
+      {explain && <div className="article-body max-w-3xl print:hidden">{explain}</div>}
 
       {others.length > 0 && (
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4 print:hidden">
           <h2 className="text-2xl font-extrabold tracking-[-0.02em]">Outras ferramentas</h2>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,240px),1fr))] gap-3">
             {others.map((t) => (

@@ -27,6 +27,7 @@ export interface AssembleInput {
 const TOOL_TERMS: { re: RegExp; url: string }[] = [
   { re: /(?<![\p{L}\d])(AGENTS\.md|CLAUDE\.md|arquivos? de instruções|arquivo de regras do projeto)(?![\p{L}\d])/iu, url: "/ferramentas/arquivo-de-instrucoes-ia" },
   { re: /(?<![\p{L}\d])(prompts? para (?:criar )?(?:o |um )?sites?|gerador(?:es)? de prompts?|gerar (?:o |um )?prompt)(?![\p{L}\d])/iu, url: "/ferramentas/prompt-para-site" },
+  { re: /(?<![\p{L}\d])(quanto custa (?:fazer |criar |ter )?(?:um |o )?sites?|custo de (?:criar |manter )?(?:um |o )?sites?|orçamento de sites?)(?![\p{L}\d])/iu, url: "/ferramentas/quanto-custa-um-site" },
   { re: /(?<![\p{L}\d])(meta tags?|meta description|title tag)(?![\p{L}\d])/iu, url: "/ferramentas/meta-tags" },
   { re: /(?<![\p{L}\d])(QR codes?)(?![\p{L}\d])/iu, url: "/ferramentas/qr-code" },
   { re: /(?<![\p{L}\d])(comprimir|compressão de) imagens?(?![\p{L}\d])/iu, url: "/ferramentas/comprimir-imagem" },

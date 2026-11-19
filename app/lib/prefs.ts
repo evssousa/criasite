@@ -208,3 +208,32 @@ export function clearPromptDraft(): void {
     // Sem armazenamento: nada a apagar.
   }
 }
+
+// ───────────── Rascunho da calculadora "Quanto custa um site" ─────────────
+// Mesmo estilo dos outros rascunhos: não dispara o evento criasite:prefs e nunca vai para o servidor.
+
+const ORC_KEY = "criasite_orcamento";
+const ORC_MAX_CHARS = 2_000;
+
+export function loadOrcDraft(): string | null {
+  return read(ORC_KEY);
+}
+
+/** False se o rascunho for grande demais ou se o navegador não deixar gravar. */
+export function saveOrcDraft(json: string): boolean {
+  if (json.length > ORC_MAX_CHARS) return false;
+  try {
+    localStorage.setItem(ORC_KEY, json);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function clearOrcDraft(): void {
+  try {
+    localStorage.removeItem(ORC_KEY);
+  } catch {
+    // Sem armazenamento: nada a apagar.
+  }
+}

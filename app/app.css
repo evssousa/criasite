@@ -448,3 +448,45 @@ body {
     break-inside: avoid;
   }
 }
+
+/* Calculadora "Quanto custa um site": impressão só do resultado, em uma coluna (docs/orcamento-site.md, F8). */
+@media print {
+  .orc-form,
+  .orc-actions,
+  .orc-decide,
+  .orc-toggle {
+    display: none !important;
+  }
+  .orc-panel {
+    background: #fff !important;
+    color: #0c1a4b !important;
+    padding: 0 !important;
+  }
+  .orc-panel * {
+    color: #0c1a4b !important;
+    border-color: #cdd5ef !important;
+    background: transparent !important;
+  }
+  .orc-panel .orc-bar {
+    background: #ff7a1a !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .orc-panel > .grid {
+    display: block !important;
+  }
+  .orc-panel {
+    font-size: 9.5pt;
+  }
+  .orc-conta th,
+  .orc-conta td {
+    padding-top: 1.5pt !important;
+    padding-bottom: 1.5pt !important;
+  }
+  .orc-card {
+    padding: 8pt !important;
+    gap: 4pt !important;
+    break-inside: avoid;
+    margin-bottom: 6pt;
+  }
+}
