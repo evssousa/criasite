@@ -1,0 +1,38 @@
+/* Cores do painel de visitas: só este bloco muda de um site para outro (as variáveis do tema vêm do app.css do site). */
+.vp {
+  --vp-bg: var(--color-day);
+  --vp-card: var(--color-card);
+  --vp-sunken: #e6eaf8;
+  --vp-ink: var(--color-ink);
+  --vp-soft: var(--color-muted);
+  --vp-line: var(--color-line);
+  --vp-accent: var(--color-violet);
+  --vp-accent-soft: var(--color-violet-soft);
+  --vp-hero: var(--color-night);
+  --vp-hero-ink: var(--color-moon);
+  --vp-hero-label: var(--color-glow);
+  --vp-up: var(--color-up);
+  --vp-down: var(--color-down);
+  --vp-o-direto: #5a6798;
+  --vp-o-busca: #2f6fd6;
+  --vp-o-social: #c24e06;
+  --vp-o-site: #7c5cd6;
+  --vp-o-campanha: #0b7a44;
+}
+.vp .vp-pulso {
+  animation: vp-pulso 2s ease-in-out infinite;
+}
+@keyframes vp-pulso {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vp .vp-pulso {
+    animation: none;
+  }
+}

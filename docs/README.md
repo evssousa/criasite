@@ -26,6 +26,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | Plano da F6 "Gerador de arquivo de instruções" (AGENTS.md/CLAUDE.md): Markdown exato, escapes, detector de segredos, tela, textos, testes |
 | [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | Plano da F5 "Gerador de prompt para site": pedido exato com 2 arquivos de ouro, cores com contraste AA, textos colados entre marcas (anti-injeção), segredos, tela, textos, testes; 2 commits (peças comuns + ferramenta) |
 | [midia-kit.md](midia-kit.md) | Plano do mídia kit em `/anuncie` (piloto para os 4 sites): números só com fonte e data, público, 3 formatos, regras, recusas, PDF por CSS de impressão, SEO/FAQ, textos legais e como copiar para os outros sites |
+| [painel-visitas.md](painel-visitas.md) | Painel `/admin/visitas`: contador próprio sem cookie (módulo `app/visitas`, copiado do animeprofile), como funciona, diferenças e o que conferir |
 | [orcamento-site.md](orcamento-site.md) | Plano da ferramenta "Quanto custa um site" (orçamento de site): premissas em faixas num único `data.ts` com data que vence, conta pura e testes, 5 caminhos (IA, construtor, WordPress, freelancer, agência), tela em réguas, resumo .txt, impressão, migration 010 de links; 12 decisões para o dono |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
@@ -63,6 +64,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Ferramenta "Gerador de prompt para site" (F5, `/ferramentas/prompt-para-site`, 100% no navegador, rascunho em `criasite_prompt_site`, cores com contraste AA, textos colados entre marcas contra injeção, alerta de segredos): plano em [ferramenta-prompt-site.md](ferramenta-prompt-site.md) | ✅ (feita em 2026-11-17: 10 recomendações aprovadas; 80 testes puros; falta só o link no G2, pelo painel) |
 | 2 | Mídia kit em `/anuncie` (piloto para animeprofile, respawnou e vibecoin): plano em [midia-kit.md](midia-kit.md) | ✅ (feito em 2026-11-19; 10 recomendações aprovadas pelo dono; 27 testes; `/anuncie` com PDF por CSS de impressão em 2 páginas) |
 | 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | ✅ no ar em 2026-11-19 (faixas conferidas pelo dono; revisar premissas até 2027-05) |
+| 2 | Painel `/admin/visitas` com contador de visitas próprio, sem cookie (módulo do animeprofile): [painel-visitas.md](painel-visitas.md) | 🔄 (feito e testado localmente em 2026-11-19; falta conferir em produção, criar o Cron Job `limpeza` e o dono aprovar os textos de privacidade/cookies) |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -92,6 +94,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
+- **Cron Job `limpeza`** (hPanel → Cron Jobs): 1x por dia às 7h30 UTC (4h30 de Brasília), mesmo formato dos outros: `GET /api/cron/limpeza?token=<CRON_TOKEN>`. Sem ele, só o `visit_seen` e os dados com mais de 400 dias não são apagados (nada quebra).
+- **Aprovar o texto novo** de `/privacidade` (linha "Contagem de visitas (sem cookies)" e retenção de 13 meses) e de `/cookies` (linha "Contagem de visitas").
 
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).

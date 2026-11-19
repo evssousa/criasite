@@ -102,3 +102,6 @@ docs/                    este plano
 | `ADSENSE_CLIENT` | liga AdSense, `ads.txt` e banner de cookies |
 
 Modelo em `.env.example`. O `.env` real nunca vai para o Git (repositório público).
+
+## Visitas (`app/visitas/`)
+Contador próprio sem cookie (`POST /api/v`), agregado por dia em `visit_*` (migration 011) e painel em `/admin/visitas`. Detalhes em [painel-visitas.md](painel-visitas.md). `posts.views` é somado por essa coleta; `POST /api/view` é legado (204).

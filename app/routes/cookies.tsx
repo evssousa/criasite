@@ -13,7 +13,13 @@ const COOKIE_TYPES = [
     use: "Guardam no seu navegador (armazenamento local) a escolha no aviso de cookies, as ferramentas favoritas, o progresso da trilha e os rascunhos das ferramentas que salvam o que você digitou.",
     consent: "Não precisa: só guardam o que você escolheu, e nada é enviado para nós.",
   },
-  { type: "Métricas", status: "Ainda não usamos", use: "Contam visitas e páginas lidas, de forma agregada.", consent: "Sim, pedido no aviso de cookies." },
+  {
+    type: "Contagem de visitas",
+    status: "Sem cookies",
+    use: "A contagem de visitas do próprio site (páginas abertas, de onde veio a visita, tipo de aparelho) não usa cookies nem guarda nada no seu aparelho; é agregada por dia.",
+    consent: "Não precisa: não há cookie nem dado que identifique você.",
+  },
+  { type: "Métricas de terceiros", status: "Ainda não usamos", use: "Ferramentas de métricas de terceiros, se vierem a ser usadas, contam visitas e páginas lidas de forma agregada.", consent: "Sim, pedido no aviso de cookies." },
   {
     type: "Publicidade",
     status: "Google AdSense",

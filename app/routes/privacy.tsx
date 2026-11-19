@@ -41,9 +41,14 @@ const sections: DocSection[] = [
                 <td>Manter o site seguro e funcionando. O Marco Civil da Internet exige guardar registros de acesso por 6 meses.</td>
               </tr>
               <tr>
-                <td>Métricas de audiência</td>
-                <td>Se você aceitar cookies de métricas (quando ativados).</td>
-                <td>Entender quais conteúdos são mais lidos e melhorar o site.</td>
+                <td>Contagem de visitas (sem cookies)</td>
+                <td>
+                  Quando uma página termina de abrir, o seu navegador avisa o nosso servidor qual página foi aberta, de onde você veio (o site anterior ou os parâmetros UTM do
+                  link) e o tipo de aparelho, navegador e idioma. Para não contar a mesma pessoa duas vezes no dia, o servidor calcula um código a partir do IP e do navegador com
+                  uma chave que é trocada e apagada todos os dias: o código só vale naquele dia e não permite identificar ninguém. Não guardamos o IP nessa contagem. Robôs não
+                  são contados.
+                </td>
+                <td>Entender quais conteúdos são mais lidos e melhorar o site. Não usa cookies nem guarda nada no seu aparelho.</td>
               </tr>
               <tr>
                 <td>Identificadores de anúncios (cookies e dados do navegador)</td>
@@ -165,7 +170,7 @@ const sections: DocSection[] = [
       <ul>
         <li>registros de acesso: 6 meses, como exige o Marco Civil da Internet;</li>
         <li>mensagens de contato: pelo tempo necessário para resolver o assunto e, depois, até 2 anos para histórico;</li>
-        <li>métricas: de forma agregada, sem identificar você.</li>
+        <li>contagem de visitas (números por dia, página, origem e aparelho, sem dado pessoal): 13 meses; os totais por dia ficam sem prazo.</li>
       </ul>
     ),
   },

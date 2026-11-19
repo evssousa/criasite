@@ -59,6 +59,7 @@ export default [
     route("fila", "routes/admin/queue.tsx"),
     route("fontes", "routes/admin/feeds.tsx"),
     route("robo", "routes/admin/robot.tsx"),
+    route("visitas", "routes/admin/visitas.tsx"),
     route("config", "routes/admin/settings.tsx"),
   ]),
 
@@ -66,6 +67,8 @@ export default [
   route("api/cron/:job", "routes/cron.ts"),
   // Contador de visitas (a página da matéria avisa depois de carregar no navegador).
   route("api/view", "routes/view.ts"),
+  // Sinal de visita do site inteiro (sem cookie; ver app/visitas e docs/painel-visitas.md).
+  route("api/v", "routes/api.v.ts"),
   // Ferramenta "Está fora do ar?": checagem feita pelo servidor (ver docs/ferramenta-fora-do-ar.md).
   route("api/fora-do-ar", "routes/api-fora-do-ar.ts"),
 

@@ -8,6 +8,7 @@ import { SiteHeader } from "./components/Header";
 import { adsenseClient, consentBootstrap } from "./lib/ads";
 import { getAvailability } from "./lib/content.server";
 import { SITE } from "./lib/site";
+import { VisitBeacon } from "./visitas/client/VisitBeacon";
 
 export const links: Route.LinksFunction = () => [
   // Mude o "?v=" sempre que trocar os ícones (o navegador guarda o antigo pelo endereço).
@@ -68,7 +69,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+      <VisitBeacon />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

@@ -4,6 +4,7 @@
 //   GET /api/cron/diag?token=...      testa os modelos do Gemini (resultado em /status)
 //   GET /api/cron/paginas?token=...   testa, fonte por fonte, se a página da notícia abre do servidor
 //   GET /api/cron/fontes?token=...    pautas por fonte e situação nos últimos 7 dias (diagnóstico)
+//   GET /api/cron/limpeza?token=...   apaga dados vencidos das visitas (1 vez por dia, de madrugada)
 //   GET /api/cron/status?token=...    últimas execuções
 //   GET /api/cron/cabecalhos?token=... mostra os cabeçalhos de IP que a Hostinger repassa (diagnóstico, sem gravar nada)
 // Parâmetros de publicar: dry=1 (gera sem gravar), force=1 (ignora horário/limite/intervalo),
@@ -16,7 +17,8 @@ import { timingSafeEqual } from "node:crypto";
 import type { Route } from "./+types/cron";
 import { hasDatabase } from "~/lib/db.server";
 import { collect, diag, feedStats, pagesDiag, publish } from "~/lib/robot/robot.server";
-import { recentRuns, type JobResult } from "~/lib/runs.server";
+import { recentRuns, runJob, type JobResult } from "~/lib/runs.server";
+import { limparVisitas } from "~/visitas/server/limpeza.server";
 
 function authorized(request: Request) {
   const expected = process.env.CRON_TOKEN;
@@ -51,6 +53,12 @@ export async function loader({ request, params }: Route.LoaderArgs) {
   if (params.job === "coletar") job = collect;
   else if (params.job === "diag") job = diag;
   else if (params.job === "paginas") job = pagesDiag;
+  else if (params.job === "limpeza")
+    job = () =>
+      runJob("limpeza", async () => {
+        const stats = await limparVisitas();
+        return { status: "ok", message: `Visitas: ${Object.entries(stats).map(([k, v]) => `${k}=${v}`).join(", ")}`, stats };
+      });
   else if (params.job === "publicar")
     job = () => publish({ dry: flag("dry"), force: flag("force"), redoPostId: Number(url.searchParams.get("refazer")) || undefined });
   else return notFound();
