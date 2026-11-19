@@ -2,6 +2,26 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-19 — Ferramenta "Quanto custa um site" (plano)
+
+- **O quê (proposta do planejador, plano em `orcamento-site.md`):** calculadora 100% no navegador em
+  `/ferramentas/quanto-custa-um-site` (nome curto "Orçamento de site", categoria `dia-a-dia`), para quem cria o próprio site.
+  Entradas sem texto livre (tipo, porte, recursos, domínio, caixas de e-mail, imagens, textos, manutenção, valor da hora
+  opcional). Resultado: 5 caminhos em ordem fixa (IA, construtor, WordPress, freelancer, agência) com faixas de 1º ano
+  (montar + 12 meses) e por mês depois (renovação), horas do seu tempo, conta linha a linha, avisos e selos calculados
+  ("menor custo", "menos tempo"), sem selo de "recomendado". Régua de faixa em escala linear comum. Resumo em .txt, copiar e
+  impressão por CSS. Rascunho em `criasite_orcamento`.
+- **Honestidade:** todos os números num único `lib/orcamento/data.ts` com `updatedAt` e validade de 180 dias; cada premissa
+  com critério escrito; teste barra nome de empresa, URL, afiliado e palavras como "garantido"/"oficial", e falha quando as
+  premissas vencem. Os valores iniciais são proposta sem consulta ao vivo: precisam de conferência antes de a tela ir ao ar.
+- **Afiliado:** nenhum link de afiliado dentro da ferramenta; a caixa "Para decidir" leva aos guias (o de hospedagem já tem
+  o aviso). Texto "Ninguém paga para aparecer aqui" na página.
+- **Migration 010:** link nos guias de domínio, hospedagem, WordPress ou construtor e e-mail, **sem alterar `updated_at`**
+  (diferente da 009); o guia de hospedagem, que já teve `updated_at` gravado pela 004, é protegido por duas âncoras.
+- **Por quê:** "quanto custa um site" é busca forte do público iniciante; preço muda e varia, então só faixa com critério e
+  data evita prometer o que não se sabe; ordem fixa e ausência de afiliado protegem a confiança e a revisão do AdSense.
+- **Pendente do dono:** 12 decisões com recomendação (Parte A do plano).
+
 ## 2026-11-19 — Mídia kit em `/anuncie` no ar (piloto)
 
 - **Feito como no plano** ([midia-kit.md](midia-kit.md)), com as 10 recomendações aprovadas pelo dono: preço "sob consulta", audiência só sob pedido até fev/2027,
