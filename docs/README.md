@@ -98,7 +98,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Pendências suas
 - **Cron Job `limpeza`** (hPanel → Cron Jobs): 1x por dia às 7h30 UTC (4h30 de Brasília), mesmo formato dos outros: `GET /api/cron/limpeza?token=<CRON_TOKEN>`. O dono vai criar (2026-11-24). Sem ele, só o `visit_seen` e os dados com mais de 400 dias não são apagados (nada quebra).
-- **Search Console:** o dono vai baixar o relatório das páginas não indexadas (2026-11-24) e passar para conferir e corrigir o que depender só do site.
+- **Search Console:** relatório de 2026-11-24 analisado (ver `decisoes.md`): corrigido `/busca` (robots.txt) e o `SearchAction`; o resto é site novo. Dono: pedir indexação das páginas principais pela Inspeção de URL (home, `/guias`, `/ferramentas`, guias novos) e reexportar o relatório em 1 a 2 semanas.
 - ✅ Aprovados pelo dono em 2026-11-24: os guias de privacidade e de cookies, e o texto novo de `/privacidade` e `/cookies` (os 2 links de exemplo nos guias ficam).
 - ✅ Painel `/admin/visitas` conferido em produção pelo dono em 2026-11-24 ("Hoje" sobe ao navegar).
 
