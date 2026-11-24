@@ -97,9 +97,10 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **Cron Job `limpeza`** (hPanel → Cron Jobs): 1x por dia às 7h30 UTC (4h30 de Brasília), mesmo formato dos outros: `GET /api/cron/limpeza?token=<CRON_TOKEN>`. Sem ele, só o `visit_seen` e os dados com mais de 400 dias não são apagados (nada quebra).
-- **3ª leva de guias**: depois do deploy, ler os guias de privacidade e de cookies em até 3 dias pelo painel (`/admin/materias`), antes de pedir o AdSense. Os dois citam `/privacidade` e `/cookies` como exemplo: se você não aprovar o texto novo dessas páginas, me avise para tirar os links.
-- **Aprovar o texto novo** de `/privacidade` (linha "Contagem de visitas (sem cookies)" e retenção de 13 meses) e de `/cookies` (linha "Contagem de visitas").
+- **Cron Job `limpeza`** (hPanel → Cron Jobs): 1x por dia às 7h30 UTC (4h30 de Brasília), mesmo formato dos outros: `GET /api/cron/limpeza?token=<CRON_TOKEN>`. O dono vai criar (2026-11-24). Sem ele, só o `visit_seen` e os dados com mais de 400 dias não são apagados (nada quebra).
+- **Search Console:** o dono vai baixar o relatório das páginas não indexadas (2026-11-24) e passar para conferir e corrigir o que depender só do site.
+- ✅ Aprovados pelo dono em 2026-11-24: os guias de privacidade e de cookies, e o texto novo de `/privacidade` e `/cookies` (os 2 links de exemplo nos guias ficam).
+- ✅ Painel `/admin/visitas` conferido em produção pelo dono em 2026-11-24 ("Hoje" sobe ao navegar).
 
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`
   (a conferência pública já foi feita em 2026-11-16: 12 guias, 12 capas, 7 botões da trilha e todos os links respondem 200).
