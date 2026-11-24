@@ -2,6 +2,23 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-22 — 3ª leva de guias (plano; executada e aprovada em 2026-11-24)
+
+- **O quê (proposta do planejador, plano em `guias-leva3.md`):** 5 guias clássicos (`tag` NULL), evergreen: política de
+  privacidade para site pequeno (LGPD), aviso de cookies, medir visitas, manutenção e backup, site fora do ar. Migration
+  `012_guias_leva3.sql` (INSERT IGNORE, capas próprias, datas nas últimas ~48 h) e `013_links_leva3.sql` com 9 parágrafos
+  de link em 8 guias antigos (inclui os 4 links pendentes do "Está fora do ar?"), no modelo da 010: âncoras conferidas,
+  `NOT LIKE`, `updated_at IS NULL` (exceto hospedagem, por âncoras) e **sem alterar `updated_at`**.
+- **Regras novas:** alvo de 850 a 1.000 palavras com erro abaixo de 800; aviso jurídico em `quote` logo depois do lide só
+  nos 2 guias legais; nada de promessa de conformidade, valor de multa ou prazo; nomes de empresa só Google (produtos que
+  são o assunto), WordPress, ANPD e Registro.br; externo novo `gov.br/anpd`.
+- **Capas:** 5 artes novas (`privacidade`, `cookie`, `visitas`, `backup`, `foradoar`) na moldura e na régua da trilha.
+- **Fica para depois:** a 2ª leva de IA, para meados de dezembro (4 semanas de dados do Search Console, como em
+  `ia-desenvolvimento.md`, seção K).
+- **Por quê:** o pedido do AdSense precisa de conteúdo útil e original e de política de privacidade; privacidade e cookies
+  sobraram das levas 1 e 2; medir, manter e consertar fecham o ciclo do site e ligam as ferramentas existentes.
+- **Pendente do dono:** 11 decisões com recomendação (Parte G do plano).
+
 ## 2026-11-19 — "Quanto custa um site": execução (desvios do plano)
 
 - Recomendações A1 a A12 aprovadas pelo dono. Feito: conta, dados e 32 testes (commit `3c65017`), tela, catálogo, trilha, roteiro de IA,

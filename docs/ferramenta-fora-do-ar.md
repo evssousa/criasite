@@ -527,7 +527,7 @@ Em 390 px (DevTools, iPhone 12/13/14) e em 1280 px, conferir:
    `{ re: /(?<![\p{L}\d])(fora do ar|sites? caíram|sites? caiu|site caído|queda do site|instabilidade no site)(?![\p{L}\d])/iu, url: "/ferramentas/esta-fora-do-ar" },`
 4. Sitemap, mapa do site, diretório, busca da home e o guia do redator (`writer.server.ts`, `TOOL_PAGES`) leem `TOOLS`:
    nada a fazer, só conferir.
-5. Guias que devem ganhar um link para a ferramenta (**não editar agora**; fazer no sábado 21/11, junto com os links da
+5. **Feito em 2026-11-24 pela migration `013_links_leva3.sql`** (domínio, hospedagem, HTTPS e checklist). Guias que devem ganhar um link para a ferramenta (**não editar agora**; fazer no sábado 21/11, junto com os links da
    3ª leva, pelo painel ou migration de UPDATE):
    - `como-escolher-a-hospedagem-do-site`, seção "Disponibilidade: quanto tempo o site fica no ar" (frase sugerida: "Para
      saber se o site caiu para todo mundo ou só para você, use o [Está fora do ar?](/ferramentas/esta-fora-do-ar).").

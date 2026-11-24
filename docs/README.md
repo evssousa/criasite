@@ -21,6 +21,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [guias.md](guias.md) | Guias da trilha: modelo de guia, 1ª leva de 6 (migration 003), link na trilha, afiliado reservado |
 | [capas.md](capas.md) | Capas próprias dos guias (script `make-capas.mjs`, SVG → WebP, migration 005) e capa padrão por editoria |
 | [guias-leva2.md](guias-leva2.md) | 2ª leva de 6 guias (Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa), migration 006 |
+| [guias-leva3.md](guias-leva3.md) | 3ª leva de 5 guias evergreen (privacidade e LGPD, aviso de cookies, medir visitas, manutenção e backup, site fora do ar), capas novas, migrations 012 (guias) e 013 (links nos guias antigos); 11 decisões para o dono |
 | [ia-desenvolvimento.md](ia-desenvolvimento.md) | Novo eixo "criar site com IA": hub `/criar-site-com-ia` (roteiro de 6 etapas), 8 guias, capas com régua própria, robô (fontes e filtro de assunto), 2 ferramentas, aviso editorial; em fatias |
 | [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | Plano da ferramenta "Está fora do ar?" (1ª com servidor): proteção contra SSRF, limites em memória, API `/api/fora-do-ar`, tela, textos legais |
 | [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | Plano da F6 "Gerador de arquivo de instruções" (AGENTS.md/CLAUDE.md): Markdown exato, escapes, detector de segredos, tela, textos, testes |
@@ -58,6 +59,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Guias da trilha, 1ª leva (6) por migration `003_guias_iniciais.sql` + botão "Ler o guia" na `/trilha`: plano em [guias.md](guias.md) | ✅ (escritos, validados e no repo; a migration roda no deploy) |
 | 2 | Capas próprias dos guias (12 artes SVG → WebP, migration 005) + capa padrão por editoria no lugar das listras + capa nos cards de `/guias`: plano em [capas.md](capas.md) | ✅ (amostras aprovadas pelo dono; no ar depois do deploy) |
 | 2 | Guias da trilha, 2ª leva (6: Páginas, e-mail, WordPress ou construtor, HTTPS, Search Console, Perfil da Empresa; migration 006): plano em [guias-leva2.md](guias-leva2.md) | ✅ (6 guias com capa, 803 a 835 palavras; etapa Páginas da trilha com guia) |
+| 2 | Guias da trilha, 3ª leva (5: privacidade e LGPD, aviso de cookies, medir visitas, manutenção e backup, site fora do ar; migrations 012 e 013 com links nos guias antigos e os 4 links pendentes do "Está fora do ar?"): plano em [guias-leva3.md](guias-leva3.md) | 🔄 (11 decisões aprovadas em 2026-11-24; 5 guias, 5 capas e migrations 012 e 013 feitos e testados localmente; no ar depois do deploy, falta conferir em produção e o dono ler os 2 guias legais) |
 | 2 | Novo eixo "criar site com IA" (hub `/criar-site-com-ia`, 8 guias com tag "Com IA", capas, robô, ferramentas, aviso editorial): plano em [ia-desenvolvimento.md](ia-desenvolvimento.md) | 🔄 (plano pronto em 2026-11-17; **F1 robô feita e no ar em 2026-11-17**; 9 recomendações aprovadas pelo dono em 2026-11-17; **F1, F2, F3 e F4 feitas em 2026-11-17**: hub `/criar-site-com-ia`, menu "Site com IA", 8 guias "Com IA" (migration 008) e capas; **F6 ✅ no ar**; F5 com plano pronto) |
 | 2 | Ferramenta "Está fora do ar?" (servidor, anti-SSRF, limites por IP/alvo/global, histórico no navegador): plano em [ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md) | ✅ (feita em 2026-11-17: guarda anti-SSRF, checagem, API `/api/fora-do-ar`, tela, textos legais; 84 testes puros + 14 de rede) |
 | 2 | Ferramenta "Gerador de arquivo de instruções" (F6, `/ferramentas/arquivo-de-instrucoes-ia`, 100% no navegador, rascunho em `criasite_instrucoes`, alerta de segredos): plano em [ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md) | ✅ (feita em 2026-11-17: 8 recomendações aprovadas; 79 testes puros; falta só o link no G3, pelo painel) |
@@ -80,9 +82,10 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    **F3+F4** ✅ **feitas em 2026-11-17** (hub `/criar-site-com-ia` com 6 etapas e progresso no navegador, card na home, box na `/trilha`, menu "Site com IA", pílula "Com IA" nos cards, "Leia também" por família, aviso na política editorial, migration `008_guias_ia.sql` com 8 guias); **F6** gerador de arquivo de instruções ✅ **no ar em 2026-11-17** ([ferramenta-instrucoes-ia.md](ferramenta-instrucoes-ia.md));
    **F5** gerador de prompt ✅ **feita em 2026-11-17** ([ferramenta-prompt-site.md](ferramenta-prompt-site.md); 3 commits: plano, peças comuns com a F6 + contraste em `lib`, e a ferramenta).
    As 9 perguntas do plano foram aprovadas com as recomendações (2026-11-17).
-3. 3ª leva de guias, **agendada para sáb 21/11** (o dono confirmou): privacidade e cookies para site pequeno (LGPD, com
-   "consulte um profissional"; ajuda no AdSense), mais as ideias que sobraram. No mesmo dia, links dos guias antigos para os novos
-   (pelo painel ou migration de UPDATE).
+3. 3ª leva de guias ([guias-leva3.md](guias-leva3.md)): **feita em 2026-11-24** (11 decisões aprovadas pelo dono). 5 guias (privacidade e LGPD, aviso de cookies,
+   medir visitas, manutenção e backup, site fora do ar; 857 a 1.000 palavras) com capas novas pela migration 012, e a 013 com 9 parágrafos de link em 8 guias
+   antigos (fecha os 4 links pendentes do "Está fora do ar?"). O servidor aplica as migrations sozinho no deploy. Falta: conferir em produção (Como verificar do plano)
+   e a 2ª leva de IA, que fica para meados de dezembro (4 semanas de dados do Search Console).
 4. **Está fora do ar?** ✅ **no ar em 2026-11-17** ([ferramenta-fora-do-ar.md](ferramenta-fora-do-ar.md)): commit 1 (guarda anti-SSRF, testes, job
    `cabecalhos`) e commit 2 (checagem, limites, API, tela, textos legais). `limits.server.ts` usa o último valor de `x-forwarded-for`
    até sair o resultado do diagnóstico (se o último for sempre o mesmo IP de proxy, trocar pelo penúltimo ou por `x-real-ip`).
@@ -95,6 +98,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Pendências suas
 - **Cron Job `limpeza`** (hPanel → Cron Jobs): 1x por dia às 7h30 UTC (4h30 de Brasília), mesmo formato dos outros: `GET /api/cron/limpeza?token=<CRON_TOKEN>`. Sem ele, só o `visit_seen` e os dados com mais de 400 dias não são apagados (nada quebra).
+- **3ª leva de guias**: depois do deploy, ler os guias de privacidade e de cookies em até 3 dias pelo painel (`/admin/materias`), antes de pedir o AdSense. Os dois citam `/privacidade` e `/cookies` como exemplo: se você não aprovar o texto novo dessas páginas, me avise para tirar os links.
 - **Aprovar o texto novo** de `/privacidade` (linha "Contagem de visitas (sem cookies)" e retenção de 13 meses) e de `/cookies` (linha "Contagem de visitas").
 
 - Prévia de um guia no WhatsApp: **fica para depois** (decisão do dono, 2026-11-17). Dar uma olhada nos 12 guias em `/admin/materias`

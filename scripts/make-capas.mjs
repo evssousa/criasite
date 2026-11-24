@@ -350,6 +350,87 @@ const ARTES = {
     ${checks}
   </g>`;
   },
+  // Folha da política com item marcado + escudo com cadeado (3ª leva, privacidade).
+  privacidade: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="440" y="240" width="180" height="190" rx="14" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <rect x="462" y="262" width="110" height="14" rx="7" fill="${N}"/>
+    ${[292, 310, 328].map((y) => `<rect x="462" y="${y}" width="136" height="8" rx="4" fill="#cdd5ef"/>`).join("")}
+    <rect x="462" y="346" width="96" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="462" y="372" width="20" height="20" rx="5" fill="${L}"/>
+    <path d="M466 382 l4 4 l8 -9" stroke="#fff" stroke-width="3" fill="none"/>
+    <rect x="490" y="378" width="90" height="8" rx="4" fill="${N}"/>
+    <path d="M700 250 l66 24 v50 c0 44 -28 76 -66 90 c-38 -14 -66 -46 -66 -90 v-50 Z" fill="${N}"/>
+    <path d="M684 326 v-12 a16 16 0 0 1 32 0 v12" fill="none" stroke="${LC}" stroke-width="6"/>
+    <rect x="676" y="322" width="48" height="40" rx="8" fill="${L}"/>
+    <circle cx="700" cy="338" r="5" fill="${N}"/>
+    <rect x="698" y="340" width="4" height="12" rx="2" fill="${N}"/>
+  </g>`,
+
+  // Biscoito mordido, dois interruptores e aviso com dois botões do mesmo tamanho (3ª leva, cookies).
+  cookie: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="500" cy="300" r="62" fill="${LC}"/>
+    <circle cx="552" cy="256" r="22" fill="#ffffff"/>
+    ${[[478, 282], [514, 318], [470, 330], [526, 292]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="8" fill="#c24e06"/>`).join("")}
+    <rect x="620" y="262" width="56" height="30" rx="15" fill="#3ee0b0"/>
+    <circle cx="661" cy="277" r="11" fill="#fff"/>
+    <rect x="690" y="273" width="80" height="8" rx="4" fill="${N}"/>
+    <rect x="620" y="310" width="56" height="30" rx="15" fill="#cdd5ef"/>
+    <circle cx="635" cy="325" r="11" fill="#fff"/>
+    <rect x="690" y="321" width="64" height="8" rx="4" fill="#cdd5ef"/>
+    <rect x="420" y="380" width="360" height="58" rx="14" fill="${N}"/>
+    <rect x="440" y="396" width="120" height="8" rx="4" fill="#2a3c80"/>
+    <rect x="440" y="412" width="90" height="8" rx="4" fill="#2a3c80"/>
+    <rect x="600" y="394" width="76" height="30" rx="15" fill="${LC}"/>
+    <rect x="688" y="394" width="76" height="30" rx="15" fill="${LC}"/>
+  </g>`,
+
+  // Três cartões de números e três barras de páginas mais vistas (3ª leva, visitas).
+  visitas: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    ${[420, 547, 674]
+      .map(
+        (x, i) => `<rect x="${x}" y="240" width="106" height="64" rx="10" fill="#eef1fb" stroke="#dde3f6" stroke-width="2"/>
+    <rect x="${x + 14}" y="256" width="52" height="16" rx="8" fill="${i === 1 ? L : N}"/>
+    <rect x="${x + 14}" y="282" width="72" height="8" rx="4" fill="#cdd5ef"/>`,
+      )
+      .join("\n    ")}
+    ${[
+      [330, 250, L],
+      [362, 170, N],
+      [394, 110, N],
+    ]
+      .map(([y, w, c]) => `<rect x="420" y="${y}" width="360" height="18" rx="9" fill="#dde3f6"/><rect x="420" y="${y}" width="${w}" height="18" rx="9" fill="${c}"/>`)
+      .join("\n    ")}
+  </g>`,
+
+  // Duas unidades de armazenamento ligadas por setas de cópia (3ª leva, manutenção e backup).
+  backup: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="430" y="270" width="130" height="150" rx="16" fill="${N}"/>
+    <rect x="450" y="296" width="90" height="10" rx="5" fill="#2a3c80"/>
+    <rect x="450" y="316" width="90" height="10" rx="5" fill="#2a3c80"/>
+    <circle cx="530" cy="394" r="8" fill="#3ee0b0"/>
+    <rect x="640" y="270" width="130" height="150" rx="16" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <rect x="660" y="296" width="90" height="10" rx="5" fill="#cdd5ef"/>
+    <rect x="660" y="316" width="90" height="10" rx="5" fill="#cdd5ef"/>
+    <circle cx="740" cy="394" r="8" fill="${L}"/>
+    <path d="M572 320 H626 M614 308 l12 12 l-12 12" stroke="${L}" stroke-width="6" fill="none"/>
+    <path d="M628 370 H574 M586 358 l-12 12 l12 12" stroke="${LC}" stroke-width="6" fill="none"/>
+  </g>`,
+
+  // Alerta laranja sobre um plugue desconectado da tomada (3ª leva, site fora do ar).
+  foradoar: () => `<g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 238 L666 350 H534 Z" fill="${L}" stroke="${L}" stroke-width="10"/>
+    <rect x="594" y="272" width="12" height="44" rx="6" fill="#fff"/>
+    <circle cx="600" cy="332" r="7" fill="#fff"/>
+    <path d="M420 404 H470" stroke="${N}" stroke-width="8" fill="none"/>
+    <rect x="470" y="384" width="60" height="40" rx="10" fill="${N}"/>
+    <rect x="530" y="392" width="22" height="7" rx="3" fill="${N}"/>
+    <rect x="530" y="409" width="22" height="7" rx="3" fill="${N}"/>
+    <rect x="650" y="380" width="70" height="48" rx="12" fill="#eef1fb" stroke="${N}" stroke-width="4"/>
+    <rect x="662" y="392" width="10" height="7" rx="3" fill="${N}"/>
+    <rect x="662" y="409" width="10" height="7" rx="3" fill="${N}"/>
+    <path d="M720 404 H780" stroke="${N}" stroke-width="8" fill="none"/>
+    <path d="M584 404 l10 -10 l10 20 l10 -10 l10 10" stroke="${LC}" stroke-width="5" fill="none"/>
+  </g>`,
 };
 
 /** Moldura comum a todas as capas (janela de navegador com sombra laranja + régua da trilha). */
@@ -472,6 +553,36 @@ export const CAPAS = [
     etapa: "lancamento",
     arte: "pino",
     alt: "Ilustração de um mapa simplificado com um pino laranja marcando o local do negócio e uma fileira de estrelas de avaliação.",
+  },
+  {
+    slug: "politica-de-privacidade-para-site-pequeno",
+    etapa: "lancamento",
+    arte: "privacidade",
+    alt: "Ilustração de uma folha de política com linhas de texto e um item marcado em laranja, ao lado de um escudo azul-marinho com um cadeado laranja.",
+  },
+  {
+    slug: "aviso-de-cookies-no-site",
+    etapa: "lancamento",
+    arte: "cookie",
+    alt: "Ilustração de um biscoito mordido, dois interruptores de preferência e um aviso de cookies com dois botões do mesmo tamanho, dentro de uma janela de navegador.",
+  },
+  {
+    slug: "como-medir-as-visitas-do-site",
+    etapa: "google",
+    arte: "visitas",
+    alt: "Ilustração de um painel de estatísticas com três cartões de números e barras horizontais das páginas mais vistas, a primeira em laranja.",
+  },
+  {
+    slug: "manutencao-do-site-backup-e-atualizacoes",
+    etapa: "lancamento",
+    arte: "backup",
+    alt: "Ilustração de duas unidades de armazenamento lado a lado, uma azul-marinho e outra clara, ligadas por setas laranja de cópia nos dois sentidos.",
+  },
+  {
+    slug: "site-fora-do-ar-o-que-fazer",
+    etapa: "lancamento",
+    arte: "foradoar",
+    alt: "Ilustração de um triângulo de alerta laranja sobre um plugue azul-marinho desconectado da tomada, com uma faísca no espaço entre os dois.",
   },
   // Roteiro "Criar site com IA" (migration dos guias de IA; régua própria com losangos)
   {

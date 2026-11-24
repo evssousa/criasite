@@ -82,8 +82,13 @@ export const GUIDE_ORDER = [
   "perfil-da-empresa-no-google",
   "email-com-dominio-proprio",
   "google-search-console-passo-a-passo",
+  "como-medir-as-visitas-do-site",
   "site-lento-causas-e-como-otimizar-imagens",
   "checklist-de-lancamento-do-site",
+  "politica-de-privacidade-para-site-pequeno",
+  "aviso-de-cookies-no-site",
+  "manutencao-do-site-backup-e-atualizacoes",
+  "site-fora-do-ar-o-que-fazer",
   // Guias do roteiro "Criar site com IA" (tag "Com IA"): depois dos clássicos, dentro de cada nível.
   "criar-site-com-ia-do-jeito-certo",
   "prompt-para-criar-site-com-ia",
