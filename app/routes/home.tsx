@@ -6,7 +6,7 @@ import { FavoriteTools, ToolDirectory, TrailStrip, filterTools } from "~/compone
 import { toolsFor, useAvailability } from "~/lib/availability";
 import { listPosts } from "~/lib/content.server";
 import { seo } from "~/lib/seo";
-import { absoluteUrl, SITE } from "~/lib/site";
+import { SITE } from "~/lib/site";
 
 export async function loader() {
   const [latest, guides] = await Promise.all([listPosts({ excludeSection: "guias", perPage: 5 }), listPosts({ section: "guias", perPage: 3 })]);
@@ -23,7 +23,6 @@ export function meta() {
         name: SITE.name,
         url: SITE.url,
         inLanguage: "pt-BR",
-        potentialAction: { "@type": "SearchAction", target: `${absoluteUrl("/busca")}?q={search_term_string}`, "query-input": "required name=search_term_string" },
       },
     },
   ];
