@@ -1,6 +1,6 @@
 # Guias da trilha: 3ª leva (5 guias evergreen) + links dos guias antigos
 
-**Status: executado em 2026-11-24** (11 decisões aprovadas pelo dono com as recomendações). Commit com as migrations 012 e 013, 5 capas, `make-capas.mjs` e `site.ts`. Falta conferir em produção.
+**Status: executado em 2026-11-24** (11 decisões aprovadas pelo dono com as recomendações). Commit com as migrations 012 e 013, 5 capas, `make-capas.mjs` e `site.ts`. Conferido em produção em 2026-11-24 (5 guias 200 com capa, 25 em `/guias` e no sitemap, links nos 8 guias antigos).
 Plano criado em 2026-11-22 pelo planejador. Executor: seguir na ordem dos **Passos**.
 
 ## Objetivo
