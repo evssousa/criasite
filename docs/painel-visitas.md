@@ -8,7 +8,7 @@ Contagem própria, **sem cookie, sem guardar IP**, agregada por dia (horário de
 - `app/routes/api.v.ts` → `app/visitas/server/coleta.server.ts`: ignora robôs (`isbot`, contados à parte), prefetch, outro site e o dono logado (cookie `__criasite_admin`); calcula um código do visitante com sal diário (tabela `visit_salt`, trocado todo dia); a mesma pessoa no mesmo endereço em 30 s não conta de novo.
 - O buffer em memória é gravado a cada 10 s em `visit_daily`, `visit_pages`, `visit_dims` e `visit_seen` (migration `011_visitas.sql`, aplicada sozinha no deploy). Um reinício perde no máximo 10 s.
 - `posts.views` (usado em "Mais lidas") volta a andar pela mesma coleta: soma 1 por pessoa a cada 30 min em `/<editoria>/<slug>`. O antigo `POST /api/view` responde 204 sem fazer nada (apagar com a rota depois de 2026-11-27).
-- Limpeza: `GET /api/cron/limpeza?token=...` (Cron Job da Hostinger, 1x por dia, 4h30 de Brasília) apaga `visit_seen` antigo e páginas/origens com mais de 400 dias. Os totais por dia ficam sem prazo.
+- Limpeza: `GET /api/cron/limpeza?token=...` (Cron Job da Hostinger criado em 2026-11-25, `0,30 7 * * *` UTC, conferido) apaga `visit_seen` antigo e páginas/origens com mais de 400 dias. Os totais por dia ficam sem prazo.
 
 ## Tela
 Cartões Hoje / Ontem / 7 dias / 30 dias / Total, gráfico de 30 dias, páginas mais vistas (filtros: Tudo, Matérias, Guias, Ferramentas, Trilha, Outras), de onde vêm (direto, busca, redes, outros sites, campanhas UTM), aparelho, navegador e sistema. "Agora" = pessoas diferentes nos últimos 5 min (aproximado, só deste processo). Visitantes únicos só por dia (7 e 30 dias mostram média por dia).

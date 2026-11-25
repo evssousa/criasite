@@ -10,7 +10,7 @@ Status: ✅ no ar desde 2026-11-14 em https://criasite.app (banco vazio; robô c
 | Build | Node 24, app Express, `npm run build`, entrada `server.js` (igual ao Vibecoin) |
 | Banco | MySQL `<usuário>_criasite` em `127.0.0.1:3306`; migrations aplicadas a cada início. Os 3 bancos do projeto antigo (`_prod`, `_dev`, `_shdw`) foram apagados com autorização do dono |
 | Variáveis | `VITE_SITE_URL` (`https://criasite.app` por enquanto), `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `CRON_TOKEN` (cadastradas pelo Claude via MCP em 2026-11-14). **Depois que o dono cadastrar `GEMINI_API_KEY` e as do painel no hPanel, não usar mais a operação de substituir variáveis pelo MCP** (ela apaga tudo que não estiver na lista) |
-| Cron Jobs | `10,40 * * * *` → `/api/cron/coletar`; `50 * * * *` → `/api/cron/publicar` (desencontrados do Respawnou e do Vibecoin) |
+| Cron Jobs | `10,40 * * * *` → `/api/cron/coletar`; `50 * * * *` → `/api/cron/publicar`; `0,30 7 * * *` → `/api/cron/limpeza` (visitas; desde 2026-11-25) (desencontrados do Respawnou e do Vibecoin) |
 
 ## DNS e e-mail (2026-11-14)
 
