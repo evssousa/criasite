@@ -1,5 +1,5 @@
 import { getAllPosts, getAvailability, postUrl } from "~/lib/content.server";
-import { navFor, toolsFor } from "~/lib/availability";
+import { navFor, newsSectionsFor, toolsFor } from "~/lib/availability";
 import { absoluteUrl, DOC_PAGES } from "~/lib/site";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -10,6 +10,8 @@ export async function loader() {
   const entries: { loc: string; lastmod?: string; changefreq?: string }[] = [
     { loc: "/", changefreq: "hourly" },
     ...navFor(available).map((n) => ({ loc: n.to, changefreq: n.to === "/noticias" ? "hourly" : "weekly" })),
+    // Editorias de notícias com conteúdo (/google, /plataformas, /ia, /seguranca); vazias ficam de fora.
+    ...newsSectionsFor(available).map((sec) => ({ loc: `/${sec.slug}`, changefreq: "daily" })),
     ...toolsFor(available).map((t) => ({ loc: `/ferramentas/${t.slug}`, changefreq: "weekly" })),
     ...posts.map((p) => ({ loc: postUrl(p), lastmod: p.updatedAt ?? p.publishedAt })),
     ...DOC_PAGES.map((d) => ({ loc: d.to, lastmod: d.updated, changefreq: "yearly" })),
