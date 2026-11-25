@@ -1,6 +1,6 @@
 # Migração para a VPS (Hostinger KVM 1 + Coolify)
 
-Status: 📝 plano pronto em 2026-11-25, aguardando as decisões do dono (Parte H). O criasite é o **1º site** a migrar;
+Status: 🔄 em execução. 12 decisões aprovadas pelo dono em 2026-11-25 (todas as recomendações). Ver "Andamento" no fim. O criasite é o **1º site** a migrar;
 depois vêm respawnou, vibecoin e animeprofile, todos na mesma VPS.
 
 Como ler este documento:
@@ -561,3 +561,20 @@ Quando usar: certificado não sai em 30 min, erro grave sem conserto rápido, pe
 2. A caixa `contato@criasite.app` (e as dos outros sites) faz parte do Cloud Startup ou de um plano de e-mail separado?
    (Decide se cancelar o plano apaga os e-mails.)
 3. O dono lembra se cadastrou `GEMINI_MODEL` ou `ADSENSE_CLIENT` no hPanel? (O B1 confere os nomes; é só para adiantar.)
+
+
+## Andamento
+
+**2026-11-25 (Claude)**
+- A0: conta do Coolify criada pelo dono (confirmado). Porta 8000 liberada só para o IP do PC do dono no firewall.
+- A1: snapshot criado (antes de qualquer mudança).
+- A2: `apt upgrade`, `unattended-upgrades` com reinício às 06:15 UTC, `fail2ban`. Reiniciado para o kernel novo (volta em ~20 s; Coolify sobe sozinho).
+- A3: swap de 4 GB, `swappiness=10`.
+- A4: SSH só por chave. O arquivo teve de ser `00-endurecer.conf`: o `50-cloud-init.conf` da imagem liga `PasswordAuthentication yes` e, no sshd, vale o primeiro valor lido. Login por senha recusado (conferido).
+- A5: firewall da Hostinger `vps-sites` ativo: 22, 80, 443 TCP, 443 UDP abertas; 8000 só do IP do dono. 6001/6002 fechadas (conferido de fora).
+- A6: o `daemon.json` do Coolify já limita logs (10 MB × 3) e a rede `coolify` já tem IPv6. Docker 29.10. O teste do IP real fica no B9.8.
+- A7.2: DNS `painel.criasite.app` A 189.24.17.85 criado. API do Coolify ainda desligada.
+- A11: pastas `/srv/sites`, `/srv/backups`, `/root/migracao` criadas.
+- B1: variáveis na Hostinger: as 11 da tabela B3 (sem `GEMINI_MODEL`, `ADSENSE_CLIENT`, `API_KEY`, `DB_POOL`, `MEDIA_DIR`). Não há CAA na zona.
+- B2: `Dockerfile` e `.dockerignore` no repo (commit `a6c5b4c`). Build na VPS: 26 s, imagem de 548 MB; container de teste sem banco respondeu 200 em 0,05 s com 48 MB de RAM.
+- B3.1: `projetos\_segredos\criasite-vps.env` gerado com DB_PASSWORD, CRON_TOKEN e SESSION_SECRET novos; faltam 3 linhas do dono. `DB_HOST` é preenchido depois do A9.
