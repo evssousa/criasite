@@ -2,6 +2,21 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-25 — Migração para a VPS: plano (recomendações, esperando o dono)
+- **O quê (planejador, plano em `migracao-vps.md`):** Coolify (já instalado) em vez de stack manual; um MariaDB só para os 4
+  sites (banco + usuário por site, só rede interna, LTS ≥ versão da origem); dump pelo phpMyAdmin feito pelo dono (ensaio e
+  final); imagens de `/media` baixadas por HTTP a partir dos caminhos do dump; ensaio completo em
+  `criasite.189-24-17-85.sslip.io` antes da virada; `criasite.app` só entra no Coolify depois do DNS (limite de falhas do
+  Let's Encrypt); crons como tarefas agendadas do Coolify com `curl` dentro do container (token só no ambiente); firewall
+  da Hostinger (o ufw não protege portas do Docker); swap de 4 GB e 1 build por vez; IPv6 do Docker ligado e AAAA só se o
+  teste do IP real passar; site antigo parado 14 dias como volta.
+- **Por quê:** o dono não é de infra e quer o site "completo, sem nenhum problema"; o Coolify dá tela, SSL, deploy sem
+  queda e backups prontos, e a RAM cabe (~2,5 de 3,9 GB com os 4 sites). As outras opções de dump exigem senha do banco
+  no fluxo ou derrubam o site antigo.
+- **Risco achado:** se o e-mail `contato@criasite.app` (e os dos irmãos) vier do Cloud Startup, cancelar o plano apaga as
+  caixas: conferir antes do cancelamento.
+- **Pendente do dono:** 12 decisões (Parte H) e a conta do Coolify (A0, urgente).
+
 ## 2026-11-24 — Search Console: /busca fora do Disallow, sem SearchAction
 - **Relatório (exportado em 2026-11-24, dados até 15/11):** 53 não indexadas e 2 indexadas. Bloqueada pelo robots.txt: 4; redirecionamento: 1; rastreada, mas não indexada: 34; detectada, mas não indexada: 14; indexada, mas bloqueada pelo robots.txt: 1.
 - **Causa achada no site:** `/busca` tinha `noindex` e ao mesmo tempo `Disallow: /busca` no robots.txt (o Google não lê o noindex de página que não rastreia, então indexa o endereço "mesmo bloqueado"), e o JSON-LD da home trazia um `SearchAction` apontando para `/busca?q=...` (outra fonte de URLs bloqueadas). **Correção (commit 8c3050b):** tirado o `Disallow: /busca` (a página continua `noindex, follow` com canonical) e tirado o `SearchAction` (o Google aposentou a caixa de busca nos resultados em 2024). `/admin` e `/api/` continuam bloqueados.

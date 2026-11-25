@@ -30,6 +30,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [painel-visitas.md](painel-visitas.md) | Painel `/admin/visitas`: contador próprio sem cookie (módulo `app/visitas`, copiado do animeprofile), como funciona, diferenças e o que conferir |
 | [orcamento-site.md](orcamento-site.md) | Plano da ferramenta "Quanto custa um site" (orçamento de site): premissas em faixas num único `data.ts` com data que vence, conta pura e testes, 5 caminhos (IA, construtor, WordPress, freelancer, agência), tela em réguas, resumo .txt, impressão, migration 010 de links; 12 decisões para o dono |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
+| [migracao-vps.md](migracao-vps.md) | Migração para a VPS (KVM 1 + Coolify): base da VPS (uma vez) + módulo copiável por site (preparo, ensaio em sslip.io, janela de virada, pós, volta); 12 decisões para o dono |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
 | [plano-inicial.md](plano-inicial.md) | Histórico: os 3 conceitos da fase 0 (previa site sem banco; superado) |
@@ -67,11 +68,15 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Mídia kit em `/anuncie` (piloto para animeprofile, respawnou e vibecoin): plano em [midia-kit.md](midia-kit.md) | ✅ (feito em 2026-11-19; 10 recomendações aprovadas pelo dono; 27 testes; `/anuncie` com PDF por CSS de impressão em 2 páginas) |
 | 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | ✅ no ar em 2026-11-19 (faixas conferidas pelo dono; revisar premissas até 2027-05) |
 | 2 | Painel `/admin/visitas` com contador de visitas próprio, sem cookie (módulo do animeprofile): [painel-visitas.md](painel-visitas.md) | 🔄 (feito e testado localmente em 2026-11-19; falta conferir em produção, criar o Cron Job `limpeza` e o dono aprovar os textos de privacidade/cookies) |
+| 2 | Migração para a VPS (Coolify, 1º site dos 4): plano em [migracao-vps.md](migracao-vps.md) | ❓ (plano pronto em 2026-11-25; esperando as decisões da Parte H; A0, a conta do Coolify, é urgente) |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
 
+0. **Migração para a VPS** ([migracao-vps.md](migracao-vps.md)): com as decisões do dono, Parte A (base da VPS: firewall,
+   swap, SSH, Coolify com domínio, MariaDB, backups), depois Parte B (Dockerfile, banco, ensaio completo em
+   `criasite.189-24-17-85.sslip.io`), e só então a janela de virada (Parte C). Onde parou: só o plano.
 1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). A fonte The Verge IA **fica** (decisão do dono,
    2026-11-17): com o filtro, só passa com assunto de sites. Decisão do dono (2026-11-17): a notícia da **Nvidia** será excluída por ele
    no painel; a de **Harvard sobre IA e data centers fica**, porque o site também terá assuntos de IA (por isso o filtro de assunto
@@ -97,6 +102,8 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
+- **URGENTE (VPS):** criar hoje a conta de administrador do Coolify com 2FA (passo A0 de `migracao-vps.md`; até lá, quem abrir a porta 8000 vira dono do painel; o Claude fecha a porta para o seu IP antes).
+- **VPS:** responder as 12 decisões da Parte H de `migracao-vps.md` e dizer se o e-mail `contato@criasite.app` faz parte do Cloud Startup (cancelar o plano pode apagar as caixas).
 - ✅ Cron Job `limpeza` criado pelo dono em 2026-11-25 (`0,30 7 * * *`, roda às 7h00 e 7h30 UTC; inofensivo rodar duas vezes) e conferido: a chamada devolveu ok e apagou 19 códigos antigos de `visit_seen`.
 - **Search Console:** relatório de 2026-11-24 analisado (ver `decisoes.md`): corrigido `/busca` (robots.txt) e o `SearchAction`; o resto é site novo. Sitemap (agora com as editorias) reenviado pelo dono em 2026-11-25. Dono: pedir indexação das 10 páginas principais pela Inspeção de URL (opcional) e **reexportar o relatório por volta de 02/12 a 09/12** para eu analisar.
 - ✅ Aprovados pelo dono em 2026-11-24: os guias de privacidade e de cookies, e o texto novo de `/privacidade` e `/cookies` (os 2 links de exemplo nos guias ficam).
