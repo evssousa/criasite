@@ -1,8 +1,12 @@
 # Migração dos WordPress para a VPS (eversonsousa.com.br e levelcards.com.br)
 
 Status: 🚫 **cancelado em 2026-11-26** — o dono vai recriar os 2 sites em React. Em vez de migrar, os sites foram
-**baixados como referência** para `projetos/sites-recriar/` (banco, imagens, tema filho, HTML e capturas). Falta: apagar os
-sites do hPanel (com o ok do dono), tirar a chave SSH da hospedagem e a `/root/.ssh/hostinger_cloud` + `Host hostinger` da VPS.
+**baixados como referência** para `projetos/sites-recriar/` (banco, imagens, tema filho, HTML e capturas) e **apagados do
+hPanel** no mesmo dia (ok do dono). Zonas DNS de antes salvas em `sites-recriar/dns-antes-de-apagar.md`. Chave e
+`Host hostinger` removidos da VPS. **Lição:** apagar o domínio *principal* da conta (eversonsousa) limpou a conta inteira,
+inclusive os bancos antigos de criasite/vibecoin/animeprofile/respawnou que tinham sobrado (sem perda: tudo já estava na
+VPS). Os e-mails dos 6 domínios são assinaturas próprias ("Free Business Email", ativas até 2027-11-14) e não foram afetados;
+MX/SPF/DKIM/DMARC intactos nas duas zonas. O levelcards passou a apontar para a página padrão da Hostinger (A 2.57.91.91).
 O resto deste documento fica como histórico (e como base se um WordPress precisar ir para a VPS no futuro). A base da VPS
 (Parte A de [migracao-vps.md](migracao-vps.md)) já está pronta e **não se repete**. Este plano segue o formato das
 Partes B a F de lá e vale as "Lições do criasite" (citadas como "lição N").

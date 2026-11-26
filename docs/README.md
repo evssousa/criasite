@@ -105,7 +105,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **WordPress:** dar o ok para apagar levelcards.com.br e eversonsousa.com.br do hPanel (já baixados em `projetos/sites-recriar/`); depois, remover a chave `vps-migracao` do Acesso SSH da hospedagem.
+- **Cloud Startup:** a conta está vazia desde 2026-11-26 (os 2 WordPress foram apagados; referência em `projetos/sites-recriar/`). Os e-mails dos 6 domínios são assinaturas próprias ("Free Business Email") — confirmar com o suporte que continuam depois de cancelar o plano, antes de pedir o reembolso.
 - **VPS:** depois do acompanhamento de 7 dias (por volta de 03/12), apagar `projetos\_migracao\criasite-*.sql`. Opcional: criar conta grátis no Backblaze B2 para o backup externo do banco.
 - **E-mail:** `contato@criasite.app` é brinde do Cloud Startup (conferido em 2026-11-25): pedir o reembolso do plano só depois de levar os e-mails dos 6 domínios para outro lugar (Caixa de entrada do `PLANEJAMENTO.md`).
 - ✅ Cron Job `limpeza` criado pelo dono em 2026-11-25 (`0,30 7 * * *`, roda às 7h00 e 7h30 UTC; inofensivo rodar duas vezes) e conferido: a chamada devolveu ok e apagou 19 códigos antigos de `visit_seen`.
