@@ -498,6 +498,35 @@ Quando usar: certificado não sai em 30 min, erro grave sem conserto rápido, pe
   pelo webhook do Coolify no fim do workflow.
 - Ao 4º site, conferir RAM: se a sobra ficar abaixo de 500 MB, baixar `innodb_buffer_pool_size`/limites ou considerar
   o KVM 2 (decisão do dono).
+- **Os 2 WordPress da conta** (`eversonsousa.com.br`, `levelcards.com.br`) também estão no Cloud Startup: não seguem
+  este módulo (WordPress no Coolify, arquivos + banco). Plano curto próprio, depois de o dono dizer se ainda são usados.
+
+### Lições do criasite (valem para os próximos; a Parte A já está feita e **não** se repete)
+Já existe na VPS: Coolify em `painel.criasite.app`, token da API em `projetos\_segredos\coolify-api-token.txt`,
+GitHub App `coolify-sites-evssousa` (uuid `ewmvhkc4kociuvhqgsl5paz0`), servidor `rfc2imocy7zydxlver01wlsx`,
+MariaDB `mariadb-sites` (uuid `djg6eojhrivnayhax7ohoszd`, backup diário de **todos** os bancos), firewall, swap, SSH
+(chave `~/.ssh/criasite_vps` no PC do dono). Cada site novo: projeto próprio no Coolify + banco e usuário próprios.
+1. **API do Coolify:** nunca imprimir a resposta de `POST /databases/*` (traz a senha). Variáveis em lote por
+   `PATCH /applications/{uuid}/envs/bulk` lendo o arquivo `_segredos\<site>-vps.env` num script, com
+   `is_buildtime` só na `VITE_SITE_URL`. Deploy é `POST /deploy` (`{"uuid":…}`).
+2. **Pasta de imagens:** `POST /applications/{uuid}/storages` com `{"type":"file","is_directory":true,"fs_path":"/srv/sites/<site>/media","mount_path":"/data/media"}` (o tipo `persistent` não aceita caminho do servidor).
+3. **Ensaio sem indexar:** `PATCH` com `"noindex_domains":["https://<temp>"]`.
+4. **Redirecionamentos 301:** o Coolify gera 302. Depois de pôr o domínio real: ler `custom_labels` (base64), trocar
+   `to-non-www.redirectregex.permanent=false` por `true`, acrescentar
+   `traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true`, mandar com
+   `"is_container_label_readonly_enabled":false` e fazer deploy (ver `deploy-vps.md`).
+5. **phpMyAdmin da Hostinger** não põe `DROP TABLE` no dump: na virada, `DROP DATABASE` + `CREATE DATABASE` antes de importar.
+6. **Imagens:** o `grep '/media/'` pega URLs de outros sites dentro das pautas; usar `/media/[0-9]{4}/` (ou o padrão de pastas do site).
+7. **Cron Jobs da Hostinger:** a API só apaga (não pausa). Os de todos os sites ficam na mesma lista da conta: apagar
+   **só** os do site que está migrando.
+8. **Tarefas do Coolify** rodam logo depois de criadas (o criasite publicou na hora): criar só depois do banco final.
+   Comando: `sh -c 'curl -fsS -m 280 -H "x-cron-token: $CRON_TOKEN" http://127.0.0.1:3000/api/cron/<job>'`.
+9. **DNS:** apagar `@` ALIAS e `www` CNAME (`dns_records_delete`) **antes** de criar os A. Propaga em menos de 1 min.
+   No Windows em português, o `nslookup` escreve "Nome:", não "Name:".
+10. **Apagar o site antigo** (`hosting_websites_delete`, só com o "ok" do dono): a Hostinger reescreve a zona (apagou o
+    `ftp`, mudou o TTL do `@`), mas manteve os A da VPS e o e-mail. Conferir a zona e a caixa logo depois.
+11. **E-mail:** é brinde do Cloud Startup; a virada não mexe no MX. Não pedir reembolso do plano antes de resolver os e-mails.
+12. Tempos reais: build 26 s; virada completa ~30 min; app ~130 MB de RAM.
 
 ---
 
