@@ -69,6 +69,8 @@ export default [
   route("api/view", "routes/view.ts"),
   // Sinal de visita do site inteiro (sem cookie; ver app/visitas e docs/painel-visitas.md).
   route("api/v", "routes/api.v.ts"),
+  // Resumo das visitas para o Escritório Claude (protegido pelo CRON_TOKEN).
+  route("api/escritorio/:what", "routes/api.escritorio.ts"),
   // Ferramenta "Está fora do ar?": checagem feita pelo servidor (ver docs/ferramenta-fora-do-ar.md).
   route("api/fora-do-ar", "routes/api-fora-do-ar.ts"),
 
