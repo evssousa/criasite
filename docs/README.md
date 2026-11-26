@@ -32,6 +32,7 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [deploy-vps.md](deploy-vps.md) | **Deploy atual (VPS, Coolify)**: app, domínios, banco, imagens, variáveis, tarefas, backup, rótulos do proxy, volta |
 | [deploy-hostinger.md](deploy-hostinger.md) | Deploy antigo na Hostinger (histórico desde 2026-11-26) |
 | [migracao-vps.md](migracao-vps.md) | Migração para a VPS (KVM 1 + Coolify): base da VPS (uma vez) + módulo copiável por site (preparo, ensaio em sslip.io, janela de virada, pós, volta); 12 decisões para o dono |
+| [migracao-wordpress.md](migracao-wordpress.md) | Migração dos 2 WordPress do Cloud Startup (levelcards.com.br, eversonsousa.com.br raiz) para a VPS: 1 app Dockerfile por domínio, banco no `mariadb-sites`, dados por SSH, ensaio em sslip.io sem mexer no banco, virada só DNS; 5 perguntas ao dono |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
 | [plano-inicial.md](plano-inicial.md) | Histórico: os 3 conceitos da fase 0 (previa site sem banco; superado) |
@@ -70,6 +71,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | ✅ no ar em 2026-11-19 (faixas conferidas pelo dono; revisar premissas até 2027-05) |
 | 2 | Painel `/admin/visitas` com contador de visitas próprio, sem cookie (módulo do animeprofile): [painel-visitas.md](painel-visitas.md) | 🔄 (feito e testado localmente em 2026-11-19; falta conferir em produção, criar o Cron Job `limpeza` e o dono aprovar os textos de privacidade/cookies) |
 | 2 | Migração para a VPS (Coolify, 1º site dos 4): plano em [migracao-vps.md](migracao-vps.md), operação em [deploy-vps.md](deploy-vps.md) | ✅ no ar na VPS desde 2026-11-26 (virada sem perda: banco, imagens, robô e SSL conferidos); falta acompanhamento de 24 h e 7 dias (Parte D) |
+| 2 | Migração dos WordPress (levelcards, eversonsousa) para a VPS: plano em [migracao-wordpress.md](migracao-wordpress.md) | 🚫 cancelado em 2026-11-26: os sites serão recriados em React; baixados como referência para `projetos/sites-recriar/` |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -103,6 +105,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
+- **WordPress:** dar o ok para apagar levelcards.com.br e eversonsousa.com.br do hPanel (já baixados em `projetos/sites-recriar/`); depois, remover a chave `vps-migracao` do Acesso SSH da hospedagem.
 - **VPS:** depois do acompanhamento de 7 dias (por volta de 03/12), apagar `projetos\_migracao\criasite-*.sql`. Opcional: criar conta grátis no Backblaze B2 para o backup externo do banco.
 - **E-mail:** `contato@criasite.app` é brinde do Cloud Startup (conferido em 2026-11-25): pedir o reembolso do plano só depois de levar os e-mails dos 6 domínios para outro lugar (Caixa de entrada do `PLANEJAMENTO.md`).
 - ✅ Cron Job `limpeza` criado pelo dono em 2026-11-25 (`0,30 7 * * *`, roda às 7h00 e 7h30 UTC; inofensivo rodar duas vezes) e conferido: a chamada devolveu ok e apagou 19 códigos antigos de `visit_seen`.

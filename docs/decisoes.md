@@ -2,6 +2,23 @@
 
 Mais recente no topo. Cada decisão diz o que foi decidido, quando e por quê.
 
+## 2026-11-26 — WordPress: não migrar, baixar como referência
+- **Dono:** os 2 sites serão **recriados em React**; não vão para a VPS. Foram baixados para `projetos/sites-recriar/`
+  (banco, imagens originais, tema filho, HTML e capturas de 10 páginas cada) e serão apagados do hPanel com o ok dele.
+- **Por quê:** recriar no padrão dos outros sites; além disso o levelcards estava invadido (13 admins falsos de 2026-05-05 e
+  plugin de spam `wpcore-content-manager`), então migrar o WordPress não valia o trabalho.
+
+## 2026-11-26 — Migração dos WordPress para a VPS (plano; cancelado no mesmo dia, ver acima)
+- **Dono:** migram só a raiz de `eversonsousa.com.br` e `levelcards.com.br`; `/site0` e `/karkaraceara` (testes) ficam de
+  fora; banco órfão `u218539700_L0t3O` apagado.
+- **Planejador (`migracao-wordpress.md`):** 1 app Dockerfile do Coolify por domínio sobre `wordpress:php<origem>-apache`
+  (256 MB, Apache com 5 processos), cópia do public_html montada de `/srv/sites/<dominio>/html`; bancos `levelcards` e
+  `eversonsousa` no `mariadb-sites` (não o modelo WordPress do Coolify, que cria um MariaDB por site); dados por SSH da
+  hospedagem (`rsync` + `wp db export` em fluxo, senhas novas geradas na VPS); ensaio em sslip.io com `WP_HOME`/`WP_SITEURL`
+  só para o host temporário (banco intocado); `http`→`https` do eversonsousa por `wp search-replace`; WP-Cron padrão;
+  xmlrpc e PHP em uploads bloqueados; levelcards primeiro.
+- **Por quê:** economia de RAM, nenhum segredo no chat, dados parados desde janeiro permitem um dump só e volta só por DNS.
+
 ## 2026-11-25 — Migração para a VPS: plano (recomendações, esperando o dono)
 - **O quê (planejador, plano em `migracao-vps.md`):** Coolify (já instalado) em vez de stack manual; um MariaDB só para os 4
   sites (banco + usuário por site, só rede interna, LTS ≥ versão da origem); dump pelo phpMyAdmin feito pelo dono (ensaio e
