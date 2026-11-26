@@ -29,7 +29,8 @@ cuida de sites. Mesma estratégia dos irmãos: repositório público como portf�
 | [midia-kit.md](midia-kit.md) | Plano do mídia kit em `/anuncie` (piloto para os 4 sites): números só com fonte e data, público, 3 formatos, regras, recusas, PDF por CSS de impressão, SEO/FAQ, textos legais e como copiar para os outros sites |
 | [painel-visitas.md](painel-visitas.md) | Painel `/admin/visitas`: contador próprio sem cookie (módulo `app/visitas`, copiado do animeprofile), como funciona, diferenças e o que conferir |
 | [orcamento-site.md](orcamento-site.md) | Plano da ferramenta "Quanto custa um site" (orçamento de site): premissas em faixas num único `data.ts` com data que vence, conta pura e testes, 5 caminhos (IA, construtor, WordPress, freelancer, agência), tela em réguas, resumo .txt, impressão, migration 010 de links; 12 decisões para o dono |
-| [deploy-hostinger.md](deploy-hostinger.md) | Deploy: site, build, banco, variáveis, Cron Jobs, domínio |
+| [deploy-vps.md](deploy-vps.md) | **Deploy atual (VPS, Coolify)**: app, domínios, banco, imagens, variáveis, tarefas, backup, rótulos do proxy, volta |
+| [deploy-hostinger.md](deploy-hostinger.md) | Deploy antigo na Hostinger (histórico desde 2026-11-26) |
 | [migracao-vps.md](migracao-vps.md) | Migração para a VPS (KVM 1 + Coolify): base da VPS (uma vez) + módulo copiável por site (preparo, ensaio em sslip.io, janela de virada, pós, volta); 12 decisões para o dono |
 | [decisoes.md](decisoes.md) | Registro de decisões (o quê, quando e por quê) |
 | [prototipo-layout.html](prototipo-layout.html) | Protótipo do layout escolhido ("Busca + Central") |
@@ -68,15 +69,15 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Mídia kit em `/anuncie` (piloto para animeprofile, respawnou e vibecoin): plano em [midia-kit.md](midia-kit.md) | ✅ (feito em 2026-11-19; 10 recomendações aprovadas pelo dono; 27 testes; `/anuncie` com PDF por CSS de impressão em 2 páginas) |
 | 2 | Ferramenta "Quanto custa um site" (orçamento de site, `/ferramentas/quanto-custa-um-site`, 100% no navegador, premissas com data que vence, rascunho em `criasite_orcamento`): plano em [orcamento-site.md](orcamento-site.md) | ✅ no ar em 2026-11-19 (faixas conferidas pelo dono; revisar premissas até 2027-05) |
 | 2 | Painel `/admin/visitas` com contador de visitas próprio, sem cookie (módulo do animeprofile): [painel-visitas.md](painel-visitas.md) | 🔄 (feito e testado localmente em 2026-11-19; falta conferir em produção, criar o Cron Job `limpeza` e o dono aprovar os textos de privacidade/cookies) |
-| 2 | Migração para a VPS (Coolify, 1º site dos 4): plano em [migracao-vps.md](migracao-vps.md) | 🔄 (Parte A feita; ensaio completo em `criasite.189-24-17-85.sslip.io` passou em 2026-11-26: banco, imagens, robô, IP real, backups com restauração testada; falta o dono testar o `/admin` no ensaio e marcar a virada) |
+| 2 | Migração para a VPS (Coolify, 1º site dos 4): plano em [migracao-vps.md](migracao-vps.md), operação em [deploy-vps.md](deploy-vps.md) | ✅ no ar na VPS desde 2026-11-26 (virada sem perda: banco, imagens, robô e SSL conferidos); falta acompanhamento de 24 h e 7 dias (Parte D) |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
 ## Próximos passos
 
-0. **Migração para a VPS** ([migracao-vps.md](migracao-vps.md)): Parte A e ensaio (Parte B) feitos e conferidos (ver "Andamento" no plano).
-   Próximo: virada (Parte C, ~1 h a partir das :52; o Claude apaga os 3 Cron Jobs da Hostinger, o dono faz o dump final, DNS só com A).
-   Depois: Parte D (2 h, 24 h, 7 dias) e backup externo no B2.
+0. **VPS — acompanhamento (Parte D de [migracao-vps.md](migracao-vps.md)):** 27/11: backup diário e `limpeza` das 7h rodaram, `/admin/visitas` contando.
+   03/12: TTL de `@`/`www` para 3600, tirar o domínio sslip.io, apagar `/root/migracao/*`. 10/12: desligar o auto-deploy da Hostinger (fim da volta).
+   Backup externo (Backblaze B2) quando o dono criar a conta. Depois: migrar respawnou e vibecoin com o mesmo módulo (Partes B–F).
 1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). A fonte The Verge IA **fica** (decisão do dono,
    2026-11-17): com o filtro, só passa com assunto de sites. Decisão do dono (2026-11-17): a notícia da **Nvidia** será excluída por ele
    no painel; a de **Harvard sobre IA e data centers fica**, porque o site também terá assuntos de IA (por isso o filtro de assunto
@@ -102,7 +103,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 7. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **VPS:** testar o ensaio em `https://criasite.189-24-17-85.sslip.io/admin` (login com a senha de hoje; abrir `/admin/visitas`, ver "Hoje" subir; não editar nada) e marcar o horário da virada (~1 h, começando às :52). Na virada: dump final pelo phpMyAdmin e um e-mail de teste no fim.
+- **VPS:** depois do acompanhamento de 7 dias (por volta de 03/12), apagar `projetos\_migracao\criasite-*.sql`. Opcional: criar conta grátis no Backblaze B2 para o backup externo do banco.
 - **E-mail:** `contato@criasite.app` é brinde do Cloud Startup (conferido em 2026-11-25): pedir o reembolso do plano só depois de levar os e-mails dos 6 domínios para outro lugar (Caixa de entrada do `PLANEJAMENTO.md`).
 - ✅ Cron Job `limpeza` criado pelo dono em 2026-11-25 (`0,30 7 * * *`, roda às 7h00 e 7h30 UTC; inofensivo rodar duas vezes) e conferido: a chamada devolveu ok e apagou 19 códigos antigos de `visit_seen`.
 - **Search Console:** relatório de 2026-11-24 analisado (ver `decisoes.md`): corrigido `/busca` (robots.txt) e o `SearchAction`; o resto é site novo. Sitemap (agora com as editorias) reenviado pelo dono em 2026-11-25. Dono: pedir indexação das 10 páginas principais pela Inspeção de URL (opcional) e **reexportar o relatório por volta de 02/12 a 09/12** para eu analisar.

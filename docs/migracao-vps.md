@@ -1,6 +1,6 @@
 # Migração para a VPS (Hostinger KVM 1 + Coolify)
 
-Status: 🔄 em execução. 12 decisões aprovadas pelo dono em 2026-11-25 (todas as recomendações). Ver "Andamento" no fim. O criasite é o **1º site** a migrar;
+Status: ✅ **virada feita em 2026-11-26** (11:41–12:10 de Brasília); falta a Parte D (24 h e 7 dias). 12 decisões aprovadas pelo dono em 2026-11-25 (todas as recomendações). Ver "Andamento" no fim. O criasite é o **1º site** a migrar;
 depois vêm respawnou, vibecoin e animeprofile, todos na mesma VPS.
 
 Como ler este documento:
@@ -591,3 +591,12 @@ Quando usar: certificado não sai em 30 min, erro grave sem conserto rápido, pe
 - IPv6: o PC do dono não tem IPv6, sem como testar de fora → **na virada, só A (sem AAAA)** (decisão 9).
 - Falta do ensaio (dono): entrar no `/admin` do endereço temporário e ver `/admin/visitas` "Hoje" subir.
 - **C2 muda:** a API da Hostinger não pausa Cron Jobs, só apaga. Na virada o Claude apaga os 3 do criasite (`10,40 * * * *` coletar, `50 * * * *` publicar, `0,30 7 * * *` limpeza); na volta, recriar pelo hPanel com o tutorial de `deploy-hostinger.md` (o token antigo continua no app antigo).
+
+**2026-11-26 — virada (Claude; dono fez o dump final e testou o `/admin` do ensaio)**
+- 14:41 UTC: snapshot; os 3 Cron Jobs do criasite **apagados** na Hostinger (os dos outros sites ficaram); última execução antiga: `coletar` 14:40, terminada.
+- Dump final (14:43, 2,4 MB) importado: 83 posts (o mais novo de 13:50), 455 feed_items, 871 cron_runs; migration 013. 7 imagens novas (100 no total).
+- DNS: `@` ALIAS e `www` CNAME apagados, `A 189.24.17.85` nos dois (TTL 300). Sem AAAA. Os registros de e-mail não mudaram (MX conferido no 8.8.8.8). Propagou em menos de 1 minuto.
+- Coolify: domínios `criasite.app`, `www` (redirect para o principal) e o temporário com noindex. Let's Encrypt emitido para os dois na hora.
+- Redirecionamentos do Coolify saíam como **302**: trocados para 301 com rótulos próprios (ver `deploy-vps.md`, "Rótulos do proxy").
+- Checklist no domínio real: 11 páginas ok (404 certo), sitemap 118, robots igual, 100/100 imagens, Brotli, sem `X-Robots-Tag` no domínio real.
+- Tarefas agendadas criadas às 14:57 UTC. O Coolify rodou `publicar` logo em seguida (14:58: publicou o post 85 com 3 imagens, servidas da VPS). `coletar` das 15:10 rodou sozinho no horário: **robô confirmado na VPS**.
