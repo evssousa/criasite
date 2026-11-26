@@ -600,3 +600,4 @@ Quando usar: certificado não sai em 30 min, erro grave sem conserto rápido, pe
 - Redirecionamentos do Coolify saíam como **302**: trocados para 301 com rótulos próprios (ver `deploy-vps.md`, "Rótulos do proxy").
 - Checklist no domínio real: 11 páginas ok (404 certo), sitemap 118, robots igual, 100/100 imagens, Brotli, sem `X-Robots-Tag` no domínio real.
 - Tarefas agendadas criadas às 14:57 UTC. O Coolify rodou `publicar` logo em seguida (14:58: publicou o post 85 com 3 imagens, servidas da VPS). `coletar` das 15:10 rodou sozinho no horário: **robô confirmado na VPS**.
+- 15:20 UTC: o dono decidiu que não haverá volta; **site antigo apagado da Hostinger** (`hosting_websites_delete`). A zona foi reescrita pela Hostinger só no `ftp` (apagado) e no TTL do `@` (1800); A da VPS, MX, SPF, DKIM e DMARC intactos; caixa `contato@criasite.app` ativa. A Parte E (volta) não vale mais para o criasite.

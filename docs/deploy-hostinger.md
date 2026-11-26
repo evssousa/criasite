@@ -1,7 +1,7 @@
 # Deploy na Hostinger (histórico)
 
-> **Desde 2026-11-26 o site roda na VPS: ver [deploy-vps.md](deploy-vps.md).** O app daqui fica parado até 2026-12-10
-> como volta de segurança (Cron Jobs apagados, auto-deploy ainda ligado).
+> **Desde 2026-11-26 o site roda na VPS: ver [deploy-vps.md](deploy-vps.md).** O site foi **apagado do Cloud Startup em 2026-11-26**
+> (decisão do dono; sem volta).
 
 Status: ✅ no ar desde 2026-11-14 em https://criasite.app (banco vazio; robô coletando, sem escrever até a
 `GEMINI_API_KEY` ser cadastrada).

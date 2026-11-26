@@ -31,8 +31,8 @@ duas linhas `permanent=true` e desligar o automático.
 - Robô à mão: `docker exec <container> sh -c 'curl -s -H "x-cron-token: $CRON_TOKEN" http://127.0.0.1:3000/api/cron/status'`
 - SQL: `docker exec -it djg6eojhrivnayhax7ohoszd sh -c 'mariadb -uroot -p"$MARIADB_ROOT_PASSWORD" criasite'`
 
-## Volta para a Hostinger (até 2026-12-10)
+## Site antigo na Hostinger
 
-O app antigo segue no ar lá, parado (Cron Jobs apagados). Para voltar: DNS `@` ALIAS `criasite.app.cdn.hstgr.net` e
-`www` CNAME `www.criasite.app.cdn.hstgr.net` (apagar os A), desligar as tarefas do Coolify e recriar os 3 Cron Jobs no
-hPanel (horários acima; o token antigo continua no app antigo). Dados novos da VPS teriam de ser copiados à mão.
+**Apagado em 2026-11-26** a pedido do dono (não haverá volta). A exclusão apagou arquivos e banco antigos e o
+registro `ftp` da zona; `@`, `www`, `painel`, MX, SPF, DKIM, DMARC e a verificação do Google ficaram. A caixa
+`contato@criasite.app` (pedido de e-mail separado, brinde do Cloud Startup) continua ativa.
