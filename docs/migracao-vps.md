@@ -527,6 +527,11 @@ MariaDB `mariadb-sites` (uuid `djg6eojhrivnayhax7ohoszd`, backup diário de **to
     `ftp`, mudou o TTL do `@`), mas manteve os A da VPS e o e-mail. Conferir a zona e a caixa logo depois.
 11. **E-mail:** é brinde do Cloud Startup; a virada não mexe no MX. Não pedir reembolso do plano antes de resolver os e-mails.
 12. Tempos reais: build 26 s; virada completa ~30 min; app ~130 MB de RAM.
+13. **(respawnou, 2026-11-26) Middleware `redirect-to-https` é compartilhado entre todos os apps.** Se um app o declara com
+    `permanent=true` e outro sem, o Traefik descarta o middleware e **todo http da VPS dá 503** (aconteceu por 18 min no
+    criasite). Logo depois de criar o app pela API, aplicar os rótulos próprios com
+    `traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true` (lição 4) e conferir
+    `curl -sI http://criasite.app/x` → 301 e `docker logs --since 2m coolify-proxy | grep ERR` vazio.
 
 ---
 
