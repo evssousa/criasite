@@ -25,6 +25,13 @@ Os redirecionamentos do Coolify saem como 302. Para virar 301, o app usa **rótu
 domínio: ligar de novo "Readonly labels", salvar o domínio, deixar o Coolify gerar os rótulos, aplicar de novo as
 duas linhas `permanent=true` e desligar o automático.
 
+**Deploy sem certificado provisório (lição 14 de `criasite/docs/migracao-vps.md`, 2026-11-27):** num deploy, o container
+antigo e o novo ficam no ar juntos por alguns minutos. Se um roteador com o **mesmo nome** tem configuração diferente nos
+dois (regra, middlewares, TLS), o Traefik descarta o roteador e o site responde com o certificado provisório do Traefik
+("não seguro") até o antigo sair (~4 min). Deploy comum (rótulos iguais) não tem esse problema (medido em 27/11: zero
+segundos). Tirar um domínio só apaga roteadores e é seguro. Para **mudar** um roteador existente, dar a ele um nome novo
+(ex.: `https-0-<uuid>` → `https-0b-<uuid>`, junto com o `service`), para os dois conviverem durante o deploy.
+
 ## Comandos úteis (SSH)
 
 - Logs do app: `docker logs --since 1h $(docker ps -qf name=il6sotaggogtnqah6xaf2eg8)`

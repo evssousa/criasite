@@ -454,7 +454,7 @@ vem imediatamente depois de o DNS responder nos 3 resolvedores, e o TTL de 300 j
   capa servida de `/media` da VPS; `docker logs --since 2h <app>` sem erro; `free -m`.
 - **24 h** 🤖: backup diário do banco rodou; `limpeza` das 7h rodou; `/admin/visitas` com o dia contando; certificado
   com renovação agendada (Traefik renova sozinho aos 60 dias).
-- **7 dias** 🤖: subir o TTL de `@` e `www` para 3600; tirar o domínio `<temp>`; apagar `/root/migracao/*.sql` e
+- **7 dias** 🤖: subir o TTL de `@` e `www` para 3600; tirar o domínio `<temp>` (só apagar as linhas dele nos rótulos, sem mexer nos outros roteadores: lição 14); apagar `/root/migracao/*.sql` e
   `/root/migracao/criasite.env`; 👤 apagar `projetos\_migracao\criasite-*.sql`; atualizar `deploy-vps.md`, marcar
   `deploy-hostinger.md` como histórico; README e decisões.
 - **Site antigo na Hostinger:** fica parado do jeito que está (crons desligados, app no ar) por **14 dias** como volta.
@@ -532,6 +532,16 @@ MariaDB `mariadb-sites` (uuid `djg6eojhrivnayhax7ohoszd`, backup diário de **to
     criasite). Logo depois de criar o app pela API, aplicar os rótulos próprios com
     `traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true` (lição 4) e conferir
     `curl -sI http://criasite.app/x` → 301 e `docker logs --since 2m coolify-proxy | grep ERR` vazio.
+14. **(2026-11-27) Certificado provisório por ~4 min num deploy = roteador em conflito.** No deploy, o container antigo e o
+    novo ficam juntos alguns minutos (rolling update). Se o mesmo roteador (mesmo nome) tem configuração diferente nos dois,
+    o Traefik registra `HTTP router defined multiple times with different configurations` e **descarta o roteador**: o
+    domínio cai no certificado padrão do Traefik (autoassinado, "não seguro") até o antigo sair. Aconteceu nos deploys em
+    que os rótulos tinham acabado de mudar (migrações de 26/11). Deploy comum não sofre (medido: respawnou em 27/11, zero
+    segundos fora). Regras: (a) tirar um domínio (ex.: o `<temp>`) só apaga roteadores: seguro; (b) para **mudar** um
+    roteador que já existe (middlewares, regra, TLS), dar um nome novo a ele e ao `service` (`https-0-<uuid>` →
+    `https-0b-<uuid>`), para os dois conviverem; (c) depois de qualquer mudança de rótulo, conferir
+    `docker logs --since 10m coolify-proxy | grep 'defined multiple'` vazio. Sonda para medir: `node sonda-cert.mjs <domínio> 420`
+    (`criasite/scripts/sonda-cert.mjs`: consulta certificado e HTTP a cada 2 s e imprime só as mudanças).
 
 ---
 
