@@ -77,7 +77,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 
 ## Próximos passos
 
-0. **VPS — acompanhamento (Parte D de [migracao-vps.md](migracao-vps.md)):** 27/11: backup diário e `limpeza` das 7h rodaram, `/admin/visitas` contando.
+0. **VPS — acompanhamento (Parte D de [migracao-vps.md](migracao-vps.md)):** 27/11: 24 h conferidas (backup das 06:30 UTC com os 4 bancos, `limpeza` ok, `/admin/visitas` contando, 4 matérias em 24 h; a fonte Search Engine Land dá HTTP 403 em toda coleta).
    03/12: TTL de `www` para 3600 (o `@` já está em 1800), tirar o domínio sslip.io, apagar `/root/migracao/*`.
    Backup externo (Backblaze B2) quando o dono criar a conta. Depois: migrar respawnou e vibecoin com o mesmo módulo (Partes B–F).
 1. **Robô: filtro de assunto** ✅ feito em 2026-11-16 (`app/lib/robot/topic.ts`). A fonte The Verge IA **fica** (decisão do dono,
