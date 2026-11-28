@@ -103,11 +103,11 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    respawnou (só depois do AdSense) e animeprofile pela Parte G do plano (`types.ts`, `rules.ts`, teste e CSS iguais; `data.ts` e `SKIN` mudam).
    Selo "Patrocinado" nos posts e faixa nas ferramentas (Parte H) só quando fechar o 1º contrato.
 6. **Quanto custa um site**: no ar (2026-11-19). Revisar as premissas de `app/lib/orcamento/data.ts` até 2027-05 (o teste falha se vencer). Conferido em produção em 2026-11-19 (tela, sitemap, trilha, 4 guias com o link; migration 010 aplicada no deploy).
-7. **Google Analytics:** conferido em 2026-11-28 e ainda desligado em produção (loader da raiz com `gaId` nulo, sem banner; /cookies e /privacidade respondem 200 e já citam o Analytics). Quando o dono cadastrar `GA_MEASUREMENT_ID` e reiniciar o app, conferir em produção pelo roteiro "Como verificar" de `animeprofile/docs/plano-google-analytics.md` (trocar o domínio).
+7. **Google Analytics:** ligado em 2026-11-28 (`GA_MEASUREMENT_ID` criado pela API do Coolify e app reiniciado; o loader da raiz já entrega `G-VLMD12XKYF`; /, /cookies e /privacidade respondem 200). Banner e gtag montam no navegador (useEffect), então falta a conferência visual + DebugView pelo roteiro "Como verificar" de `animeprofile/docs/plano-google-analytics.md` (trocar o domínio).
 8. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **Google Analytics (2026-11-28):** no Coolify, app do criasite → Environment Variables → adicionar `GA_MEASUREMENT_ID` = `G-VLMD12XKYF` (ID confirmado pelo dono em 2026-11-28) e reiniciar (não precisa de build). **Em 2026-11-28 a variável ainda não tinha chegado ao site** (ou o app não foi reiniciado depois de salvar). Já está em `.env.example` e na cópia local `projetos/_segredos/criasite-vps.env`.
+- **Google Analytics (2026-11-28):** variável `GA_MEASUREMENT_ID` = `G-VLMD12XKYF` já criada no Coolify (pela API) e app reiniciado. Falta: apagar a linha antiga `GA_MEASUREMENT_ID=G-MZJX2TZ404` de `projetos/_segredos/criasite-vps.env` (o arquivo tem as duas).
   No GA (Administrador → Fluxos de dados → fluxo Web do criasite): em **Medição otimizada**, desligar "Mudanças de página com base em eventos do histórico do navegador" (senão cada página conta 2 vezes);
   em Configuração dos dados → Retenção, **14 meses**; deixar os Sinais do Google desligados. No seu navegador, abra `https://criasite.app/?nao-medir=1` uma vez para não contar as suas visitas.
   Depois me avise para eu conferir (banner com "Personalizar", `?ga_debug=1` no DebugView, textos novos de `/cookies` e `/privacidade`, que também vale você ler).
