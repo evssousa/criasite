@@ -72,7 +72,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 | 2 | Painel `/admin/visitas` com contador de visitas próprio, sem cookie (módulo do animeprofile): [painel-visitas.md](painel-visitas.md) | 🔄 (feito e testado localmente em 2026-11-19; falta conferir em produção, criar o Cron Job `limpeza` e o dono aprovar os textos de privacidade/cookies) |
 | 2 | Migração para a VPS (Coolify, 1º site dos 4): plano em [migracao-vps.md](migracao-vps.md), operação em [deploy-vps.md](deploy-vps.md) | ✅ no ar na VPS desde 2026-11-26 (virada sem perda: banco, imagens, robô e SSL conferidos); falta acompanhamento de 24 h e 7 dias (Parte D) |
 | 2 | Migração dos WordPress (levelcards, eversonsousa) para a VPS: plano em [migracao-wordpress.md](migracao-wordpress.md) | 🚫 cancelado em 2026-11-26: os sites serão recriados em React; baixados como referência para `projetos/sites-recriar/` |
-| 2 | Google Analytics 4 (G-VLMD12XKYF) + banner de cookies em 2 camadas (Estatística e Anúncios separados, Modo de Consentimento v2): módulo `app/analytics/` copiado do animeprofile (plano em `animeprofile/docs/plano-google-analytics.md`) | 🔄 (código pronto em 2026-11-28, teste e build ok; liga quando o dono cadastrar `GA_MEASUREMENT_ID` no Coolify) |
+| 2 | Google Analytics 4 (G-MZJX2TZ404) + banner de cookies em 2 camadas (Estatística e Anúncios separados, Modo de Consentimento v2): módulo `app/analytics/` copiado do animeprofile (plano em `animeprofile/docs/plano-google-analytics.md`) | 🔄 (código pronto em 2026-11-28, teste e build ok; liga quando o dono cadastrar `GA_MEASUREMENT_ID` no Coolify) |
 | 2 | Mais ferramentas: paleta, slug, proposta para cliente (freelancer) | 💤 |
 | 3 | Pedido do AdSense e afiliado da Hostinger | 💤 |
 
@@ -103,11 +103,11 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
    respawnou (só depois do AdSense) e animeprofile pela Parte G do plano (`types.ts`, `rules.ts`, teste e CSS iguais; `data.ts` e `SKIN` mudam).
    Selo "Patrocinado" nos posts e faixa nas ferramentas (Parte H) só quando fechar o 1º contrato.
 6. **Quanto custa um site**: no ar (2026-11-19). Revisar as premissas de `app/lib/orcamento/data.ts` até 2027-05 (o teste falha se vencer). Conferido em produção em 2026-11-19 (tela, sitemap, trilha, 4 guias com o link; migration 010 aplicada no deploy).
-7. **Google Analytics:** ligado em 2026-11-28 (`GA_MEASUREMENT_ID` criado pela API do Coolify e app reiniciado; o loader da raiz já entrega `G-VLMD12XKYF`; /, /cookies e /privacidade respondem 200). Banner e gtag montam no navegador (useEffect), então falta a conferência visual + DebugView pelo roteiro "Como verificar" de `animeprofile/docs/plano-google-analytics.md` (trocar o domínio).
+7. **Google Analytics:** ligado em 2026-11-28 (`GA_MEASUREMENT_ID` criado pela API do Coolify e app reiniciado; o loader da raiz já entrega `G-MZJX2TZ404`; /, /cookies e /privacidade respondem 200). Banner e gtag montam no navegador (useEffect), então falta a conferência visual + DebugView pelo roteiro "Como verificar" de `animeprofile/docs/plano-google-analytics.md` (trocar o domínio).
 8. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **Google Analytics (2026-11-28):** variável `GA_MEASUREMENT_ID` = `G-VLMD12XKYF` já criada no Coolify (pela API) e app reiniciado. Falta: apagar a linha antiga `GA_MEASUREMENT_ID=G-MZJX2TZ404` de `projetos/_segredos/criasite-vps.env` (o arquivo tem as duas).
+- **Google Analytics (2026-11-28):** variável `GA_MEASUREMENT_ID` = `G-MZJX2TZ404` já criada no Coolify (pela API) e app reiniciado. (2026-11-28: o ID certo é G-MZJX2TZ404, confirmado pelo dono; o G-VLMD12XKYF usado antes por engano foi trocado no Coolify e removido da cópia em `_segredos`.)
   No GA (Administrador → Fluxos de dados → fluxo Web do criasite): em **Medição otimizada**, desligar "Mudanças de página com base em eventos do histórico do navegador" (senão cada página conta 2 vezes);
   em Configuração dos dados → Retenção, **14 meses**; deixar os Sinais do Google desligados. No seu navegador, abra `https://criasite.app/?nao-medir=1` uma vez para não contar as suas visitas.
   Depois me avise para eu conferir (banner com "Personalizar", `?ga_debug=1` no DebugView, textos novos de `/cookies` e `/privacidade`, que também vale você ler).

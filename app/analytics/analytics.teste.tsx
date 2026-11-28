@@ -34,13 +34,13 @@ assert.equal((antigoTudo[1][2] as Record<string, string>).ad_storage, "granted",
 assert.equal((antigoTudo[1][2] as Record<string, string>).analytics_storage, "denied");
 
 // ID do GA
-assert.equal(gaIdValido("G-VLMD12XKYF"), "G-VLMD12XKYF");
+assert.equal(gaIdValido("G-MZJX2TZ404"), "G-MZJX2TZ404");
 for (const ruim of ["", "UA-1234", "G-<script>", null, undefined]) assert.equal(gaIdValido(ruim), null);
 
 // HTML do servidor: nem o gtag.js nem o banner (tudo só no navegador, depois da escolha)
 const html = renderToString(
   <MemoryRouter initialEntries={["/noticias/x"]}>
-    <GoogleAnalytics id="G-VLMD12XKYF" />
+    <GoogleAnalytics id="G-MZJX2TZ404" />
     <CookieConsent ads analytics />
   </MemoryRouter>,
 );
