@@ -34,7 +34,7 @@ Cron Jobs da Hostinger (depois do deploy; horários desencontrados dos outros si
 
 ## Fontes iniciais (migration 002)
 
-Google Search Central Blog (10), WordPress News (9), Search Engine Land (8), Search Engine Journal (7),
+Google Search Central Blog (10), WordPress News (9), Search Engine Land (8, desativada pela migration 014: 403 a IPs de servidor), Search Engine Journal (7),
 WP Tavern (7), web.dev (7), Wordfence (7), Smashing Magazine (6), Chrome for Developers (6),
 Cloudflare Blog (6), The Verge IA (5). **A testar depois do deploy** com `/api/cron/paginas` e
 `/api/cron/fontes` (no Vibecoin, várias fontes bloqueavam o servidor da Hostinger e só o resumo do
