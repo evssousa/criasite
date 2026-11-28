@@ -100,6 +100,7 @@ docs/                    este plano
 | `ADMIN_EMAIL` `ADMIN_PASSWORD_HASH` `SESSION_SECRET` | login do /admin (`npm run admin:hash`) |
 | `MEDIA_DIR` | pasta das imagens das notícias (padrão `~/criasite-media`) |
 | `ADSENSE_CLIENT` | liga AdSense, `ads.txt` e banner de cookies |
+| `GA_MEASUREMENT_ID` | liga o Google Analytics 4 (G-VLMD12XKYF) e o banner de cookies; módulo em `app/analytics/` |
 
 Modelo em `.env.example`. O `.env` real nunca vai para o Git (repositório público).
 

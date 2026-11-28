@@ -467,8 +467,8 @@ export const DOC_PAGES: DocPage[] = [
   { to: "/politica-editorial", label: "Política editorial", group: "site", updated: "2026-11-19" },
   { to: "/anuncie", label: "Anuncie", group: "site", updated: "2026-11-19" },
   { to: "/termos", label: "Termos de uso", group: "legal", updated: "2026-11-17" },
-  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-19" },
-  { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-17" },
+  { to: "/privacidade", label: "Privacidade", group: "legal", updated: "2026-11-28" },
+  { to: "/cookies", label: "Cookies", group: "legal", updated: "2026-11-28" },
   { to: "/acessibilidade", label: "Acessibilidade", group: "legal", updated: "2026-11-14" },
   { to: "/mapa-do-site", label: "Mapa do site", group: "legal", updated: "2026-11-14" },
 ];

@@ -51,6 +51,15 @@ const sections: DocSection[] = [
                 <td>Entender quais conteúdos são mais lidos e melhorar o site. Não usa cookies nem guarda nada no seu aparelho.</td>
               </tr>
               <tr>
+                <td>Estatística do Google Analytics (somente com a sua permissão)</td>
+                <td>
+                  Se você aceitar “Estatística” no aviso de cookies, o Google Analytics 4 recebe as páginas que você abre, o tempo de engajamento, o tipo de aparelho e
+                  navegador e a região aproximada, ligados a um identificador aleatório guardado no cookie _ga. O IP só é usado para estimar a região e não é
+                  guardado. Não enviamos nome, e-mail nem o que você digita nas ferramentas.
+                </td>
+                <td>Entender quais conteúdos e ferramentas são mais usados e de onde vêm as visitas, de forma agregada.</td>
+              </tr>
+              <tr>
                 <td>Identificadores de anúncios (cookies e dados do navegador)</td>
                 <td>Quando há anúncios na página. Os personalizados só com a sua permissão.</td>
                 <td>Exibir anúncios do Google AdSense, limitar repetições e medir resultados.</td>
@@ -103,7 +112,7 @@ const sections: DocSection[] = [
           <strong>Legítimo interesse</strong>: segurança do site e resposta às mensagens que você envia;
         </li>
         <li>
-          <strong>Consentimento</strong>: cookies de métricas e de anúncios personalizados. Você pode retirar o consentimento quando quiser, pelo link
+          <strong>Consentimento</strong>: cookies de estatística (Google Analytics) e de anúncios personalizados, cada um separado. Você pode retirar o consentimento quando quiser, pelo link
           “Preferências de cookies” no rodapé.
         </li>
       </ul>
@@ -114,7 +123,7 @@ const sections: DocSection[] = [
     title: "Cookies",
     body: (
       <p>
-        Usamos cookies para o site funcionar e, com a sua permissão, para exibir anúncios personalizados. Os detalhes e as formas de desativar estão na{" "}
+        Usamos cookies para o site funcionar e, com a sua permissão, para a estatística de audiência (Google Analytics) e para exibir anúncios personalizados. Os detalhes e as formas de desativar estão na{" "}
         <TextLink to="/cookies">política de cookies</TextLink>.
       </p>
     ),
@@ -129,7 +138,7 @@ const sections: DocSection[] = [
           <li>fornecedores terceiros, incluindo o Google, usam cookies para exibir anúncios com base nas suas visitas anteriores a este e a outros sites;</li>
           <li>os cookies de publicidade permitem que o Google e os parceiros dele exibam anúncios com base nas suas visitas a este e a outros sites da internet;</li>
           <li>
-            os anúncios personalizados só são ativados se você escolher “Aceitar todos” no aviso de cookies. Com “Só os essenciais”, o Google pode exibir anúncios
+            os anúncios personalizados só são ativados se você permitir “Anúncios” (ou escolher “Aceitar todos”) no aviso de cookies. Com “Só os essenciais”, o Google pode exibir anúncios
             não personalizados, que usam só o contexto da página;
           </li>
           <li>
@@ -153,7 +162,7 @@ const sections: DocSection[] = [
         <ul>
           <li>empresa de hospedagem, onde o site e o banco de dados ficam guardados;</li>
           <li>Google (AdSense), para exibir anúncios, como descrito acima;</li>
-          <li>ferramentas de métricas, se e quando forem ativadas, mediante consentimento;</li>
+          <li>Google (Analytics), para a estatística de audiência, só com a sua permissão: identificador aleatório do navegador, páginas vistas e eventos;</li>
           <li>autoridades públicas, quando houver ordem judicial ou obrigação legal.</li>
         </ul>
         <p>
@@ -170,7 +179,8 @@ const sections: DocSection[] = [
       <ul>
         <li>registros de acesso: 6 meses, como exige o Marco Civil da Internet;</li>
         <li>mensagens de contato: pelo tempo necessário para resolver o assunto e, depois, até 2 anos para histórico;</li>
-        <li>contagem de visitas (números por dia, página, origem e aparelho, sem dado pessoal): 13 meses; os totais por dia ficam sem prazo.</li>
+        <li>contagem de visitas (números por dia, página, origem e aparelho, sem dado pessoal): 13 meses; os totais por dia ficam sem prazo;</li>
+        <li>Google Analytics (estatística com a sua permissão): 14 meses.</li>
       </ul>
     ),
   },

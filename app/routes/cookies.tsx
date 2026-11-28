@@ -4,13 +4,13 @@ import { SITE } from "~/lib/site";
 
 export const meta = () => seo({ title: "Política de cookies", description: `Quais cookies o ${SITE.name} usa e como desativá-los.`, path: "/cookies" });
 
-// Banner de consentimento: app/components/CookieConsent.tsx (liga junto com ADSENSE_CLIENT).
+// Banner de consentimento: app/components/CookieConsent.tsx (liga com ADSENSE_CLIENT ou GA_MEASUREMENT_ID; lógica em app/analytics/).
 const COOKIE_TYPES = [
   { type: "Essenciais", status: "Só o necessário", use: "Fazem o site funcionar e protegem contra abusos.", consent: "Não precisa: o site não funciona sem eles." },
   {
     type: "Preferências",
     status: "Em uso",
-    use: "Guardam no seu navegador (armazenamento local) a escolha no aviso de cookies, as ferramentas favoritas, o progresso da trilha e os rascunhos das ferramentas que salvam o que você digitou.",
+    use: "Guardam no seu navegador (armazenamento local) as escolhas no aviso de cookies (Estatística e Anúncios, em criasite_consent), as ferramentas favoritas, o progresso da trilha e os rascunhos das ferramentas que salvam o que você digitou.",
     consent: "Não precisa: só guardam o que você escolheu, e nada é enviado para nós.",
   },
   {
@@ -19,12 +19,17 @@ const COOKIE_TYPES = [
     use: "A contagem de visitas do próprio site (páginas abertas, de onde veio a visita, tipo de aparelho) não usa cookies nem guarda nada no seu aparelho; é agregada por dia.",
     consent: "Não precisa: não há cookie nem dado que identifique você.",
   },
-  { type: "Métricas de terceiros", status: "Ainda não usamos", use: "Ferramentas de métricas de terceiros, se vierem a ser usadas, contam visitas e páginas lidas de forma agregada.", consent: "Sim, pedido no aviso de cookies." },
+  {
+    type: "Estatística",
+    status: "Google Analytics",
+    use: "O Google Analytics 4 mede quais páginas são vistas, por quanto tempo e de onde vêm as visitas, de forma agregada, com um identificador aleatório no cookie _ga (guardado por até 14 meses). O Google não guarda o seu IP (usa só para estimar a região). Não usamos esses dados para anúncios nem ligamos a sua conta Google.",
+    consent: "Sim: só com a sua permissão em “Estatística”. Sem ela, o Google Analytics nem é carregado.",
+  },
   {
     type: "Publicidade",
     status: "Google AdSense",
     use: "Exibem anúncios, evitam repetir o mesmo anúncio e medem resultados. Os personalizados usam o seu histórico de navegação.",
-    consent: "Sim: anúncios personalizados só se você clicar em “Aceitar todos”.",
+    consent: "Sim: anúncios personalizados só com a sua permissão em “Anúncios” (ou “Aceitar todos”).",
   },
 ];
 
@@ -116,7 +121,10 @@ const sections: DocSection[] = [
             </li>
           ))}
         </ul>
-        <p>Você também pode mudar a sua escolha a qualquer momento pelo link “Preferências de cookies”, no rodapé do site.</p>
+        <p>
+          Na primeira visita você escolhe entre aceitar tudo, só os essenciais ou personalizar (Estatística e Anúncios separados). Depois, mude a sua escolha a
+          qualquer momento pelo link “Preferências de cookies”, no rodapé do site. Desligar a Estatística apaga os cookies _ga do Google Analytics deste site.
+        </p>
       </>
     ),
   },
@@ -136,7 +144,7 @@ export default function Cookies() {
     <StaticPage
       path="/cookies"
       title="Política de cookies"
-      lead="Usamos o essencial para o site funcionar. Anúncios personalizados e métricas só com a sua permissão, pedida num aviso na primeira visita."
+      lead="Usamos cookies essenciais para o site funcionar e cookies opcionais (estatística e anúncios personalizados) que só rodam depois que você aceita, cada um separado, num aviso na primeira visita."
       sections={sections}
     />
   );

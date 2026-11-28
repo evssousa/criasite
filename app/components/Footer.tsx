@@ -4,7 +4,8 @@ import { DOC_PAGES, SITE, toolUrl } from "~/lib/site";
 import { CookiePrefsButton } from "./CookieConsent";
 import { Logo } from "./ui";
 
-export function Footer({ adsOn }: { adsOn: boolean }) {
+/** prefsOn: anúncios ou Google Analytics ligados (mostra "Preferências de cookies"). */
+export function Footer({ prefsOn }: { prefsOn: boolean }) {
   const available = useAvailability();
   const groups = [
     { title: "Navegue", links: navFor(available) },
@@ -43,7 +44,7 @@ export function Footer({ adsOn }: { adsOn: boolean }) {
         <div className="flex flex-col gap-3 border-t border-night-line pt-6 text-sm text-moon-muted sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p>As ferramentas rodam no seu navegador: o que você digita ou envia nelas não sai do seu computador.</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            {adsOn && <CookiePrefsButton className="text-left hover:text-moon" />}
+            {prefsOn && <CookiePrefsButton className="text-left hover:text-moon" />}
             <span>
               © {new Date().getFullYear()} {SITE.team} · criasite.app
             </span>

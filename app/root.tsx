@@ -5,7 +5,9 @@ import "./app.css";
 import { CookieConsent } from "./components/CookieConsent";
 import { Footer } from "./components/Footer";
 import { SiteHeader } from "./components/Header";
-import { adsenseClient, consentBootstrap } from "./lib/ads";
+import { adsenseClient, gaMeasurementId } from "./lib/ads";
+import { consentBootstrap } from "./analytics/consent";
+import { GoogleAnalytics } from "./analytics/GoogleAnalytics";
 import { getAvailability } from "./lib/content.server";
 import { SITE } from "./lib/site";
 import { VisitBeacon } from "./visitas/client/VisitBeacon";
@@ -25,15 +27,18 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export async function loader() {
-  return { available: await getAvailability(), adsClient: adsenseClient() };
+  return { available: await getAvailability(), adsClient: adsenseClient(), gaId: gaMeasurementId() };
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const data = useRouteLoaderData<typeof loader>("root");
   // O painel /admin tem o próprio cabeçalho: sem menu e rodapé do site.
   const admin = useLocation().pathname.startsWith("/admin");
-  // Anúncios + banner de cookies só com ADSENSE_CLIENT configurado, e nunca no painel.
+  // Anúncios só com ADSENSE_CLIENT; Google Analytics só com GA_MEASUREMENT_ID; nenhum dos dois no painel.
+  // O consentimento (script do <head> e banner) existe se houver um dos dois.
   const adsClient = admin ? null : (data?.adsClient ?? null);
+  const gaId = admin ? null : (data?.gaId ?? null);
+  const consentimento = Boolean(adsClient || gaId);
   return (
     <html lang="pt-BR">
       <head>
@@ -42,12 +47,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="theme-color" content="#0c1a4b" />
         <Meta />
         <Links />
-        {adsClient && (
-          <>
-            <script dangerouslySetInnerHTML={{ __html: consentBootstrap() }} />
-            <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`} crossOrigin="anonymous" />
-          </>
-        )}
+        {consentimento && <script dangerouslySetInnerHTML={{ __html: consentBootstrap() }} />}
+        {adsClient && <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`} crossOrigin="anonymous" />}
       </head>
       <body className="min-h-screen">
         <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-violet focus:px-4 focus:py-3 focus:font-bold focus:text-white print:hidden">
@@ -59,8 +60,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </div>
         )}
         {children}
-        {!admin && <Footer adsOn={Boolean(adsClient)} />}
-        {adsClient && <CookieConsent />}
+        {!admin && <Footer prefsOn={consentimento} />}
+        {consentimento && <CookieConsent ads={Boolean(adsClient)} analytics={Boolean(gaId)} />}
+        {gaId && <GoogleAnalytics id={gaId} />}
         <ScrollRestoration />
         <Scripts />
       </body>
