@@ -107,7 +107,7 @@ Legenda: ✅ feito · 🔄 em andamento · ⏳ próximo · 💤 depois · ❓ es
 8. Com ~20 notícias (já são 22 no feed, falta limpar as fora do assunto) e os 12 guias, pedir o AdSense.
 
 ## Pendências suas
-- **Google Analytics (2026-11-28):** no Coolify, app do criasite → Environment Variables → adicionar `GA_MEASUREMENT_ID` = `G-VLMD12XKYF` (ID confirmado pelo dono em 2026-11-28) e reiniciar (não precisa de build). Já está em `.env.example` e na cópia local `_segredosiasite-vps.env`.
+- **Google Analytics (2026-11-28):** no Coolify, app do criasite → Environment Variables → adicionar `GA_MEASUREMENT_ID` = `G-VLMD12XKYF` (ID confirmado pelo dono em 2026-11-28) e reiniciar (não precisa de build). Já está em `.env.example` e na cópia local `projetos/_segredos/criasite-vps.env`.
   No GA (Administrador → Fluxos de dados → fluxo Web do criasite): em **Medição otimizada**, desligar "Mudanças de página com base em eventos do histórico do navegador" (senão cada página conta 2 vezes);
   em Configuração dos dados → Retenção, **14 meses**; deixar os Sinais do Google desligados. No seu navegador, abra `https://criasite.app/?nao-medir=1` uma vez para não contar as suas visitas.
   Depois me avise para eu conferir (banner com "Personalizar", `?ga_debug=1` no DebugView, textos novos de `/cookies` e `/privacidade`, que também vale você ler).
